@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>あみだくじ ― 人数と結果でその場で作成｜きめっと</title>
+<meta name="description" content="人数と結果を入れるだけで、あみだくじをその場で自動作成。名前をタップすると道すじをたどって結果を表示。引き直し・URL共有に対応。アプリ不要・登録不要・端末内で完結。">
+<link rel="canonical" href="https://kimetto.kawatare.studio/tool-amidakuji.html">
+<meta name="theme-color" content="#3aa0ff">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="site.webmanifest">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="きめっと">
+<meta property="og:title" content="あみだくじ｜人数と結果でその場で作成">
+<meta property="og:description" content="人数と結果を入れるだけで、あみだくじをその場で自動作成。名前をタップすると道すじをたどって結果を表示。引き直し・URL共有に対応。アプリ不要・登録不要・端末内で完結。">
+<meta property="og:url" content="https://kimetto.kawatare.studio/tool-amidakuji.html">
+<meta property="og:image" content="https://kimetto.kawatare.studio/ogp.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="あみだくじ｜人数と結果でその場で作成">
+<meta name="twitter:description" content="人数と結果を入れるだけで、あみだくじをその場で自動作成。名前をタップすると道すじをたどって結果を表示。引き直し・URL共有に対応。アプリ不要・登録不要・端末内で完結。">
+<meta name="twitter:image" content="https://kimetto.kawatare.studio/ogp.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S70G7BHKD0"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S70G7BHKD0');</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"あみだくじ｜きめっと","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"},"description":"人数と結果を入れるだけで、あみだくじをその場で自動作成。名前をタップすると道すじをたどって結果を表示。引き直し・URL共有に対応。アプリ不要・登録不要・端末内で完結。"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":"あみだくじの使い方","step":[{"@type":"HowToStep","name":"人数を決める","text":"2〜8人を選び、上の名前と下の結果を編集します。"},{"@type":"HowToStep","name":"名前をタップ","text":"道すじがハイライトされ、結果が表示されます。"},{"@type":"HowToStep","name":"引き直す・共有","text":"「引き直す」で作り直し、共有リンクで配れます。"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"あみだくじの結果は公平ですか？","acceptedAnswer":{"@type":"Answer","text":"はい。横線（あみだの橋）はブラウザの乱数でランダムに配置され、各参加者は必ず別々の結果に対応します（重複しません）。すべて端末内で計算します。"}},{"@type":"Question","name":"人数は何人まで対応していますか？","acceptedAnswer":{"@type":"Answer","text":"2〜8人まで対応しています。上の名前・下の結果はそれぞれ自由に編集できます。"}},{"@type":"Question","name":"作ったあみだくじを共有できますか？","acceptedAnswer":{"@type":"Answer","text":"はい。「共有リンク」で、人数・名前・結果を含むURLをコピーできます（橋の配置は開くたびに引き直されます）。"}},{"@type":"Question","name":"アプリのインストールは必要ですか？","acceptedAnswer":{"@type":"Answer","text":"不要です。ブラウザですぐに使えます。"}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"きめっと","item":"https://kimetto.kawatare.studio/"},{"@type":"ListItem","position":2,"name":"あみだくじ","item":"https://kimetto.kawatare.studio/tool-amidakuji.html"}]}</script>
+<style>
+  :root{--bg:#f4f4fb;--card:#ffffff;--ink:#1e1b2e;--ink-2:#615c7a;--muted:#9a95b0;--line:#e7e5f2;
+    --brand:#3aa0ff;--brand-d:#2b7fd6;--accent:#ff6b6b;--good:#22b07d;--good-bg:#e3f6ee;
+    --shadow:0 1px 2px rgba(30,20,50,.05),0 8px 22px rgba(30,20,50,.07);}
+  @media (prefers-color-scheme:dark){:root{--bg:#12111a;--card:#1c1a29;--ink:#f0eefb;--ink-2:#b3aecb;--muted:#7b7597;
+    --line:#2b2840;--brand:#6bb8ff;--brand-d:#a3d3ff;--accent:#ff8787;--good:#3fce97;--good-bg:#16311f;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 26px rgba(0,0,0,.45);}}
+
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);line-height:1.8;
+    font-family:system-ui,-apple-system,"Segoe UI","Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;-webkit-font-smoothing:antialiased;}
+  .sitebar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 16px;background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20;}
+  .sb-brand{display:flex;align-items:center;gap:9px;font-weight:800;text-decoration:none;color:var(--ink);font-size:16px;}
+  .sb-logo{width:30px;height:30px;border-radius:10px;background:linear-gradient(135deg,var(--brand),var(--accent));display:grid;place-items:center;color:#fff;font-size:16px;}
+  .sb-links{display:flex;gap:12px;font-size:13.5px;font-weight:700;}
+  .sb-links a{text-decoration:none;color:var(--ink-2);} .sb-links a:hover{color:var(--brand);}
+  .wrap{max-width:840px;margin:0 auto;padding:18px 16px 64px;}
+  header.hd{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 0 12px;flex-wrap:wrap;}
+  .brand{display:flex;align-items:center;gap:12px;}
+  .logo{width:44px;height:44px;border-radius:13px;background:linear-gradient(135deg,var(--brand),var(--accent));display:grid;place-items:center;color:#fff;font-weight:800;font-size:20px;box-shadow:var(--shadow);}
+  .brand h1{font-size:20px;margin:0;line-height:1.3;} .brand .tag{font-size:12.5px;color:var(--ink-2);}
+  .free{font-size:12px;color:var(--good);background:var(--good-bg);padding:5px 11px;border-radius:20px;font-weight:800;white-space:nowrap;}
+  .answer{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--brand);border-radius:14px;padding:13px 17px;margin:6px 0 16px;font-size:14.5px;box-shadow:var(--shadow);}
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);padding:18px;margin-bottom:16px;}
+  .btn{border:none;border-radius:13px;padding:13px 20px;font-weight:800;font-size:15px;cursor:pointer;font-family:inherit;}
+  .btn.primary{background:var(--brand);color:#fff;} .btn.primary:hover{background:var(--brand-d);}
+  .btn.ghost{background:var(--bg);color:var(--ink);border:1px solid var(--line);}
+  .btn.big{font-size:18px;padding:15px 34px;}
+  .btn:disabled{opacity:.5;cursor:default;}
+  .btnrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;}
+  .olabel{display:block;font-size:12.5px;font-weight:800;color:var(--ink-2);margin:10px 0 8px;}
+  .opts{display:flex;gap:16px;flex-wrap:wrap;align-items:center;margin:12px 0;font-size:13.5px;color:var(--ink-2);}
+  .opts label{display:flex;align-items:center;gap:6px;cursor:pointer;} .opts input{accent-color:var(--brand);width:17px;height:17px;}
+  .status{font-size:13px;color:var(--good);min-height:16px;margin:6px 2px;font-weight:700;}
+  .ad{border:1px dashed var(--line);border-radius:14px;padding:14px;text-align:center;color:var(--muted);font-size:12px;background:var(--card);margin:16px 0;}
+  .seo h2{font-size:18px;margin:26px 0 10px;}
+  .howto{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;} @media(max-width:600px){.howto{grid-template-columns:1fr;}}
+  .howto .st{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;}
+  .howto .st .n{width:26px;height:26px;border-radius:50%;background:var(--brand);color:#fff;font-weight:800;display:grid;place-items:center;font-size:14px;}
+  .howto .st b{display:block;margin:8px 0 2px;} .howto .st p{margin:0;font-size:13px;color:var(--ink-2);}
+  .faq details{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:11px 15px;margin-bottom:8px;}
+  .faq summary{font-weight:800;cursor:pointer;font-size:14.5px;} .faq p{font-size:13.5px;color:var(--ink-2);margin:8px 0 0;}
+  .rel-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;} @media(max-width:600px){.rel-grid{grid-template-columns:1fr;}}
+  .rel{display:block;text-decoration:none;color:inherit;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;font-weight:800;} .rel:hover{border-color:var(--brand);}
+  .rel span{display:block;font-size:12px;color:var(--ink-2);font-weight:500;margin-top:2px;}
+  .foot{font-size:12px;color:var(--muted);text-align:center;margin-top:24px;line-height:1.95;}
+  .foot a{color:var(--ink-2);}
+
+
+  .actrl{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin:6px 0 10px;}
+  .anum{width:70px;padding:10px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font-family:inherit;font-size:15px;}
+  .aedit{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin:6px 0;} @media(max-width:520px){.aedit{grid-template-columns:repeat(2,1fr);}}
+  .aedit input{padding:9px 10px;border:1px solid var(--line);border-radius:9px;background:var(--bg);color:var(--ink);font-family:inherit;font-size:14px;width:100%;}
+  .amidawrap{overflow-x:auto;margin:12px 0;}
+  #amida{display:block;margin:0 auto;max-width:100%;height:360px;}
+  #amida .lane{stroke:var(--line);stroke-width:3;stroke-linecap:round;}
+  #amida .rung{stroke:var(--ink-2);stroke-width:3;stroke-linecap:round;}
+  #amida .path{stroke:var(--accent);stroke-width:4.5;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+  #amida text{font-size:13px;font-weight:800;font-family:system-ui,sans-serif;}
+  .aresult{text-align:center;font-size:17px;font-weight:800;color:var(--brand);min-height:24px;margin:6px 0;}
+  .atop{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;}
+  .atop button{border:1px solid var(--line);background:var(--bg);border-radius:10px;padding:8px 12px;font-weight:800;cursor:pointer;color:var(--ink);font-family:inherit;font-size:14px;}
+  .atop button:hover{border-color:var(--brand);color:var(--brand);}
+
+</style>
+</head>
+<body>
+<nav class="sitebar">
+  <a class="sb-brand" href="index.html"><span class="sb-logo">🎯</span>きめっと</a>
+  <div class="sb-links"><a href="index.html">ツール一覧</a><a href="about.html">このサイトについて</a></div>
+</nav>
+<div class="wrap">
+  <header class="hd">
+    <div class="brand"><div class="logo">🪜</div><div><h1>あみだくじ</h1><div class="tag">人数と結果でその場で作成</div></div></div>
+    <div class="free">🎈 登録不要・無料</div>
+  </header>
+
+  <div class="answer">人数と<b>結果（当たり・はずれ等）</b>を入れると、あみだくじを自動で作ります。名前をタップすると線をたどって結果が出ます。「引き直す」で作り直し、共有リンクで人にも渡せます。</div>
+
+  <div class="panel">
+  <div class="actrl"><label class="olabel" style="margin:0">人数</label><input class="anum" id="n" type="number" min="2" max="8" value="4"><button class="btn ghost" id="regen">引き直す</button></div>
+  <label class="olabel">上（名前・編集できます）</label><div class="aedit" id="tops"></div>
+  <label class="olabel">下（結果・編集できます）</label><div class="aedit" id="results"></div>
+  <div class="amidawrap"><svg id="amida" viewBox="0 0 320 360" preserveAspectRatio="xMidYMid meet"></svg></div>
+  <div class="aresult" id="result">下の名前ボタンをタップすると結果が出ます</div>
+  <div class="atop" id="topbtns"></div>
+  <div class="btnrow" style="justify-content:center"><button class="btn primary" id="allBtn">ぜんぶ表示</button><button class="btn ghost" id="shareBtn">🔗 共有リンク</button></div>
+  <div class="status" id="status"></div>
+</div>
+
+  <div class="ad">広告スペース（審査通過後に AdSense タグを挿入）</div>
+
+  <section class="seo">
+    <h2>使い方（3ステップ）</h2>
+    <div class="howto"><div class="st"><div class="n">1</div><b>人数を決める</b><p>2〜8人を選び、上の名前と下の結果を編集します。</p></div><div class="st"><div class="n">2</div><b>名前をタップ</b><p>道すじがハイライトされ、結果が表示されます。</p></div><div class="st"><div class="n">3</div><b>引き直す・共有</b><p>「引き直す」で作り直し、共有リンクで配れます。</p></div></div>
+    <h2>よくある質問</h2>
+    <div class="faq"><details open><summary>あみだくじの結果は公平ですか？</summary><p>はい。横線（あみだの橋）はブラウザの乱数でランダムに配置され、各参加者は必ず別々の結果に対応します（重複しません）。すべて端末内で計算します。</p></details><details><summary>人数は何人まで対応していますか？</summary><p>2〜8人まで対応しています。上の名前・下の結果はそれぞれ自由に編集できます。</p></details><details><summary>作ったあみだくじを共有できますか？</summary><p>はい。「共有リンク」で、人数・名前・結果を含むURLをコピーできます（橋の配置は開くたびに引き直されます）。</p></details><details><summary>アプリのインストールは必要ですか？</summary><p>不要です。ブラウザですぐに使えます。</p></details></div>
+    <h2>ほかの決めるツール</h2>
+    <div class="rel-grid"><a class="rel" href="tool-roulette.html">🎯 ルーレット <span>回して決める・共有OK</span></a><a class="rel" href="tool-groups.html">👥 グループ分け <span>ランダムに班分け</span></a><a class="rel" href="tool-order.html">🔀 順番決め <span>シャッフルで順番</span></a><a class="rel" href="index.html">🎯 ツール一覧 <span>きめっとの決めるツール</span></a></div>
+  </section>
+
+  <div class="foot"><a href="index.html">ツール一覧</a> ・ <a href="about.html">このサイトについて</a> ・ <a href="privacy.html">プライバシー</a> ・ <a href="terms.html">利用規約</a><br>きめっと ・ 最終更新：2026-07-20 ・ すべての操作は端末内で完結します</div>
+</div>
+<script>(function(){
+  var NS='http://www.w3.org/2000/svg';
+  var svg=document.getElementById('amida'), topsEl=document.getElementById('tops'), resEl=document.getElementById('results'), btns=document.getElementById('topbtns'), resultEl=document.getElementById('result'), status=document.getElementById('status');
+  var N=4, rungs=[], ROWS=10, gap=64, margin=34, topY=54, botY=306, tops=[], results=[];
+  function say(m){status.textContent=m||'';}
+  function laneX(i){return margin+i*gap;}
+  function rowY(r){return topY+(r+1)*((botY-topY)/(ROWS+1));}
+  function clip(s){s=s||'';return s.length>6?s.slice(0,6)+'…':s;}
+  function genInputs(){
+    var dt=[],dr=[];for(var i=0;i<N;i++){dt.push(tops[i]!==undefined?tops[i]:('人'+(i+1)));dr.push(results[i]!==undefined?results[i]:(i===0?'当たり':'はずれ'));}
+    tops=dt;results=dr;topsEl.innerHTML='';resEl.innerHTML='';
+    tops.forEach(function(v,i){var inp=document.createElement('input');inp.value=v;inp.maxLength=12;inp.addEventListener('input',function(){tops[i]=inp.value;makeBtns();draw(null);});topsEl.appendChild(inp);});
+    results.forEach(function(v,i){var inp=document.createElement('input');inp.value=v;inp.maxLength=12;inp.addEventListener('input',function(){results[i]=inp.value;draw(null);});resEl.appendChild(inp);});
+  }
+  function genRungs(){rungs=[];for(var r=0;r<ROWS;r++){var lane=0;while(lane<N-1){if(Math.random()<0.45){rungs.push({r:r,l:lane});lane+=2;}else{lane+=1;}}}}
+  function draw(pathPts){
+    svg.setAttribute('viewBox','0 0 '+(margin*2+(N-1)*gap)+' 360');
+    svg.innerHTML='';
+    for(var i=0;i<N;i++){var l=document.createElementNS(NS,'line');l.setAttribute('x1',laneX(i));l.setAttribute('y1',topY);l.setAttribute('x2',laneX(i));l.setAttribute('y2',botY);l.setAttribute('class','lane');svg.appendChild(l);}
+    rungs.forEach(function(ru){var y=rowY(ru.r);var l=document.createElementNS(NS,'line');l.setAttribute('x1',laneX(ru.l));l.setAttribute('y1',y);l.setAttribute('x2',laneX(ru.l+1));l.setAttribute('y2',y);l.setAttribute('class','rung');svg.appendChild(l);});
+    for(var i=0;i<N;i++){
+      var tt=document.createElementNS(NS,'text');tt.setAttribute('x',laneX(i));tt.setAttribute('y',topY-16);tt.setAttribute('text-anchor','middle');tt.setAttribute('fill','var(--ink)');tt.textContent=clip(tops[i]);svg.appendChild(tt);
+      var bt=document.createElementNS(NS,'text');bt.setAttribute('x',laneX(i));bt.setAttribute('y',botY+24);bt.setAttribute('text-anchor','middle');bt.setAttribute('fill','var(--brand)');bt.textContent=clip(results[i]);svg.appendChild(bt);
+    }
+    if(pathPts){var pl=document.createElementNS(NS,'polyline');pl.setAttribute('points',pathPts.map(function(p){return p[0].toFixed(1)+','+p[1].toFixed(1);}).join(' '));pl.setAttribute('class','path');svg.appendChild(pl);}
+  }
+  function trace(start){
+    var cur=start, pts=[[laneX(cur),topY]];
+    for(var r=0;r<ROWS;r++){var y=rowY(r);
+      var left=rungs.some(function(ru){return ru.r===r&&ru.l===cur-1;});
+      var right=rungs.some(function(ru){return ru.r===r&&ru.l===cur;});
+      if(left){pts.push([laneX(cur),y]);cur=cur-1;pts.push([laneX(cur),y]);}
+      else if(right){pts.push([laneX(cur),y]);cur=cur+1;pts.push([laneX(cur),y]);}
+    }
+    pts.push([laneX(cur),botY]);return {end:cur,pts:pts};
+  }
+  function makeBtns(){btns.innerHTML='';tops.forEach(function(nm,i){var b=document.createElement('button');b.textContent=nm||('人'+(i+1));b.addEventListener('click',function(){var t=trace(i);draw(t.pts);resultEl.textContent=(nm||('人'+(i+1)))+' → '+(results[t.end]||'');});btns.appendChild(b);});}
+  function rebuild(){N=Math.max(2,Math.min(8,parseInt(document.getElementById('n').value,10)||4));genInputs();genRungs();draw(null);makeBtns();resultEl.textContent='下の名前ボタンをタップすると結果が出ます';}
+  document.getElementById('n').addEventListener('change',rebuild);
+  document.getElementById('regen').addEventListener('click',function(){genRungs();draw(null);resultEl.textContent='引き直しました。名前をタップ！';});
+  document.getElementById('allBtn').addEventListener('click',function(){var lines=[];for(var i=0;i<N;i++){var t=trace(i);lines.push((tops[i]||('人'+(i+1)))+'→'+(results[t.end]||''));}resultEl.textContent=lines.join('　/　');draw(null);});
+  document.getElementById('shareBtn').addEventListener('click',function(){var data=N+'|'+tops.join(',')+'|'+results.join(',');var url=location.origin+location.pathname+'#a='+encodeURIComponent(data);try{navigator.clipboard.writeText(url);say('共有リンクをコピーしました。');}catch(e){say(url);}});
+  (function(){try{var m=location.hash.match(/[#&]a=([^&]*)/);if(m){var d=decodeURIComponent(m[1]).split('|');N=Math.max(2,Math.min(8,parseInt(d[0],10)||4));document.getElementById('n').value=N;tops=(d[1]||'').split(',');results=(d[2]||'').split(',');genInputs();genRungs();draw(null);makeBtns();return;}}catch(e){}rebuild();})();
+  window.__tool={rebuild:rebuild,setN:function(n){document.getElementById('n').value=n;rebuild();},end:function(i){return trace(i).end;},allEnds:function(){var a=[];for(var i=0;i<N;i++)a.push(trace(i).end);return a;},n:function(){return N;}};
+})();</script>
+</body>
+</html>

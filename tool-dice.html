@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>サイコロ ― 1〜6個をふって出目と合計｜きめっと</title>
+<meta name="description" content="サイコロを1〜6個ふって、出目と合計を表示する無料ツール。ボードゲームや自宅遊び、授業の教材代わりに。アプリ不要・登録不要・端末内で完結。">
+<link rel="canonical" href="https://kimetto.kawatare.studio/tool-dice.html">
+<meta name="theme-color" content="#ef476f">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="site.webmanifest">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="きめっと">
+<meta property="og:title" content="サイコロ｜1〜6個をふって出目と合計">
+<meta property="og:description" content="サイコロを1〜6個ふって、出目と合計を表示する無料ツール。ボードゲームや自宅遊び、授業の教材代わりに。アプリ不要・登録不要・端末内で完結。">
+<meta property="og:url" content="https://kimetto.kawatare.studio/tool-dice.html">
+<meta property="og:image" content="https://kimetto.kawatare.studio/ogp.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="サイコロ｜1〜6個をふって出目と合計">
+<meta name="twitter:description" content="サイコロを1〜6個ふって、出目と合計を表示する無料ツール。ボードゲームや自宅遊び、授業の教材代わりに。アプリ不要・登録不要・端末内で完結。">
+<meta name="twitter:image" content="https://kimetto.kawatare.studio/ogp.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S70G7BHKD0"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S70G7BHKD0');</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"サイコロ｜きめっと","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"},"description":"サイコロを1〜6個ふって、出目と合計を表示する無料ツール。ボードゲームや自宅遊び、授業の教材代わりに。アプリ不要・登録不要・端末内で完結。"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":"サイコロの使い方","step":[{"@type":"HowToStep","name":"個数を決める","text":"1〜6個から選びます。"},{"@type":"HowToStep","name":"ふる","text":"ボタンを押すと出目が決まります。"},{"@type":"HowToStep","name":"合計を確認","text":"出目と合計が表示されます。"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"サイコロの出目は公平ですか？","acceptedAnswer":{"@type":"Answer","text":"はい。各サイコロは1〜6がブラウザの乱数で等確率に決まります。すべて端末内で計算します。"}},{"@type":"Question","name":"何個まで同時にふれますか？","acceptedAnswer":{"@type":"Answer","text":"1〜6個まで同時にふれます。合計も自動表示します。"}},{"@type":"Question","name":"アプリのインストールは必要ですか？","acceptedAnswer":{"@type":"Answer","text":"不要です。ブラウザですぐに使えます。"}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"きめっと","item":"https://kimetto.kawatare.studio/"},{"@type":"ListItem","position":2,"name":"サイコロ","item":"https://kimetto.kawatare.studio/tool-dice.html"}]}</script>
+<style>
+  :root{--bg:#f4f4fb;--card:#ffffff;--ink:#1e1b2e;--ink-2:#615c7a;--muted:#9a95b0;--line:#e7e5f2;
+    --brand:#ef476f;--brand-d:#d62f57;--accent:#7c5cff;--good:#22b07d;--good-bg:#e3f6ee;
+    --shadow:0 1px 2px rgba(30,20,50,.05),0 8px 22px rgba(30,20,50,.07);}
+  @media (prefers-color-scheme:dark){:root{--bg:#12111a;--card:#1c1a29;--ink:#f0eefb;--ink-2:#b3aecb;--muted:#7b7597;
+    --line:#2b2840;--brand:#ff7a97;--brand-d:#ffb0c2;--accent:#9d86ff;--good:#3fce97;--good-bg:#16311f;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 26px rgba(0,0,0,.45);}}
+
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);line-height:1.8;
+    font-family:system-ui,-apple-system,"Segoe UI","Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;-webkit-font-smoothing:antialiased;}
+  .sitebar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 16px;background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20;}
+  .sb-brand{display:flex;align-items:center;gap:9px;font-weight:800;text-decoration:none;color:var(--ink);font-size:16px;}
+  .sb-logo{width:30px;height:30px;border-radius:10px;background:linear-gradient(135deg,var(--brand),var(--accent));display:grid;place-items:center;color:#fff;font-size:16px;}
+  .sb-links{display:flex;gap:12px;font-size:13.5px;font-weight:700;}
+  .sb-links a{text-decoration:none;color:var(--ink-2);} .sb-links a:hover{color:var(--brand);}
+  .wrap{max-width:840px;margin:0 auto;padding:18px 16px 64px;}
+  header.hd{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 0 12px;flex-wrap:wrap;}
+  .brand{display:flex;align-items:center;gap:12px;}
+  .logo{width:44px;height:44px;border-radius:13px;background:linear-gradient(135deg,var(--brand),var(--accent));display:grid;place-items:center;color:#fff;font-weight:800;font-size:20px;box-shadow:var(--shadow);}
+  .brand h1{font-size:20px;margin:0;line-height:1.3;} .brand .tag{font-size:12.5px;color:var(--ink-2);}
+  .free{font-size:12px;color:var(--good);background:var(--good-bg);padding:5px 11px;border-radius:20px;font-weight:800;white-space:nowrap;}
+  .answer{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--brand);border-radius:14px;padding:13px 17px;margin:6px 0 16px;font-size:14.5px;box-shadow:var(--shadow);}
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);padding:18px;margin-bottom:16px;}
+  .btn{border:none;border-radius:13px;padding:13px 20px;font-weight:800;font-size:15px;cursor:pointer;font-family:inherit;}
+  .btn.primary{background:var(--brand);color:#fff;} .btn.primary:hover{background:var(--brand-d);}
+  .btn.ghost{background:var(--bg);color:var(--ink);border:1px solid var(--line);}
+  .btn.big{font-size:18px;padding:15px 34px;}
+  .btn:disabled{opacity:.5;cursor:default;}
+  .btnrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;}
+  .olabel{display:block;font-size:12.5px;font-weight:800;color:var(--ink-2);margin:10px 0 8px;}
+  .opts{display:flex;gap:16px;flex-wrap:wrap;align-items:center;margin:12px 0;font-size:13.5px;color:var(--ink-2);}
+  .opts label{display:flex;align-items:center;gap:6px;cursor:pointer;} .opts input{accent-color:var(--brand);width:17px;height:17px;}
+  .status{font-size:13px;color:var(--good);min-height:16px;margin:6px 2px;font-weight:700;}
+  .ad{border:1px dashed var(--line);border-radius:14px;padding:14px;text-align:center;color:var(--muted);font-size:12px;background:var(--card);margin:16px 0;}
+  .seo h2{font-size:18px;margin:26px 0 10px;}
+  .howto{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;} @media(max-width:600px){.howto{grid-template-columns:1fr;}}
+  .howto .st{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;}
+  .howto .st .n{width:26px;height:26px;border-radius:50%;background:var(--brand);color:#fff;font-weight:800;display:grid;place-items:center;font-size:14px;}
+  .howto .st b{display:block;margin:8px 0 2px;} .howto .st p{margin:0;font-size:13px;color:var(--ink-2);}
+  .faq details{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:11px 15px;margin-bottom:8px;}
+  .faq summary{font-weight:800;cursor:pointer;font-size:14.5px;} .faq p{font-size:13.5px;color:var(--ink-2);margin:8px 0 0;}
+  .rel-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;} @media(max-width:600px){.rel-grid{grid-template-columns:1fr;}}
+  .rel{display:block;text-decoration:none;color:inherit;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;font-weight:800;} .rel:hover{border-color:var(--brand);}
+  .rel span{display:block;font-size:12px;color:var(--ink-2);font-weight:500;margin-top:2px;}
+  .foot{font-size:12px;color:var(--muted);text-align:center;margin-top:24px;line-height:1.95;}
+  .foot a{color:var(--ink-2);}
+
+
+  .dctrl{display:flex;gap:12px;align-items:center;justify-content:center;flex-wrap:wrap;margin:6px 0;}
+  .dnum{width:66px;padding:10px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font-family:inherit;font-size:15px;}
+  .dicewrap{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin:18px 0;min-height:78px;}
+  .die{width:72px;height:72px;background:var(--card);border:2px solid var(--line);border-radius:15px;box-shadow:var(--shadow);display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);padding:11px;}
+  .die span{display:grid;place-items:center;} .die span.on::before{content:"";width:13px;height:13px;background:var(--brand);border-radius:50%;}
+  .dtotal{text-align:center;font-size:20px;font-weight:800;color:var(--brand);min-height:26px;}
+
+</style>
+</head>
+<body>
+<nav class="sitebar">
+  <a class="sb-brand" href="index.html"><span class="sb-logo">🎯</span>きめっと</a>
+  <div class="sb-links"><a href="index.html">ツール一覧</a><a href="about.html">このサイトについて</a></div>
+</nav>
+<div class="wrap">
+  <header class="hd">
+    <div class="brand"><div class="logo">🎲</div><div><h1>サイコロ</h1><div class="tag">1〜6個をふって出目と合計</div></div></div>
+    <div class="free">🎈 登録不要・無料</div>
+  </header>
+
+  <div class="answer">個数を決めて<b>「ふる」</b>を押すと、サイコロの出目と合計が表示されます。ボードゲームでサイコロが見つからないときにも便利。すべて端末内で動きます。</div>
+
+  <div class="panel">
+  <div class="dctrl"><label class="olabel" style="margin:0">個数</label><input class="dnum" id="dn" type="number" min="1" max="6" value="2"><button class="btn primary big" id="rollBtn">ふる</button></div>
+  <div class="dicewrap" id="dice"></div>
+  <div class="dtotal" id="total"></div>
+  <div class="status" id="status"></div>
+</div>
+
+  <div class="ad">広告スペース（審査通過後に AdSense タグを挿入）</div>
+
+  <section class="seo">
+    <h2>使い方（3ステップ）</h2>
+    <div class="howto"><div class="st"><div class="n">1</div><b>個数を決める</b><p>1〜6個から選びます。</p></div><div class="st"><div class="n">2</div><b>ふる</b><p>ボタンを押すと出目が決まります。</p></div><div class="st"><div class="n">3</div><b>合計を確認</b><p>出目と合計が表示されます。</p></div></div>
+    <h2>よくある質問</h2>
+    <div class="faq"><details open><summary>サイコロの出目は公平ですか？</summary><p>はい。各サイコロは1〜6がブラウザの乱数で等確率に決まります。すべて端末内で計算します。</p></details><details><summary>何個まで同時にふれますか？</summary><p>1〜6個まで同時にふれます。合計も自動表示します。</p></details><details><summary>アプリのインストールは必要ですか？</summary><p>不要です。ブラウザですぐに使えます。</p></details></div>
+    <h2>ほかの決めるツール</h2>
+    <div class="rel-grid"><a class="rel" href="tool-roulette.html">🎯 ルーレット <span>回して決める・共有OK</span></a><a class="rel" href="tool-amidakuji.html">🪜 あみだくじ <span>人数と当たりで自動作成</span></a><a class="rel" href="tool-groups.html">👥 グループ分け <span>ランダムに班分け</span></a><a class="rel" href="tool-order.html">🔀 順番決め <span>シャッフルで順番</span></a><a class="rel" href="index.html">🎯 ツール一覧 <span>きめっとの決めるツール</span></a></div>
+  </section>
+
+  <div class="foot"><a href="index.html">ツール一覧</a> ・ <a href="about.html">このサイトについて</a> ・ <a href="privacy.html">プライバシー</a> ・ <a href="terms.html">利用規約</a><br>きめっと ・ 最終更新：2026-07-20 ・ すべての操作は端末内で完結します</div>
+</div>
+<script>(function(){
+  var MAP={1:[4],2:[0,8],3:[0,4,8],4:[0,2,6,8],5:[0,2,4,6,8],6:[0,2,3,5,6,8]};
+  var wrap=document.getElementById('dice'), totalEl=document.getElementById('total');
+  var vals=[], rolling=false;
+  function faceHtml(v){var h='';for(var i=0;i<9;i++){h+='<span class="'+(MAP[v].indexOf(i)>=0?'on':'')+'"></span>';}return h;}
+  function render(){wrap.innerHTML='';vals.forEach(function(v){var d=document.createElement('div');d.className='die';d.innerHTML=faceHtml(v);wrap.appendChild(d);});var s=vals.reduce(function(a,b){return a+b;},0);totalEl.textContent=vals.length?('合計 '+s):'';}
+  function doRoll(n){vals=[];for(var i=0;i<n;i++)vals.push(1+Math.floor(Math.random()*6));render();}
+  function roll(){if(rolling)return;var n=Math.max(1,Math.min(6,parseInt(document.getElementById('dn').value,10)||2));rolling=true;var k=0;var iv=setInterval(function(){doRoll(n);if(++k>=8){clearInterval(iv);rolling=false;}},70);}
+  document.getElementById('rollBtn').addEventListener('click',roll);
+  vals=[1,1];render();
+  window.__tool={roll:function(){var n=Math.max(1,Math.min(6,parseInt(document.getElementById('dn').value,10)||2));doRoll(n);return vals.slice();},vals:function(){return vals.slice();},total:function(){return vals.reduce(function(a,b){return a+b;},0);}};
+})();</script>
+</body>
+</html>

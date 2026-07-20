@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>席替え ― 名前をマスにランダム配置｜きめっと</title>
+<meta name="description" content="名前を入れて列数を決めるだけで、席替え（席順）をランダムに作成できる無料ツール。教室・研修・イベントに。黒板付きで印刷対応。アプリ不要・登録不要・端末内で完結。">
+<link rel="canonical" href="https://kimetto.kawatare.studio/tool-seating.html">
+<meta name="theme-color" content="#0ea5e9">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="site.webmanifest">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="きめっと">
+<meta property="og:title" content="席替え｜名前をマスにランダム配置">
+<meta property="og:description" content="名前を入れて列数を決めるだけで、席替え（席順）をランダムに作成できる無料ツール。教室・研修・イベントに。黒板付きで印刷対応。アプリ不要・登録不要・端末内で完結。">
+<meta property="og:url" content="https://kimetto.kawatare.studio/tool-seating.html">
+<meta property="og:image" content="https://kimetto.kawatare.studio/ogp.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="席替え｜名前をマスにランダム配置">
+<meta name="twitter:description" content="名前を入れて列数を決めるだけで、席替え（席順）をランダムに作成できる無料ツール。教室・研修・イベントに。黒板付きで印刷対応。アプリ不要・登録不要・端末内で完結。">
+<meta name="twitter:image" content="https://kimetto.kawatare.studio/ogp.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S70G7BHKD0"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S70G7BHKD0');</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"席替え｜きめっと","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"},"description":"名前を入れて列数を決めるだけで、席替え（席順）をランダムに作成できる無料ツール。教室・研修・イベントに。黒板付きで印刷対応。アプリ不要・登録不要・端末内で完結。"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":"席替えの使い方","step":[{"@type":"HowToStep","name":"名前を入れる","text":"1行に1人ずつ。出席番号でもOKです。"},{"@type":"HowToStep","name":"列数を決める","text":"横に並べる人数（列数）を指定します。"},{"@type":"HowToStep","name":"席替え・印刷","text":"ランダムに配置。印刷して掲示できます。"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"席替えは公平ですか？","acceptedAnswer":{"@type":"Answer","text":"はい。入力された名前をブラウザの乱数で完全にシャッフルして配置するため、偏りのないランダムな席替えになります。"}},{"@type":"Question","name":"印刷して使えますか？","acceptedAnswer":{"@type":"Answer","text":"はい。「印刷」から黒板（前）付きの座席表を印刷できます。教室やイベント会場に掲示できます。"}},{"@type":"Question","name":"何人まで対応していますか？","acceptedAnswer":{"@type":"Answer","text":"人数の上限はありません。列数（横の数）を変えて教室のレイアウトに合わせられます。"}},{"@type":"Question","name":"データは送信されますか？","acceptedAnswer":{"@type":"Answer","text":"いいえ。すべて端末内で処理し、名前などは送信されません。"}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"きめっと","item":"https://kimetto.kawatare.studio/"},{"@type":"ListItem","position":2,"name":"席替え","item":"https://kimetto.kawatare.studio/tool-seating.html"}]}</script>
+<style>
+  :root{--bg:#f4f4fb;--card:#ffffff;--ink:#1e1b2e;--ink-2:#615c7a;--muted:#9a95b0;--line:#e7e5f2;
+    --brand:#0ea5e9;--brand-d:#0284c7;--accent:#ff6b6b;--good:#22b07d;--good-bg:#e3f6ee;
+    --shadow:0 1px 2px rgba(30,20,50,.05),0 8px 22px rgba(30,20,50,.07);}
+  @media (prefers-color-scheme:dark){:root{--bg:#12111a;--card:#1c1a29;--ink:#f0eefb;--ink-2:#b3aecb;--muted:#7b7597;
+    --line:#2b2840;--brand:#4cc3f2;--brand-d:#93d8f7;--accent:#ff8787;--good:#3fce97;--good-bg:#16311f;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 26px rgba(0,0,0,.45);}}
+
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);line-height:1.8;
+    font-family:system-ui,-apple-system,"Segoe UI","Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;-webkit-font-smoothing:antialiased;}
+  .sitebar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 16px;background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20;}
+  .sb-brand{display:flex;align-items:center;gap:9px;font-weight:800;text-decoration:none;color:var(--ink);font-size:16px;}
+  .sb-logo{width:30px;height:30px;border-radius:10px;background:linear-gradient(135deg,var(--brand),var(--accent));display:grid;place-items:center;color:#fff;font-size:16px;}
+  .sb-links{display:flex;gap:12px;font-size:13.5px;font-weight:700;}
+  .sb-links a{text-decoration:none;color:var(--ink-2);} .sb-links a:hover{color:var(--brand);}
+  .wrap{max-width:840px;margin:0 auto;padding:18px 16px 64px;}
+  header.hd{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 0 12px;flex-wrap:wrap;}
+  .brand{display:flex;align-items:center;gap:12px;}
+  .logo{width:44px;height:44px;border-radius:13px;background:linear-gradient(135deg,var(--brand),var(--accent));display:grid;place-items:center;color:#fff;font-weight:800;font-size:20px;box-shadow:var(--shadow);}
+  .brand h1{font-size:20px;margin:0;line-height:1.3;} .brand .tag{font-size:12.5px;color:var(--ink-2);}
+  .free{font-size:12px;color:var(--good);background:var(--good-bg);padding:5px 11px;border-radius:20px;font-weight:800;white-space:nowrap;}
+  .answer{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--brand);border-radius:14px;padding:13px 17px;margin:6px 0 16px;font-size:14.5px;box-shadow:var(--shadow);}
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);padding:18px;margin-bottom:16px;}
+  .btn{border:none;border-radius:13px;padding:13px 20px;font-weight:800;font-size:15px;cursor:pointer;font-family:inherit;}
+  .btn.primary{background:var(--brand);color:#fff;} .btn.primary:hover{background:var(--brand-d);}
+  .btn.ghost{background:var(--bg);color:var(--ink);border:1px solid var(--line);}
+  .btn.big{font-size:18px;padding:15px 34px;}
+  .btn:disabled{opacity:.5;cursor:default;}
+  .btnrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;}
+  .olabel{display:block;font-size:12.5px;font-weight:800;color:var(--ink-2);margin:10px 0 8px;}
+  .opts{display:flex;gap:16px;flex-wrap:wrap;align-items:center;margin:12px 0;font-size:13.5px;color:var(--ink-2);}
+  .opts label{display:flex;align-items:center;gap:6px;cursor:pointer;} .opts input{accent-color:var(--brand);width:17px;height:17px;}
+  .status{font-size:13px;color:var(--good);min-height:16px;margin:6px 2px;font-weight:700;}
+  .ad{border:1px dashed var(--line);border-radius:14px;padding:14px;text-align:center;color:var(--muted);font-size:12px;background:var(--card);margin:16px 0;}
+  .seo h2{font-size:18px;margin:26px 0 10px;}
+  .howto{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;} @media(max-width:600px){.howto{grid-template-columns:1fr;}}
+  .howto .st{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;}
+  .howto .st .n{width:26px;height:26px;border-radius:50%;background:var(--brand);color:#fff;font-weight:800;display:grid;place-items:center;font-size:14px;}
+  .howto .st b{display:block;margin:8px 0 2px;} .howto .st p{margin:0;font-size:13px;color:var(--ink-2);}
+  .faq details{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:11px 15px;margin-bottom:8px;}
+  .faq summary{font-weight:800;cursor:pointer;font-size:14.5px;} .faq p{font-size:13.5px;color:var(--ink-2);margin:8px 0 0;}
+  .rel-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;} @media(max-width:600px){.rel-grid{grid-template-columns:1fr;}}
+  .rel{display:block;text-decoration:none;color:inherit;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;font-weight:800;} .rel:hover{border-color:var(--brand);}
+  .rel span{display:block;font-size:12px;color:var(--ink-2);font-weight:500;margin-top:2px;}
+  .foot{font-size:12px;color:var(--muted);text-align:center;margin-top:24px;line-height:1.95;}
+  .foot a{color:var(--ink-2);}
+
+
+  .namearea{width:100%;min-height:104px;padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);font-family:inherit;font-size:15px;resize:vertical;line-height:1.7;}
+  .sctrl{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:10px 0;font-size:14px;color:var(--ink-2);}
+  .scin{width:66px;padding:9px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font-family:inherit;font-size:15px;}
+  .blackboard{text-align:center;background:#2f6b4f;color:#fff;border-radius:10px;padding:8px;font-weight:800;margin:12px 0;font-size:13px;letter-spacing:2px;}
+  .seatgrid{display:grid;gap:8px;margin-top:6px;}
+  .seat{background:var(--card);border:2px solid var(--line);border-radius:12px;padding:14px 6px;text-align:center;font-weight:800;font-size:15px;min-height:54px;display:grid;place-items:center;word-break:break-all;}
+  .seat.empty{color:var(--muted);font-weight:500;}
+  @media print{.sitebar,.answer,.ad,.seo,.foot,.noprint,header .free{display:none !important;}.panel{box-shadow:none;border:none;}body{background:#fff;}}
+
+</style>
+</head>
+<body>
+<nav class="sitebar">
+  <a class="sb-brand" href="index.html"><span class="sb-logo">🎯</span>きめっと</a>
+  <div class="sb-links"><a href="index.html">ツール一覧</a><a href="about.html">このサイトについて</a></div>
+</nav>
+<div class="wrap">
+  <header class="hd">
+    <div class="brand"><div class="logo">🪑</div><div><h1>席替え</h1><div class="tag">名前をマスにランダム配置</div></div></div>
+    <div class="free">🎈 登録不要・無料</div>
+  </header>
+
+  <div class="answer">名前を1行に1人ずつ入れ、<b>列数</b>を決めて「席替え」を押すと、座席表をランダムに作ります。黒板（前）付きで、そのまま印刷して掲示できます。</div>
+
+  <div class="panel">
+  <label class="olabel">名前（1行に1人・出席番号でもOK）</label>
+  <textarea class="namearea" id="names" placeholder="1&#10;2&#10;3"></textarea>
+  <div class="sctrl noprint"><label class="olabel" style="margin:0">列数</label><input class="scin" id="cols" type="number" min="1" max="10" value="5"><button class="btn primary" id="goBtn">席替え</button><button class="btn ghost" id="printBtn">印刷</button></div>
+  <div class="blackboard" id="bb">こくばん（前）</div>
+  <div class="seatgrid" id="grid"></div>
+  <div class="status noprint" id="status"></div>
+</div>
+
+  <div class="ad">広告スペース（審査通過後に AdSense タグを挿入）</div>
+
+  <section class="seo">
+    <h2>使い方（3ステップ）</h2>
+    <div class="howto"><div class="st"><div class="n">1</div><b>名前を入れる</b><p>1行に1人ずつ。出席番号でもOKです。</p></div><div class="st"><div class="n">2</div><b>列数を決める</b><p>横に並べる人数（列数）を指定します。</p></div><div class="st"><div class="n">3</div><b>席替え・印刷</b><p>ランダムに配置。印刷して掲示できます。</p></div></div>
+    <h2>よくある質問</h2>
+    <div class="faq"><details open><summary>席替えは公平ですか？</summary><p>はい。入力された名前をブラウザの乱数で完全にシャッフルして配置するため、偏りのないランダムな席替えになります。</p></details><details><summary>印刷して使えますか？</summary><p>はい。「印刷」から黒板（前）付きの座席表を印刷できます。教室やイベント会場に掲示できます。</p></details><details><summary>何人まで対応していますか？</summary><p>人数の上限はありません。列数（横の数）を変えて教室のレイアウトに合わせられます。</p></details><details><summary>データは送信されますか？</summary><p>いいえ。すべて端末内で処理し、名前などは送信されません。</p></details></div>
+    <h2>ほかの決めるツール</h2>
+    <div class="rel-grid"><a class="rel" href="tool-roulette.html">🎯 ルーレット <span>回して決める・共有OK</span></a><a class="rel" href="tool-amidakuji.html">🪜 あみだくじ <span>人数と当たりで自動作成</span></a><a class="rel" href="tool-groups.html">👥 グループ分け <span>ランダムに班分け</span></a><a class="rel" href="tool-order.html">🔀 順番決め <span>シャッフルで順番</span></a><a class="rel" href="index.html">🎯 ツール一覧 <span>きめっとの決めるツール</span></a></div>
+  </section>
+
+  <div class="foot"><a href="index.html">ツール一覧</a> ・ <a href="about.html">このサイトについて</a> ・ <a href="privacy.html">プライバシー</a> ・ <a href="terms.html">利用規約</a><br>きめっと ・ 最終更新：2026-07-20 ・ すべての操作は端末内で完結します</div>
+</div>
+<script>(function(){
+  var ta=document.getElementById('names'), grid=document.getElementById('grid'), status=document.getElementById('status');
+  function say(m){status.textContent=m||'';}
+  function parse(){return ta.value.split('\n').map(function(s){return s.trim();}).filter(function(s){return s.length>0;});}
+  function make(){
+    var names=parse();if(names.length<1){say('名前を入れてください。');grid.innerHTML='';return;}
+    for(var i=names.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=names[i];names[i]=names[j];names[j]=t;}
+    var cols=Math.max(1,Math.min(10,parseInt(document.getElementById('cols').value,10)||5));
+    grid.style.gridTemplateColumns='repeat('+cols+',1fr)';grid.innerHTML='';
+    names.forEach(function(n){var d=document.createElement('div');d.className='seat';d.textContent=n;grid.appendChild(d);});
+    var rem=(cols-(names.length%cols))%cols;for(var k=0;k<rem;k++){var e=document.createElement('div');e.className='seat empty';e.textContent='－';grid.appendChild(e);}
+    say(names.length+'人の席を決めました。');
+  }
+  document.getElementById('goBtn').addEventListener('click',make);
+  document.getElementById('printBtn').addEventListener('click',function(){window.print();});
+  if(!ta.value.trim())ta.value='たろう\nはなこ\nじろう\nさくら\nけんた\nみき\nゆうと\nあおい';
+  window.__tool={setNames:function(t){ta.value=t;},setCols:function(c){document.getElementById('cols').value=c;},make:make,seatCount:function(){return grid.querySelectorAll('.seat:not(.empty)').length;}};
+})();</script>
+</body>
+</html>

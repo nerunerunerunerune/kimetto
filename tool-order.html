@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>順番決め ― シャッフルで公平に順番を決める｜きめっと</title>
+<meta name="description" content="項目を入れてボタンを押すだけで、公平にランダムな順番を決める無料ツール。発表順・順番決め・くじ代わりに。URL共有対応。アプリ不要・登録不要・端末内で完結。">
+<link rel="canonical" href="https://kimetto.kawatare.studio/tool-order.html">
+<meta name="theme-color" content="#ff8a3d">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="site.webmanifest">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="きめっと">
+<meta property="og:title" content="順番決め｜シャッフルで公平に順番を決める">
+<meta property="og:description" content="項目を入れてボタンを押すだけで、公平にランダムな順番を決める無料ツール。発表順・順番決め・くじ代わりに。URL共有対応。アプリ不要・登録不要・端末内で完結。">
+<meta property="og:url" content="https://kimetto.kawatare.studio/tool-order.html">
+<meta property="og:image" content="https://kimetto.kawatare.studio/ogp.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="順番決め｜シャッフルで公平に順番を決める">
+<meta name="twitter:description" content="項目を入れてボタンを押すだけで、公平にランダムな順番を決める無料ツール。発表順・順番決め・くじ代わりに。URL共有対応。アプリ不要・登録不要・端末内で完結。">
+<meta name="twitter:image" content="https://kimetto.kawatare.studio/ogp.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S70G7BHKD0"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S70G7BHKD0');</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"順番決め｜きめっと","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"},"description":"項目を入れてボタンを押すだけで、公平にランダムな順番を決める無料ツール。発表順・順番決め・くじ代わりに。URL共有対応。アプリ不要・登録不要・端末内で完結。"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":"順番決めの使い方","step":[{"@type":"HowToStep","name":"項目を入れる","text":"1行に1つずつ入力します。"},{"@type":"HowToStep","name":"順番を決める","text":"ボタンを押すとランダムに並び替えます。"},{"@type":"HowToStep","name":"共有","text":"共有リンクで候補を人に渡せます。"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"順番は公平に決まりますか？","acceptedAnswer":{"@type":"Answer","text":"はい。入力順に関係なく、ブラウザの乱数で完全にシャッフルするため、公平にランダムな順番になります。"}},{"@type":"Question","name":"何個まで入れられますか？","acceptedAnswer":{"@type":"Answer","text":"上限はありません。発表順・席順・当番決めなど、必要な数だけ入れられます。"}},{"@type":"Question","name":"データは送信されますか？","acceptedAnswer":{"@type":"Answer","text":"いいえ。すべて端末内で処理します。"}},{"@type":"Question","name":"アプリのインストールは必要ですか？","acceptedAnswer":{"@type":"Answer","text":"不要です。ブラウザですぐに使えます。"}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"きめっと","item":"https://kimetto.kawatare.studio/"},{"@type":"ListItem","position":2,"name":"順番決め","item":"https://kimetto.kawatare.studio/tool-order.html"}]}</script>
+<style>
+  :root{--bg:#f4f4fb;--card:#ffffff;--ink:#1e1b2e;--ink-2:#615c7a;--muted:#9a95b0;--line:#e7e5f2;
+    --brand:#ff8a3d;--brand-d:#e06f22;--accent:#7c5cff;--good:#22b07d;--good-bg:#e3f6ee;
+    --shadow:0 1px 2px rgba(30,20,50,.05),0 8px 22px rgba(30,20,50,.07);}
+  @media (prefers-color-scheme:dark){:root{--bg:#12111a;--card:#1c1a29;--ink:#f0eefb;--ink-2:#b3aecb;--muted:#7b7597;
+    --line:#2b2840;--brand:#ffab6b;--brand-d:#ffc99a;--accent:#9d86ff;--good:#3fce97;--good-bg:#16311f;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 26px rgba(0,0,0,.45);}}
+
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);line-height:1.8;
+    font-family:system-ui,-apple-system,"Segoe UI","Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;-webkit-font-smoothing:antialiased;}
+  .sitebar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 16px;background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20;}
+  .sb-brand{display:flex;align-items:center;gap:9px;font-weight:800;text-decoration:none;color:var(--ink);font-size:16px;}
+  .sb-logo{width:30px;height:30px;border-radius:10px;background:linear-gradient(135deg,var(--brand),var(--accent));display:grid;place-items:center;color:#fff;font-size:16px;}
+  .sb-links{display:flex;gap:12px;font-size:13.5px;font-weight:700;}
+  .sb-links a{text-decoration:none;color:var(--ink-2);} .sb-links a:hover{color:var(--brand);}
+  .wrap{max-width:840px;margin:0 auto;padding:18px 16px 64px;}
+  header.hd{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 0 12px;flex-wrap:wrap;}
+  .brand{display:flex;align-items:center;gap:12px;}
+  .logo{width:44px;height:44px;border-radius:13px;background:linear-gradient(135deg,var(--brand),var(--accent));display:grid;place-items:center;color:#fff;font-weight:800;font-size:20px;box-shadow:var(--shadow);}
+  .brand h1{font-size:20px;margin:0;line-height:1.3;} .brand .tag{font-size:12.5px;color:var(--ink-2);}
+  .free{font-size:12px;color:var(--good);background:var(--good-bg);padding:5px 11px;border-radius:20px;font-weight:800;white-space:nowrap;}
+  .answer{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--brand);border-radius:14px;padding:13px 17px;margin:6px 0 16px;font-size:14.5px;box-shadow:var(--shadow);}
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);padding:18px;margin-bottom:16px;}
+  .btn{border:none;border-radius:13px;padding:13px 20px;font-weight:800;font-size:15px;cursor:pointer;font-family:inherit;}
+  .btn.primary{background:var(--brand);color:#fff;} .btn.primary:hover{background:var(--brand-d);}
+  .btn.ghost{background:var(--bg);color:var(--ink);border:1px solid var(--line);}
+  .btn.big{font-size:18px;padding:15px 34px;}
+  .btn:disabled{opacity:.5;cursor:default;}
+  .btnrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;}
+  .olabel{display:block;font-size:12.5px;font-weight:800;color:var(--ink-2);margin:10px 0 8px;}
+  .opts{display:flex;gap:16px;flex-wrap:wrap;align-items:center;margin:12px 0;font-size:13.5px;color:var(--ink-2);}
+  .opts label{display:flex;align-items:center;gap:6px;cursor:pointer;} .opts input{accent-color:var(--brand);width:17px;height:17px;}
+  .status{font-size:13px;color:var(--good);min-height:16px;margin:6px 2px;font-weight:700;}
+  .ad{border:1px dashed var(--line);border-radius:14px;padding:14px;text-align:center;color:var(--muted);font-size:12px;background:var(--card);margin:16px 0;}
+  .seo h2{font-size:18px;margin:26px 0 10px;}
+  .howto{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;} @media(max-width:600px){.howto{grid-template-columns:1fr;}}
+  .howto .st{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;}
+  .howto .st .n{width:26px;height:26px;border-radius:50%;background:var(--brand);color:#fff;font-weight:800;display:grid;place-items:center;font-size:14px;}
+  .howto .st b{display:block;margin:8px 0 2px;} .howto .st p{margin:0;font-size:13px;color:var(--ink-2);}
+  .faq details{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:11px 15px;margin-bottom:8px;}
+  .faq summary{font-weight:800;cursor:pointer;font-size:14.5px;} .faq p{font-size:13.5px;color:var(--ink-2);margin:8px 0 0;}
+  .rel-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;} @media(max-width:600px){.rel-grid{grid-template-columns:1fr;}}
+  .rel{display:block;text-decoration:none;color:inherit;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;font-weight:800;} .rel:hover{border-color:var(--brand);}
+  .rel span{display:block;font-size:12px;color:var(--ink-2);font-weight:500;margin-top:2px;}
+  .foot{font-size:12px;color:var(--muted);text-align:center;margin-top:24px;line-height:1.95;}
+  .foot a{color:var(--ink-2);}
+
+
+  .namearea{width:100%;min-height:120px;padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);font-family:inherit;font-size:15px;resize:vertical;line-height:1.7;}
+  .orderlist{margin-top:14px;display:flex;flex-direction:column;gap:8px;}
+  .ocard{display:flex;align-items:center;gap:12px;background:var(--card);border:2px solid var(--line);border-radius:14px;padding:11px 14px;}
+  .ocard .rank{width:36px;height:36px;border-radius:50%;background:var(--brand);color:#fff;font-weight:800;display:grid;place-items:center;flex:none;font-size:16px;}
+  .ocard .who{font-weight:800;font-size:16px;}
+
+</style>
+</head>
+<body>
+<nav class="sitebar">
+  <a class="sb-brand" href="index.html"><span class="sb-logo">🎯</span>きめっと</a>
+  <div class="sb-links"><a href="index.html">ツール一覧</a><a href="about.html">このサイトについて</a></div>
+</nav>
+<div class="wrap">
+  <header class="hd">
+    <div class="brand"><div class="logo">🔀</div><div><h1>順番決め</h1><div class="tag">シャッフルで公平に順番を決める</div></div></div>
+    <div class="free">🎈 登録不要・無料</div>
+  </header>
+
+  <div class="answer">項目を1行に1つ入れて<b>「順番を決める」</b>を押すと、ランダムにシャッフルして順位を表示します。発表順や順番決めに。共有リンクで同じ候補を渡せます。</div>
+
+  <div class="panel">
+  <label class="olabel">項目（1行に1つ）</label>
+  <textarea class="namearea" id="items" placeholder="発表A&#10;発表B&#10;発表C"></textarea>
+  <div class="btnrow"><button class="btn primary" id="goBtn">順番を決める</button><button class="btn ghost" id="shareBtn">🔗 共有リンク</button></div>
+  <div class="orderlist" id="out"></div>
+  <div class="status" id="status"></div>
+</div>
+
+  <div class="ad">広告スペース（審査通過後に AdSense タグを挿入）</div>
+
+  <section class="seo">
+    <h2>使い方（3ステップ）</h2>
+    <div class="howto"><div class="st"><div class="n">1</div><b>項目を入れる</b><p>1行に1つずつ入力します。</p></div><div class="st"><div class="n">2</div><b>順番を決める</b><p>ボタンを押すとランダムに並び替えます。</p></div><div class="st"><div class="n">3</div><b>共有</b><p>共有リンクで候補を人に渡せます。</p></div></div>
+    <h2>よくある質問</h2>
+    <div class="faq"><details open><summary>順番は公平に決まりますか？</summary><p>はい。入力順に関係なく、ブラウザの乱数で完全にシャッフルするため、公平にランダムな順番になります。</p></details><details><summary>何個まで入れられますか？</summary><p>上限はありません。発表順・席順・当番決めなど、必要な数だけ入れられます。</p></details><details><summary>データは送信されますか？</summary><p>いいえ。すべて端末内で処理します。</p></details><details><summary>アプリのインストールは必要ですか？</summary><p>不要です。ブラウザですぐに使えます。</p></details></div>
+    <h2>ほかの決めるツール</h2>
+    <div class="rel-grid"><a class="rel" href="tool-roulette.html">🎯 ルーレット <span>回して決める・共有OK</span></a><a class="rel" href="tool-amidakuji.html">🪜 あみだくじ <span>人数と当たりで自動作成</span></a><a class="rel" href="tool-groups.html">👥 グループ分け <span>ランダムに班分け</span></a><a class="rel" href="index.html">🎯 ツール一覧 <span>きめっとの決めるツール</span></a></div>
+  </section>
+
+  <div class="foot"><a href="index.html">ツール一覧</a> ・ <a href="about.html">このサイトについて</a> ・ <a href="privacy.html">プライバシー</a> ・ <a href="terms.html">利用規約</a><br>きめっと ・ 最終更新：2026-07-20 ・ すべての操作は端末内で完結します</div>
+</div>
+<script>(function(){
+  var ta=document.getElementById('items'), out=document.getElementById('out'), status=document.getElementById('status');
+  function say(m){status.textContent=m||'';}
+  function parse(){return ta.value.split('\n').map(function(s){return s.trim();}).filter(function(s){return s.length>0;});}
+  function escapeHtml(s){return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+  function make(){
+    var arr=parse();
+    if(arr.length<2){say('項目を2つ以上入れてください。');out.innerHTML='';return;}
+    for(var i=arr.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=arr[i];arr[i]=arr[j];arr[j]=t;}
+    out.innerHTML='';
+    arr.forEach(function(v,i){var d=document.createElement('div');d.className='ocard';d.innerHTML='<span class="rank">'+(i+1)+'</span><span class="who"></span>';d.querySelector('.who').textContent=v;out.appendChild(d);});
+    say('順番を決めました。');
+  }
+  document.getElementById('goBtn').addEventListener('click',make);
+  document.getElementById('shareBtn').addEventListener('click',function(){var url=location.origin+location.pathname+'#o='+encodeURIComponent(ta.value);try{navigator.clipboard.writeText(url);say('共有リンクをコピーしました。');}catch(e){say(url);}});
+  (function(){try{var m=location.hash.match(/[#&]o=([^&]*)/);if(m)ta.value=decodeURIComponent(m[1]);}catch(e){}})();
+  if(!ta.value.trim())ta.value='田中さん\n佐藤さん\n鈴木さん\n高橋さん';
+  window.__tool={setItems:function(t){ta.value=t;},make:make,order:function(){return Array.prototype.map.call(out.querySelectorAll('.who'),function(e){return e.textContent;});}};
+})();</script>
+</body>
+</html>

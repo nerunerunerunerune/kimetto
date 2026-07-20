@@ -1,0 +1,16 @@
+{
+  "name": "きめっと",
+  "short_name": "きめっと",
+  "description": "無料の決めるツール集（ルーレット・あみだくじ・グループ分け）",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f4f4fb",
+  "theme_color": "#7c5cff",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

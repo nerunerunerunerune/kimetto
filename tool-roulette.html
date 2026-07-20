@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ルーレット ― 回して決める・結果は共有できる｜きめっと</title>
+<meta name="description" content="項目を入れて回すだけの無料ルーレット。ランチ・順番決め・抽選に。当選を消すモード、結果のURL共有、全画面表示に対応。アプリ不要・登録不要・端末内で完結。">
+<link rel="canonical" href="https://kimetto.kawatare.studio/tool-roulette.html">
+<meta name="theme-color" content="#7c5cff">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="site.webmanifest">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="きめっと">
+<meta property="og:title" content="ルーレット｜回して決める・結果は共有できる">
+<meta property="og:description" content="項目を入れて回すだけの無料ルーレット。ランチ・順番決め・抽選に。当選を消すモード、結果のURL共有、全画面表示に対応。アプリ不要・登録不要・端末内で完結。">
+<meta property="og:url" content="https://kimetto.kawatare.studio/tool-roulette.html">
+<meta property="og:image" content="https://kimetto.kawatare.studio/ogp.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ルーレット｜回して決める・結果は共有できる">
+<meta name="twitter:description" content="項目を入れて回すだけの無料ルーレット。ランチ・順番決め・抽選に。当選を消すモード、結果のURL共有、全画面表示に対応。アプリ不要・登録不要・端末内で完結。">
+<meta name="twitter:image" content="https://kimetto.kawatare.studio/ogp.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S70G7BHKD0"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S70G7BHKD0');</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"ルーレット｜きめっと","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"},"description":"項目を入れて回すだけの無料ルーレット。ランチ・順番決め・抽選に。当選を消すモード、結果のURL共有、全画面表示に対応。アプリ不要・登録不要・端末内で完結。"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":"ルーレットの使い方","step":[{"@type":"HowToStep","name":"項目を入れる","text":"候補を追加、または「かんたん入力」やシャッフルを使います。"},{"@type":"HowToStep","name":"スピン","text":"ボタンを押すと回転し、上の矢印の項目に決まります。"},{"@type":"HowToStep","name":"共有・くり返し","text":"共有リンクをコピーして渡せます。全画面表示も可能。"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"ルーレットの結果は公平ですか？","acceptedAnswer":{"@type":"Answer","text":"はい。停止位置はブラウザの乱数で毎回ランダムに決まり、特定の項目が出やすいことはありません。すべて端末内で計算します。"}},{"@type":"Question","name":"作ったルーレットを人に渡せますか？","acceptedAnswer":{"@type":"Answer","text":"はい。「共有リンクをコピー」を押すと、同じ項目が入ったルーレットのURLが作れます。LINEやメールで送れば相手も同じ状態で使えます。"}},{"@type":"Question","name":"順番決めや抽選に使えますか？","acceptedAnswer":{"@type":"Answer","text":"はい。「当たった項目を消す」をオンにすると、回すたびに当選者が外れ、順番決めや重複しない抽選に使えます。"}},{"@type":"Question","name":"アプリのインストールは必要ですか？","acceptedAnswer":{"@type":"Answer","text":"不要です。ブラウザですぐ使え、ホーム画面に追加すればアプリのように起動できます。"}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"きめっと","item":"https://kimetto.kawatare.studio/"},{"@type":"ListItem","position":2,"name":"ルーレット","item":"https://kimetto.kawatare.studio/tool-roulette.html"}]}</script>
+<style>
+  :root{--bg:#f4f4fb;--card:#ffffff;--ink:#1e1b2e;--ink-2:#615c7a;--muted:#9a95b0;--line:#e7e5f2;
+    --brand:#7c5cff;--brand-d:#6544e0;--accent:#ff6b6b;--good:#22b07d;--good-bg:#e3f6ee;
+    --shadow:0 1px 2px rgba(30,20,50,.05),0 8px 22px rgba(30,20,50,.07);}
+  @media (prefers-color-scheme:dark){:root{--bg:#12111a;--card:#1c1a29;--ink:#f0eefb;--ink-2:#b3aecb;--muted:#7b7597;
+    --line:#2b2840;--brand:#9d86ff;--brand-d:#c0b0ff;--accent:#ff8787;--good:#3fce97;--good-bg:#16311f;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 26px rgba(0,0,0,.45);}}
+
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);line-height:1.8;
+    font-family:system-ui,-apple-system,"Segoe UI","Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;-webkit-font-smoothing:antialiased;}
+  .sitebar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 16px;background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20;}
+  .sb-brand{display:flex;align-items:center;gap:9px;font-weight:800;text-decoration:none;color:var(--ink);font-size:16px;}
+  .sb-logo{width:30px;height:30px;border-radius:10px;background:linear-gradient(135deg,var(--brand),var(--accent));display:grid;place-items:center;color:#fff;font-size:16px;}
+  .sb-links{display:flex;gap:12px;font-size:13.5px;font-weight:700;}
+  .sb-links a{text-decoration:none;color:var(--ink-2);} .sb-links a:hover{color:var(--brand);}
+  .wrap{max-width:840px;margin:0 auto;padding:18px 16px 64px;}
+  header.hd{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 0 12px;flex-wrap:wrap;}
+  .brand{display:flex;align-items:center;gap:12px;}
+  .logo{width:44px;height:44px;border-radius:13px;background:linear-gradient(135deg,var(--brand),var(--accent));display:grid;place-items:center;color:#fff;font-weight:800;font-size:20px;box-shadow:var(--shadow);}
+  .brand h1{font-size:20px;margin:0;line-height:1.3;} .brand .tag{font-size:12.5px;color:var(--ink-2);}
+  .free{font-size:12px;color:var(--good);background:var(--good-bg);padding:5px 11px;border-radius:20px;font-weight:800;white-space:nowrap;}
+  .answer{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--brand);border-radius:14px;padding:13px 17px;margin:6px 0 16px;font-size:14.5px;box-shadow:var(--shadow);}
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);padding:18px;margin-bottom:16px;}
+  .btn{border:none;border-radius:13px;padding:13px 20px;font-weight:800;font-size:15px;cursor:pointer;font-family:inherit;}
+  .btn.primary{background:var(--brand);color:#fff;} .btn.primary:hover{background:var(--brand-d);}
+  .btn.ghost{background:var(--bg);color:var(--ink);border:1px solid var(--line);}
+  .btn.big{font-size:18px;padding:15px 34px;}
+  .btn:disabled{opacity:.5;cursor:default;}
+  .btnrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;}
+  .olabel{display:block;font-size:12.5px;font-weight:800;color:var(--ink-2);margin:10px 0 8px;}
+  .opts{display:flex;gap:16px;flex-wrap:wrap;align-items:center;margin:12px 0;font-size:13.5px;color:var(--ink-2);}
+  .opts label{display:flex;align-items:center;gap:6px;cursor:pointer;} .opts input{accent-color:var(--brand);width:17px;height:17px;}
+  .status{font-size:13px;color:var(--good);min-height:16px;margin:6px 2px;font-weight:700;}
+  .ad{border:1px dashed var(--line);border-radius:14px;padding:14px;text-align:center;color:var(--muted);font-size:12px;background:var(--card);margin:16px 0;}
+  .seo h2{font-size:18px;margin:26px 0 10px;}
+  .howto{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;} @media(max-width:600px){.howto{grid-template-columns:1fr;}}
+  .howto .st{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;}
+  .howto .st .n{width:26px;height:26px;border-radius:50%;background:var(--brand);color:#fff;font-weight:800;display:grid;place-items:center;font-size:14px;}
+  .howto .st b{display:block;margin:8px 0 2px;} .howto .st p{margin:0;font-size:13px;color:var(--ink-2);}
+  .faq details{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:11px 15px;margin-bottom:8px;}
+  .faq summary{font-weight:800;cursor:pointer;font-size:14.5px;} .faq p{font-size:13.5px;color:var(--ink-2);margin:8px 0 0;}
+  .rel-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;} @media(max-width:600px){.rel-grid{grid-template-columns:1fr;}}
+  .rel{display:block;text-decoration:none;color:inherit;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;font-weight:800;} .rel:hover{border-color:var(--brand);}
+  .rel span{display:block;font-size:12px;color:var(--ink-2);font-weight:500;margin-top:2px;}
+  .foot{font-size:12px;color:var(--muted);text-align:center;margin-top:24px;line-height:1.95;}
+  .foot a{color:var(--ink-2);}
+
+
+  .wheelwrap{position:relative;width:100%;max-width:340px;margin:14px auto 6px;aspect-ratio:1/1;}
+  .pointer{position:absolute;top:-3px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:15px solid transparent;border-right:15px solid transparent;border-top:25px solid var(--accent);z-index:5;filter:drop-shadow(0 2px 2px rgba(0,0,0,.25));}
+  #wheel{width:100%;height:100%;display:block;}
+  #wheel .spinner{transform-box:fill-box;transform-origin:center;}
+  #wheel .hub{fill:var(--card);stroke:var(--line);stroke-width:2;}
+  .result{text-align:center;font-size:26px;font-weight:800;color:var(--brand);min-height:34px;margin:8px 0;}
+  .irow{display:flex;align-items:center;gap:8px;margin-bottom:7px;}
+  .irow .dot{width:16px;height:16px;border-radius:50%;flex:none;}
+  .iin{flex:1;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font-family:inherit;font-size:15px;}
+  .irow .del{width:36px;height:36px;border:1px solid var(--line);background:var(--bg);border-radius:9px;color:var(--ink-2);font-size:16px;cursor:pointer;flex:none;}
+  .wrow{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:8px 0;}
+  .presetbtn{border:1px solid var(--line);background:var(--bg);border-radius:20px;padding:8px 12px;font-size:13px;font-weight:700;cursor:pointer;color:var(--ink-2);font-family:inherit;}
+  .presetbtn:hover{border-color:var(--brand);color:var(--brand);}
+  .tp-panel.fs{position:fixed;inset:0;z-index:60;margin:0;border-radius:0;overflow:auto;display:flex;flex-direction:column;justify-content:center;background:var(--bg);}
+  .tp-panel.fs .seo,.tp-panel.fs .ad,.tp-panel.fs #editor{display:none;}
+  .tp-panel.fs .wheelwrap{max-width:min(72vh,92vw);}
+
+</style>
+</head>
+<body>
+<nav class="sitebar">
+  <a class="sb-brand" href="index.html"><span class="sb-logo">🎯</span>きめっと</a>
+  <div class="sb-links"><a href="index.html">ツール一覧</a><a href="about.html">このサイトについて</a></div>
+</nav>
+<div class="wrap">
+  <header class="hd">
+    <div class="brand"><div class="logo">🎯</div><div><h1>ルーレット</h1><div class="tag">回して決める・結果は共有できる</div></div></div>
+    <div class="free">🎈 登録不要・無料</div>
+  </header>
+
+  <div class="answer">決めたい項目を入れて<b>スピン！</b>を押すと、ルーレットが回って1つを選びます。「当たった項目を消す」で順番決めや当選除外にも。<b>🔗共有リンク</b>で同じ項目のルーレットを人に渡せます。</div>
+
+  <div class="panel tp-panel" id="tp">
+  <div class="wheelwrap"><div class="pointer"></div><svg id="wheel" viewBox="0 0 200 200"><g id="spinner" class="spinner"></g><circle class="hub" cx="100" cy="100" r="13"></circle></svg></div>
+  <div class="result" id="result"></div>
+  <div class="btnrow" style="justify-content:center"><button class="btn primary big" id="spinBtn">スピン！</button><button class="btn ghost" id="fsBtn">全画面</button></div>
+  <div class="opts">
+    <label><input type="checkbox" id="removeWin"> 当たった項目を消す（順番決め・当選除外に）</label>
+    <label><input type="checkbox" id="soundOn" checked> 音</label>
+  </div>
+  <div id="editor">
+    <label class="olabel">項目（2つ以上）</label>
+    <div id="items"></div>
+    <div class="wrow"><input class="iin" id="newItem" maxlength="30" placeholder="項目を追加（例：ラーメン）" style="flex:1;min-width:150px"><button class="btn ghost" id="addBtn">追加</button><button class="btn ghost" id="shuffleBtn">シャッフル</button></div>
+    <div class="wrow"><span class="olabel" style="margin:0">かんたん入力</span><button class="presetbtn" data-p="yesno">はい / いいえ</button><button class="presetbtn" data-p="lunch">ランチ</button><button class="presetbtn" data-p="num6">1〜6</button><button class="presetbtn" data-p="clear">クリア</button></div>
+    <div class="wrow"><button class="btn ghost" id="shareBtn">🔗 共有リンクをコピー</button></div>
+  </div>
+  <div class="status" id="status"></div>
+</div>
+
+  <div class="ad">広告スペース（審査通過後に AdSense タグを挿入）</div>
+
+  <section class="seo">
+    <h2>使い方（3ステップ）</h2>
+    <div class="howto"><div class="st"><div class="n">1</div><b>項目を入れる</b><p>候補を追加、または「かんたん入力」やシャッフルを使います。</p></div><div class="st"><div class="n">2</div><b>スピン</b><p>ボタンを押すと回転し、上の矢印の項目に決まります。</p></div><div class="st"><div class="n">3</div><b>共有・くり返し</b><p>共有リンクをコピーして渡せます。全画面表示も可能。</p></div></div>
+    <h2>よくある質問</h2>
+    <div class="faq"><details open><summary>ルーレットの結果は公平ですか？</summary><p>はい。停止位置はブラウザの乱数で毎回ランダムに決まり、特定の項目が出やすいことはありません。すべて端末内で計算します。</p></details><details><summary>作ったルーレットを人に渡せますか？</summary><p>はい。「共有リンクをコピー」を押すと、同じ項目が入ったルーレットのURLが作れます。LINEやメールで送れば相手も同じ状態で使えます。</p></details><details><summary>順番決めや抽選に使えますか？</summary><p>はい。「当たった項目を消す」をオンにすると、回すたびに当選者が外れ、順番決めや重複しない抽選に使えます。</p></details><details><summary>アプリのインストールは必要ですか？</summary><p>不要です。ブラウザですぐ使え、ホーム画面に追加すればアプリのように起動できます。</p></details></div>
+    <h2>ほかの決めるツール</h2>
+    <div class="rel-grid"><a class="rel" href="tool-amidakuji.html">🪜 あみだくじ <span>人数と当たりで自動作成</span></a><a class="rel" href="tool-groups.html">👥 グループ分け <span>ランダムに班分け</span></a><a class="rel" href="tool-order.html">🔀 順番決め <span>シャッフルで順番</span></a><a class="rel" href="index.html">🎯 ツール一覧 <span>きめっとの決めるツール</span></a></div>
+  </section>
+
+  <div class="foot"><a href="index.html">ツール一覧</a> ・ <a href="about.html">このサイトについて</a> ・ <a href="privacy.html">プライバシー</a> ・ <a href="terms.html">利用規約</a><br>きめっと ・ 最終更新：2026-07-20 ・ すべての操作は端末内で完結します</div>
+</div>
+<script>(function(){
+  var NS='http://www.w3.org/2000/svg';
+  var PALETTE=['#7c5cff','#ff6b6b','#ffb03a','#22b07d','#3aa0ff','#e05fbf','#ff8a5c','#4cc9b0','#a05cff','#ffd23f'];
+  var PRESETS={yesno:['はい','いいえ'],lunch:['ラーメン','カレー','パスタ','定食','丼','うどん'],num6:['1','2','3','4','5','6'],clear:[]};
+  var items=[], rot=0, spinning=false;
+  var svg=document.getElementById('wheel'), grp=document.getElementById('spinner');
+  var listEl=document.getElementById('items'), resultEl=document.getElementById('result'), spinBtn=document.getElementById('spinBtn'), status=document.getElementById('status'), tp=document.getElementById('tp');
+  function say(m){status.textContent=m||'';}
+  function draw(){
+    grp.innerHTML='';var n=items.length;
+    if(n===0){var c=document.createElementNS(NS,'circle');c.setAttribute('cx',100);c.setAttribute('cy',100);c.setAttribute('r',96);c.setAttribute('fill','var(--line)');grp.appendChild(c);return;}
+    if(n===1){var c1=document.createElementNS(NS,'circle');c1.setAttribute('cx',100);c1.setAttribute('cy',100);c1.setAttribute('r',96);c1.setAttribute('fill',PALETTE[0]);grp.appendChild(c1);addText(0,0);return;}
+    var s=360/n;
+    for(var i=0;i<n;i++){
+      var a0=(-90+i*s)*Math.PI/180, a1=(-90+(i+1)*s)*Math.PI/180;
+      var x0=100+96*Math.cos(a0),y0=100+96*Math.sin(a0),x1=100+96*Math.cos(a1),y1=100+96*Math.sin(a1);
+      var large=s>180?1:0;
+      var p=document.createElementNS(NS,'path');
+      p.setAttribute('d','M100,100 L'+x0.toFixed(2)+','+y0.toFixed(2)+' A96,96 0 '+large+' 1 '+x1.toFixed(2)+','+y1.toFixed(2)+' Z');
+      p.setAttribute('fill',PALETTE[i%PALETTE.length]);p.setAttribute('stroke','#fff');p.setAttribute('stroke-width','1');
+      grp.appendChild(p);
+      addText(i,-90+(i+0.5)*s);
+    }
+  }
+  function addText(i,mid){
+    var t=document.createElementNS(NS,'text');
+    var tr=62,tx=100+tr*Math.cos(mid*Math.PI/180),ty=100+tr*Math.sin(mid*Math.PI/180);
+    var ang=mid;if(ang>90&&ang<270)ang+=180;
+    t.setAttribute('x',tx.toFixed(2));t.setAttribute('y',ty.toFixed(2));
+    t.setAttribute('transform','rotate('+ang.toFixed(2)+' '+tx.toFixed(2)+' '+ty.toFixed(2)+')');
+    t.setAttribute('text-anchor','middle');t.setAttribute('dominant-baseline','central');
+    t.setAttribute('fill','#fff');t.setAttribute('font-weight','800');
+    t.setAttribute('font-size', items.length>10?7:(items.length>6?9:11));
+    var label=items[i]||'';if(label.length>8)label=label.slice(0,8)+'…';
+    t.textContent=label;grp.appendChild(t);
+  }
+  function renderList(){
+    listEl.innerHTML='';
+    items.forEach(function(it,i){
+      var row=document.createElement('div');row.className='irow';
+      row.innerHTML='<span class="dot"></span><input class="iin" maxlength="30"><button class="del">×</button>';
+      row.querySelector('.dot').style.background=PALETTE[i%PALETTE.length];
+      var inp=row.querySelector('.iin');inp.value=it;
+      inp.addEventListener('input',function(){items[i]=inp.value;draw();});
+      row.querySelector('.del').addEventListener('click',function(){items.splice(i,1);refresh();});
+      listEl.appendChild(row);
+    });
+  }
+  function refresh(){renderList();draw();}
+  function winnerIndex(){var n=items.length;if(n<1)return -1;var s=360/n;var u=(((-rot)%360)+360)%360;return Math.floor(u/s)%n;}
+  function chime(){if(!document.getElementById('soundOn').checked)return;try{var AC=window.AudioContext||window.webkitAudioContext;var ac=new AC();var t=ac.currentTime;[523,659,784].forEach(function(f,i){var o=ac.createOscillator(),g=ac.createGain();o.type='triangle';o.frequency.value=f;o.connect(g);g.connect(ac.destination);var d=i*0.09;g.gain.setValueAtTime(0.0001,t+d);g.gain.exponentialRampToValueAtTime(0.25,t+d+0.02);g.gain.exponentialRampToValueAtTime(0.0001,t+d+0.4);o.start(t+d);o.stop(t+d+0.45);});}catch(e){}}
+  function spin(){
+    if(spinning||items.length<2){if(items.length<2)say('項目を2つ以上入れてください。');return;}
+    spinning=true;resultEl.textContent='';spinBtn.disabled=true;say('');
+    rot+=360*5+Math.floor(Math.random()*360);
+    grp.style.transition='transform 4.2s cubic-bezier(.15,.62,.13,1)';
+    grp.style.transform='rotate('+rot+'deg)';
+  }
+  grp.addEventListener('transitionend',function(){
+    if(!spinning)return;spinning=false;spinBtn.disabled=false;
+    var w=winnerIndex();
+    if(w>=0){resultEl.textContent='🎉 '+items[w];chime();try{if(navigator.vibrate)navigator.vibrate(120);}catch(e){}
+      if(document.getElementById('removeWin').checked){var ww=w;setTimeout(function(){items.splice(ww,1);rot=((rot%360)+360)%360;grp.style.transition='none';grp.style.transform='rotate('+rot+'deg)';refresh();if(items.length<2)say('のこり1つになりました。');},900);}}
+  });
+  spinBtn.addEventListener('click',spin);
+  document.getElementById('addBtn').addEventListener('click',function(){var v=document.getElementById('newItem').value.trim();if(!v)return;items.push(v);document.getElementById('newItem').value='';refresh();});
+  document.getElementById('newItem').addEventListener('keydown',function(e){if(e.key==='Enter')document.getElementById('addBtn').click();});
+  document.getElementById('shuffleBtn').addEventListener('click',function(){for(var i=items.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var tmp=items[i];items[i]=items[j];items[j]=tmp;}refresh();say('シャッフルしました。');});
+  document.querySelectorAll('.presetbtn').forEach(function(b){b.addEventListener('click',function(){items=PRESETS[b.dataset.p].slice();refresh();});});
+  document.getElementById('shareBtn').addEventListener('click',function(){var url=location.origin+location.pathname+'#l='+encodeURIComponent(items.join('\n'));try{navigator.clipboard.writeText(url);say('共有リンクをコピーしました。');}catch(e){say(url);}});
+  document.getElementById('fsBtn').addEventListener('click',function(){if(!document.fullscreenElement){tp.classList.add('fs');(tp.requestFullscreen||tp.webkitRequestFullscreen||function(){}).call(tp);}else{document.exitFullscreen&&document.exitFullscreen();}});
+  document.addEventListener('fullscreenchange',function(){if(!document.fullscreenElement)tp.classList.remove('fs');});
+  function loadHash(){try{var m=location.hash.match(/[#&]l=([^&]*)/);if(m){var s=decodeURIComponent(m[1]);var arr=s.split('\n').filter(function(x){return x.length>0;});if(arr.length){items=arr;return true;}}}catch(e){}return false;}
+  if(!loadHash())items=['ラーメン','カレー','パスタ','定食','丼'];
+  refresh();
+  window.__tool={set:function(a){items=a.slice();refresh();},items:function(){return items.slice();},spin:spin,
+    setRot:function(d){rot=d;grp.style.transition='none';grp.style.transform='rotate('+d+'deg)';},
+    winner:function(){return winnerIndex();},winnerName:function(){var w=winnerIndex();return w>=0?items[w]:null;},
+    result:function(){return resultEl.textContent;},shareUrl:function(){return location.origin+location.pathname+'#l='+encodeURIComponent(items.join('\n'));},
+    loadHash:loadHash,spinning:function(){return spinning;}};
+})();</script>
+</body>
+</html>
