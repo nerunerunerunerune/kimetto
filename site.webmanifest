@@ -56,7 +56,7 @@
     {
       "name": "ルーレット",
       "short_name": "ルーレット",
-      "url": "/tool-roulette.html",
+      "url": "/tool-roulette",
       "icons": [
         {
           "src": "/icon-192.png",
@@ -68,7 +68,7 @@
     {
       "name": "あみだくじ",
       "short_name": "あみだくじ",
-      "url": "/tool-amidakuji.html",
+      "url": "/tool-amidakuji",
       "icons": [
         {
           "src": "/icon-192.png",
@@ -80,7 +80,7 @@
     {
       "name": "グループ分け",
       "short_name": "グループ分け",
-      "url": "/tool-groups.html",
+      "url": "/tool-groups",
       "icons": [
         {
           "src": "/icon-192.png",
@@ -92,7 +92,7 @@
     {
       "name": "順番決め",
       "short_name": "順番決め",
-      "url": "/tool-order.html",
+      "url": "/tool-order",
       "icons": [
         {
           "src": "/icon-192.png",
