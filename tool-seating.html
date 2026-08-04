@@ -61,6 +61,9 @@
   .status{font-size:13px;color:var(--good);min-height:16px;margin:6px 2px;font-weight:700;}
   .ad{border:1px dashed var(--line);border-radius:14px;padding:14px;text-align:center;color:var(--muted);font-size:12px;background:var(--card);margin:16px 0;}
   .seo h2{font-size:18px;margin:26px 0 10px;}
+  .seo p{font-size:14.5px;line-height:1.9;margin:8px 0;}
+  .seo ul{margin:8px 0;padding-left:22px;} .seo li{font-size:14.5px;line-height:1.9;margin:6px 0;}
+  .note-read{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:10px;padding:12px 16px;margin:14px 0;font-size:14px;line-height:1.9;}
   .howto{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;} @media(max-width:600px){.howto{grid-template-columns:1fr;}}
   .howto .st{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;}
   .howto .st .n{width:26px;height:26px;border-radius:50%;background:var(--brand);color:#fff;font-weight:800;display:grid;place-items:center;font-size:14px;}
@@ -111,7 +114,29 @@
   <section class="seo">
     <h2>使い方（3ステップ）</h2>
     <div class="howto"><div class="st"><div class="n">1</div><b>名前を入れる</b><p>1行に1人ずつ。出席番号でもOKです。</p></div><div class="st"><div class="n">2</div><b>列数を決める</b><p>横に並べる人数（列数）を指定します。</p></div><div class="st"><div class="n">3</div><b>席替え・印刷</b><p>ランダムに配置。印刷して掲示できます。</p></div></div>
-    <h2>よくある質問</h2>
+    
+  <h2>黒板の向きを設定に入れてある訳</h2>
+  <p>座席表は、向きが合っていないと読めません。教室の後ろから見た図と、前から見た図では左右が逆になる。配った紙を見ながら「自分はどこか」を探す場面で、この不一致は地味に効きます。</p>
+  <p>列数を指定できるのも、実際の教室の形に合わせるためです。<b>画面上でしか成立しない配置を作っても意味がない</b>ので、手元の教室と同じ形にしてから割り当ててください。</p>
+
+  <div class="note-read">
+    <b>配慮が必要な席は、この画面で決める前に確保してください。</b>視力や聴力、出入りのしやすさ、支援者が近づける位置。これらは運に任せてよいものではありません。該当する席を先に決めておき、残りをランダムに割り当てる。「一部の席は事前に決めています」と伝えれば十分で、誰がどの理由かを説明する必要はありません。
+  </div>
+
+  <h2>この画面では扱えない条件</h2>
+  <ul>
+    <li><b>特定の組み合わせを避ける指定</b>：離しておきたい2人を自動で分ける機能はありません。結果を見て手で入れ替えるか、先に固定してください。</li>
+    <li><b>前回との重複回避</b>：前回の座席を覚えていないため、同じ席になることがあります。気になる場合は控えを残しておいてください。</li>
+    <li><b>机の形が均一でない教室</b>：グループ机や円形配置には対応していません。</li>
+  </ul>
+
+  <h2>席替えの進め方は別記事に</h2>
+  <div class="rel-grid">
+    <a class="rel" href="article-sekigae-kimekata">📖 席替えの決め方 <span>配慮の組み込み方と頻度の目安</span></a>
+    <a class="rel" href="article-hanwake-kotsu">📖 班分けで揉めないための考え方 <span>班と席を連動させる</span></a>
+  </div>
+
+  <h2>よくある質問</h2>
     <div class="faq"><details open><summary>席替えは公平ですか？</summary><p>はい。入力された名前をブラウザの乱数で完全にシャッフルして配置するため、偏りのないランダムな席替えになります。</p></details><details><summary>印刷して使えますか？</summary><p>はい。「印刷」から黒板（前）付きの座席表を印刷できます。教室やイベント会場に掲示できます。</p></details><details><summary>何人まで対応していますか？</summary><p>人数の上限はありません。列数（横の数）を変えて教室のレイアウトに合わせられます。</p></details><details><summary>データは送信されますか？</summary><p>いいえ。すべて端末内で処理し、名前などは送信されません。</p></details></div>
     <h2>コラム</h2><div class="rel-grid"><a class="rel" href="article-natsuyasumi-kuji">📖 夏休みイベントの順番決め・くじ引き活用ガイド<span>花火大会・夏祭り・自由研究のテーマ決めに</span></a></div>
     <h2>ほかの決めるツール</h2>

@@ -61,6 +61,9 @@
   .status{font-size:13px;color:var(--good);min-height:16px;margin:6px 2px;font-weight:700;}
   .ad{border:1px dashed var(--line);border-radius:14px;padding:14px;text-align:center;color:var(--muted);font-size:12px;background:var(--card);margin:16px 0;}
   .seo h2{font-size:18px;margin:26px 0 10px;}
+  .seo p{font-size:14.5px;line-height:1.9;margin:8px 0;}
+  .seo ul{margin:8px 0;padding-left:22px;} .seo li{font-size:14.5px;line-height:1.9;margin:6px 0;}
+  .note-read{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:10px;padding:12px 16px;margin:14px 0;font-size:14px;line-height:1.9;}
   .howto{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;} @media(max-width:600px){.howto{grid-template-columns:1fr;}}
   .howto .st{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;}
   .howto .st .n{width:26px;height:26px;border-radius:50%;background:var(--brand);color:#fff;font-weight:800;display:grid;place-items:center;font-size:14px;}
@@ -109,7 +112,31 @@
   <section class="seo">
     <h2>使い方（3ステップ）</h2>
     <div class="howto"><div class="st"><div class="n">1</div><b>確率を決める</b><p>SSR〜Nの出る確率（％）を設定します。</p></div><div class="st"><div class="n">2</div><b>引く</b><p>1回、または10連で引けます。</p></div><div class="st"><div class="n">3</div><b>結果を見る</b><p>レア度が表示され、累計も記録されます。</p></div></div>
-    <h2>よくある質問</h2>
+    
+  <h2>確率を自分で決められるようにしてある訳</h2>
+  <p>レア度ごとの％を入力する形にしています。決め打ちの確率にしていないのは、<b>この画面の使い道が「当てること」ではなく「確率を体感すること」だから</b>です。設定を変えて何度も試せることに意味があるので、固定の排出率を持たせる作りにはしませんでした。</p>
+  <p>1％と聞いても、それがどれくらい当たらないものかは想像しにくい。実際に引いてみて、100回引いても出ないことがあると知る。累計カウントを出しているのは、この体感のためです。</p>
+  <p>1％と3％を引き比べてみてください。手応えがまるで違います。</p>
+  <p>10連をまとめて引けるようにしてあるのも同じ理由です。1回ずつでは、確率の感覚がつかめるところまで到達しません。まとめて引くと、外れの続き方の感触がつかめます。それが目的です。</p>
+
+  <div class="note-read">
+    <b>ここで出た結果は、実在のゲームの確率とは関係ありません。</b>入力した％にもとづいて、この場で計算しているだけです。特定のサービスの排出率を再現するものでも、次に何が出るかを予測するものでもありません。確率の挙動を試すための画面として使ってください。
+  </div>
+
+  <h2>試すと分かること</h2>
+  <ul>
+    <li><b>連続で外れるのは異常ではない</b>：1％なら、100回引いて1回出るという意味ではありません。100回引いて一度も出ない確率は約37％あります。</li>
+    <li><b>前の結果は次に影響しない</b>：外れが続いたからといって、次の当たりやすさは変わりません。</li>
+    <li><b>短期の偏りは大きい</b>：10連で複数当たることも、200回外れることも、どちらも起こり得ます。</li>
+  </ul>
+
+  <h2>確率の読み方をもう少し</h2>
+  <div class="rel-grid">
+    <a class="rel" href="article-kakuritsu-kanchigai">📖 くじの確率、よくある勘違い <span>「そろそろ当たる」は成り立つか</span></a>
+    <a class="rel" href="article-natsuyasumi-kuji">📖 夏休みイベントの決めごと <span>景品やテーマの決め方</span></a>
+  </div>
+
+  <h2>よくある質問</h2>
     <div class="faq"><details open><summary>お金はかかりますか？</summary><p>いいえ。完全に無料で、課金や購入は一切ありません。確率を試したり、遊びで運だめしするためのツールです。</p></details><details><summary>確率は自由に変えられますか？</summary><p>はい。各レア度の％を自由に設定できます（合計が100%でなくても、割合に応じて計算します）。</p></details><details><summary>データは送信されますか？</summary><p>いいえ。すべて端末内で処理します。</p></details><details><summary>アプリのインストールは必要ですか？</summary><p>不要です。ブラウザですぐに使えます。</p></details></div>
     <h2>コラム</h2><div class="rel-grid"><a class="rel" href="article-natsuyasumi-kuji">📖 夏休みイベントの順番決め・くじ引き活用ガイド<span>花火大会・夏祭り・自由研究のテーマ決めに</span></a></div>
     <h2>ほかの決めるツール</h2>

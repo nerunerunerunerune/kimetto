@@ -61,6 +61,9 @@
   .status{font-size:13px;color:var(--good);min-height:16px;margin:6px 2px;font-weight:700;}
   .ad{border:1px dashed var(--line);border-radius:14px;padding:14px;text-align:center;color:var(--muted);font-size:12px;background:var(--card);margin:16px 0;}
   .seo h2{font-size:18px;margin:26px 0 10px;}
+  .seo p{font-size:14.5px;line-height:1.9;margin:8px 0;}
+  .seo ul{margin:8px 0;padding-left:22px;} .seo li{font-size:14.5px;line-height:1.9;margin:6px 0;}
+  .note-read{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:10px;padding:12px 16px;margin:14px 0;font-size:14px;line-height:1.9;}
   .howto{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;} @media(max-width:600px){.howto{grid-template-columns:1fr;}}
   .howto .st{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;}
   .howto .st .n{width:26px;height:26px;border-radius:50%;background:var(--brand);color:#fff;font-weight:800;display:grid;place-items:center;font-size:14px;}
@@ -107,7 +110,29 @@
   <section class="seo">
     <h2>使い方（3ステップ）</h2>
     <div class="howto"><div class="st"><div class="n">1</div><b>個数を決める</b><p>1〜6個から選びます。</p></div><div class="st"><div class="n">2</div><b>ふる</b><p>ボタンを押すと出目が決まります。</p></div><div class="st"><div class="n">3</div><b>合計を確認</b><p>出目と合計が表示されます。</p></div></div>
-    <h2>よくある質問</h2>
+    
+  <h2>合計を一緒に出している訳</h2>
+  <p>複数個振ったときに、出目の一覧だけでなく合計も表示します。ボードゲームでは合計を使うことがほとんどで、暗算する手間を省くためです。</p>
+  <p>物理のサイコロと違って、転がって机から落ちたり、読み間違えたりしません。逆に言えば<b>振る動作の楽しさは無い</b>ので、それが大事な場面では実物のほうが向いています。</p>
+
+  <div class="note-read">
+    <b>6回振って1〜6が1回ずつ出ることは、めったにありません。</b>同じ目が2回出て、出ない目が1つある——そのほうがずっと普通です。回数が少ないうちは偏るのが確率の性質で、不具合ではありません。回数を増やすと、各目の割合はだんだん6分の1に近づいていきます。
+  </div>
+
+  <h2>サイコロが向かない決めごと</h2>
+  <ul>
+    <li><b>役割の割り当て</b>：同じ人が連続で当たり得ます。全員に1つずつ配るなら、順番決めやあみだくじを使ってください。</li>
+    <li><b>選択肢が6でないとき</b>：4択や5択に無理やり割り当てると、確率が均等になりません。ルーレットのほうが素直です。</li>
+    <li><b>公式な抽選</b>：記録が残らないため、後から検証できません。</li>
+  </ul>
+
+  <h2>偏りが気になったら</h2>
+  <div class="rel-grid">
+    <a class="rel" href="article-kakuritsu-kanchigai">📖 くじの確率、よくある勘違い <span>少ない回数で偏るのは普通</span></a>
+    <a class="rel" href="article-kouhei-kimekata">📖 「公平に決める」とは何か <span>その場で早く決めたいとき</span></a>
+  </div>
+
+  <h2>よくある質問</h2>
     <div class="faq"><details open><summary>サイコロの出目は公平ですか？</summary><p>はい。各サイコロは1〜6がブラウザの乱数で等確率に決まります。すべて端末内で計算します。</p></details><details><summary>何個まで同時にふれますか？</summary><p>1〜6個まで同時にふれます。合計も自動表示します。</p></details><details><summary>アプリのインストールは必要ですか？</summary><p>不要です。ブラウザですぐに使えます。</p></details></div>
     <h2>コラム</h2><div class="rel-grid"><a class="rel" href="article-natsuyasumi-kuji">📖 夏休みイベントの順番決め・くじ引き活用ガイド<span>花火大会・夏祭り・自由研究のテーマ決めに</span></a></div>
     <h2>ほかの決めるツール</h2>

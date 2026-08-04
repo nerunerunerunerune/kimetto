@@ -61,6 +61,9 @@
   .status{font-size:13px;color:var(--good);min-height:16px;margin:6px 2px;font-weight:700;}
   .ad{border:1px dashed var(--line);border-radius:14px;padding:14px;text-align:center;color:var(--muted);font-size:12px;background:var(--card);margin:16px 0;}
   .seo h2{font-size:18px;margin:26px 0 10px;}
+  .seo p{font-size:14.5px;line-height:1.9;margin:8px 0;}
+  .seo ul{margin:8px 0;padding-left:22px;} .seo li{font-size:14.5px;line-height:1.9;margin:6px 0;}
+  .note-read{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:10px;padding:12px 16px;margin:14px 0;font-size:14px;line-height:1.9;}
   .howto{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;} @media(max-width:600px){.howto{grid-template-columns:1fr;}}
   .howto .st{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;}
   .howto .st .n{width:26px;height:26px;border-radius:50%;background:var(--brand);color:#fff;font-weight:800;display:grid;place-items:center;font-size:14px;}
@@ -110,7 +113,31 @@
   <section class="seo">
     <h2>使い方（3ステップ）</h2>
     <div class="howto"><div class="st"><div class="n">1</div><b>範囲を決める</b><p>最小〜最大の数を入れます（ビンゴなら1〜75）。</p></div><div class="st"><div class="n">2</div><b>抽選する</b><p>押すたびに重複しない番号が出ます。</p></div><div class="st"><div class="n">3</div><b>確認・リセット</b><p>履歴で確認、リセットでやり直せます。</p></div></div>
-    <h2>よくある質問</h2>
+    
+  <h2>出た番号を戻さない作りにしてある訳</h2>
+  <p>抽選を押すたびに、まだ出ていない番号から選びます。毎回すべての範囲から選び直す作りにはしていません。</p>
+  <p>この違いは実用上とても大きい。ビンゴや抽選会で同じ番号が二度出たら、進行が止まります。<b>番号を配る用途では、重複しないことが前提</b>だからです。当たり前に思えて、実装では明確に分かれる部分です。</p>
+  <p>逆に、毎回同じ条件で引きたい場合——サイコロのように独立した試行が必要な場面——には向きません。そちらはサイコロやコイントスを。</p>
+  <p>範囲を1〜75にしてあるのはビンゴを想定したためですが、任意の範囲に変えられます。座席番号でも、抽選券の番号でも同じように使えます。</p>
+
+  <div class="note-read">
+    <b>残り本数が減ると、当たる確率は上がります。</b>75個中1個の当たりで、74個が外れたなら最後の1つは必ず当たり。「そろそろ当たる」がこの形式では実際に成り立ちます。サイコロのように前の結果が次に影響しないものと混同すると、確率の話が食い違うので注意してください。
+  </div>
+
+  <h2>この画面に無い機能</h2>
+  <ul>
+    <li><b>番号と名前の対応</b>：誰が何番かの管理はしません。名簿は別で用意してください。</li>
+    <li><b>複数同時抽選</b>：1回に1つずつです。まとめて何個も引く用途には向きません。</li>
+    <li><b>履歴の保存</b>：画面を閉じると出た番号は消えます。長い抽選会では控えを取ってください。</li>
+  </ul>
+
+  <h2>確率の考え方を知りたい方へ</h2>
+  <div class="rel-grid">
+    <a class="rel" href="article-kakuritsu-kanchigai">📖 くじの確率、よくある勘違い <span>戻す型と戻さない型の違い</span></a>
+    <a class="rel" href="article-natsuyasumi-kuji">📖 夏休みイベントの決めごと <span>景品の割り当てなど</span></a>
+  </div>
+
+  <h2>よくある質問</h2>
     <div class="faq"><details open><summary>同じ番号は出ますか？</summary><p>いいえ。リセットするまで、一度出た番号は重複して出ません。ビンゴや抽選に安心して使えます。</p></details><details><summary>抽選は公平ですか？</summary><p>はい。残っている番号からブラウザの乱数で等確率に選びます。すべて端末内で計算します。</p></details><details><summary>範囲はどこまで指定できますか？</summary><p>最大1000個までの範囲を指定できます。</p></details><details><summary>アプリのインストールは必要ですか？</summary><p>不要です。ブラウザですぐに使えます。</p></details></div>
     <h2>コラム</h2><div class="rel-grid"><a class="rel" href="article-natsuyasumi-kuji">📖 夏休みイベントの順番決め・くじ引き活用ガイド<span>花火大会・夏祭り・自由研究のテーマ決めに</span></a></div>
     <h2>ほかの決めるツール</h2>

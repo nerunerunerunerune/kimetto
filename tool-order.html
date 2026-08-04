@@ -61,6 +61,9 @@
   .status{font-size:13px;color:var(--good);min-height:16px;margin:6px 2px;font-weight:700;}
   .ad{border:1px dashed var(--line);border-radius:14px;padding:14px;text-align:center;color:var(--muted);font-size:12px;background:var(--card);margin:16px 0;}
   .seo h2{font-size:18px;margin:26px 0 10px;}
+  .seo p{font-size:14.5px;line-height:1.9;margin:8px 0;}
+  .seo ul{margin:8px 0;padding-left:22px;} .seo li{font-size:14.5px;line-height:1.9;margin:6px 0;}
+  .note-read{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:10px;padding:12px 16px;margin:14px 0;font-size:14px;line-height:1.9;}
   .howto{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;} @media(max-width:600px){.howto{grid-template-columns:1fr;}}
   .howto .st{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;}
   .howto .st .n{width:26px;height:26px;border-radius:50%;background:var(--brand);color:#fff;font-weight:800;display:grid;place-items:center;font-size:14px;}
@@ -107,7 +110,29 @@
   <section class="seo">
     <h2>使い方（3ステップ）</h2>
     <div class="howto"><div class="st"><div class="n">1</div><b>項目を入れる</b><p>1行に1つずつ入力します。</p></div><div class="st"><div class="n">2</div><b>順番を決める</b><p>ボタンを押すとランダムに並び替えます。</p></div><div class="st"><div class="n">3</div><b>共有</b><p>共有リンクで候補を人に渡せます。</p></div></div>
-    <h2>よくある質問</h2>
+    
+  <h2>順位まで表示している訳</h2>
+  <p>並べ替えた結果を出すだけでなく、1位・2位と番号を振っています。読み上げるとき、番号があるほうが伝わるからです。</p>
+  <p>発表順や手番のように<b>全員に過不足なく1つずつ割り当てる</b>場面では、一度出た人が再び出ないことが重要です。この画面はシャッフルなので、その性質が最初から保証されています。同じ人が2回当たることはありません。</p>
+
+  <div class="note-read">
+    <b>発表順は、完全な抽選に向いた決めごとです。</b>前半・後半で有利不利があると見られやすく、誰かの判断が入ると意図がなくても勘ぐられます。逆に言えば、運で決めたことが分かる形にしておけば、順番そのものへの不満は人に向きません。画面を全員に見せながら実行してください。
+  </div>
+
+  <h2>順番を運で決めないほうがいい場合</h2>
+  <ul>
+    <li><b>準備の都合がある</b>：機材の入れ替えが必要な発表など、順番に技術的な制約があるとき。</li>
+    <li><b>緊張の度合いに差がある</b>：極端に苦手な人を最初にするのは、配慮としては雑です。先に希望を聞いておく余地を残してください。</li>
+    <li><b>内容のつながりがある</b>：前の発表を受けて話す構成なら、順番は内容で決めるべきです。</li>
+  </ul>
+
+  <h2>決め方の使い分けは別記事に</h2>
+  <div class="rel-grid">
+    <a class="rel" href="article-kouhei-kimekata">📖 「公平に決める」とは何か <span>4つの決め方と向く場面</span></a>
+    <a class="rel" href="article-natsuyasumi-kuji">📖 夏休みイベントの決めごと <span>担当・班分け・テーマの進め方</span></a>
+  </div>
+
+  <h2>よくある質問</h2>
     <div class="faq"><details open><summary>順番は公平に決まりますか？</summary><p>はい。入力順に関係なく、ブラウザの乱数で完全にシャッフルするため、公平にランダムな順番になります。</p></details><details><summary>何個まで入れられますか？</summary><p>上限はありません。発表順・席順・当番決めなど、必要な数だけ入れられます。</p></details><details><summary>データは送信されますか？</summary><p>いいえ。すべて端末内で処理します。</p></details><details><summary>アプリのインストールは必要ですか？</summary><p>不要です。ブラウザですぐに使えます。</p></details></div>
     <h2>コラム</h2><div class="rel-grid"><a class="rel" href="article-natsuyasumi-kuji">📖 夏休みイベントの順番決め・くじ引き活用ガイド<span>花火大会・夏祭り・自由研究のテーマ決めに</span></a></div>
     <h2>ほかの決めるツール</h2>

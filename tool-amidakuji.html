@@ -61,6 +61,9 @@
   .status{font-size:13px;color:var(--good);min-height:16px;margin:6px 2px;font-weight:700;}
   .ad{border:1px dashed var(--line);border-radius:14px;padding:14px;text-align:center;color:var(--muted);font-size:12px;background:var(--card);margin:16px 0;}
   .seo h2{font-size:18px;margin:26px 0 10px;}
+  .seo p{font-size:14.5px;line-height:1.9;margin:8px 0;}
+  .seo ul{margin:8px 0;padding-left:22px;} .seo li{font-size:14.5px;line-height:1.9;margin:6px 0;}
+  .note-read{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:10px;padding:12px 16px;margin:14px 0;font-size:14px;line-height:1.9;}
   .howto{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;} @media(max-width:600px){.howto{grid-template-columns:1fr;}}
   .howto .st{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;}
   .howto .st .n{width:26px;height:26px;border-radius:50%;background:var(--brand);color:#fff;font-weight:800;display:grid;place-items:center;font-size:14px;}
@@ -119,7 +122,30 @@
   <section class="seo">
     <h2>使い方（3ステップ）</h2>
     <div class="howto"><div class="st"><div class="n">1</div><b>人数を決める</b><p>2〜8人を選び、上の名前と下の結果を編集します。</p></div><div class="st"><div class="n">2</div><b>名前をタップ</b><p>道すじがハイライトされ、結果が表示されます。</p></div><div class="st"><div class="n">3</div><b>引き直す・共有</b><p>「引き直す」で作り直し、共有リンクで配れます。</p></div></div>
-    <h2>よくある質問</h2>
+    
+  <h2>線を見せずに選ばせる作りの意味</h2>
+  <p>あみだくじは、どの縦線から出発しても異なる結果に1対1で対応します。数学的には公平です。ただし<b>その公平さは「線が見えていない」ことが前提</b>です。</p>
+  <p>完成した図が見えている状態で選ばせると、目でたどって結果を予測できてしまいます。予測できるなら、それはもうくじではありません。この画面が結果を伏せた状態で選ばせるのは、この一点のためです。</p>
+  <p>「横線を増やせば公平になる」という話をときどき聞きますが、正確ではありません。横線が1本でも隠れていれば公平で、何百本あっても見えていれば予測できる。<b>本数ではなく、情報が隠れているかどうかだけが効きます。</b></p>
+
+  <div class="note-read">
+    <b>引く順番は結果に影響しません。</b>先に選ぶほうが有利だと感じる人は多いのですが、確率は全員同じです。先に引く人は選べる本数が多く、後の人は外れが減った状態で引く。この2つが打ち消し合います。順番を決めるためにさらにじゃんけんをする必要はありません。
+  </div>
+
+  <h2>紙のあみだくじと違うところ</h2>
+  <ul>
+    <li><b>線を書く楽しみはありません</b>：全員で1本ずつ横線を足していく過程そのものが場を盛り上げることもあります。人数が少なくて時間があるなら、紙のほうが向いています。</li>
+    <li><b>結果が残りません</b>：誰が何に当たったかを記録しておきたい場合は、別途控えてください。</li>
+    <li><b>画面が1つしかありません</b>：オンラインで離れた人と同時に見る用途は想定していません。画面共有と併用してください。</li>
+  </ul>
+
+  <h2>公平さの中身を知りたい方へ</h2>
+  <div class="rel-grid">
+    <a class="rel" href="article-kakuritsu-kanchigai">📖 くじの確率、よくある勘違い <span>あみだくじが公平である条件</span></a>
+    <a class="rel" href="article-kouhei-kimekata">📖 「公平に決める」とは何か <span>納得される手続きの条件</span></a>
+  </div>
+
+  <h2>よくある質問</h2>
     <div class="faq"><details open><summary>あみだくじの結果は公平ですか？</summary><p>はい。横線（あみだの橋）はブラウザの乱数でランダムに配置され、各参加者は必ず別々の結果に対応します（重複しません）。すべて端末内で計算します。</p></details><details><summary>人数は何人まで対応していますか？</summary><p>2〜8人まで対応しています。上の名前・下の結果はそれぞれ自由に編集できます。</p></details><details><summary>作ったあみだくじを共有できますか？</summary><p>はい。「共有リンク」で、人数・名前・結果を含むURLをコピーできます（橋の配置は開くたびに引き直されます）。</p></details><details><summary>アプリのインストールは必要ですか？</summary><p>不要です。ブラウザですぐに使えます。</p></details></div>
     <h2>コラム</h2><div class="rel-grid"><a class="rel" href="article-natsuyasumi-kuji">📖 夏休みイベントの順番決め・くじ引き活用ガイド<span>花火大会・夏祭り・自由研究のテーマ決めに</span></a></div>
     <h2>ほかの決めるツール</h2>

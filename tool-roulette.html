@@ -61,6 +61,9 @@
   .status{font-size:13px;color:var(--good);min-height:16px;margin:6px 2px;font-weight:700;}
   .ad{border:1px dashed var(--line);border-radius:14px;padding:14px;text-align:center;color:var(--muted);font-size:12px;background:var(--card);margin:16px 0;}
   .seo h2{font-size:18px;margin:26px 0 10px;}
+  .seo p{font-size:14.5px;line-height:1.9;margin:8px 0;}
+  .seo ul{margin:8px 0;padding-left:22px;} .seo li{font-size:14.5px;line-height:1.9;margin:6px 0;}
+  .note-read{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:10px;padding:12px 16px;margin:14px 0;font-size:14px;line-height:1.9;}
   .howto{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;} @media(max-width:600px){.howto{grid-template-columns:1fr;}}
   .howto .st{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;}
   .howto .st .n{width:26px;height:26px;border-radius:50%;background:var(--brand);color:#fff;font-weight:800;display:grid;place-items:center;font-size:14px;}
@@ -128,7 +131,30 @@
   <section class="seo">
     <h2>使い方（3ステップ）</h2>
     <div class="howto"><div class="st"><div class="n">1</div><b>項目を入れる</b><p>候補を追加、または「かんたん入力」やシャッフルを使います。</p></div><div class="st"><div class="n">2</div><b>スピン</b><p>ボタンを押すと回転し、上の矢印の項目に決まります。</p></div><div class="st"><div class="n">3</div><b>共有・くり返し</b><p>共有リンクをコピーして渡せます。全画面表示も可能。</p></div></div>
-    <h2>よくある質問</h2>
+    
+  <h2>全員に見せながら回すための画面</h2>
+  <p>結果だけを表示する作りにはしていません。回転の様子が見えるようにしてあるのは、<b>その場にいる全員が同じものを同時に見ている状態</b>をつくるためです。</p>
+  <p>決め方で揉めるとき、問題になっているのは結果の偏りではなく手続きへの納得です。誰かが裏で操作したのではないか——その疑いが少しでも残れば、方法が正しくても受け入れられない。画面を全員に向けて回せば、疑いようがなくなります。</p>
+  <p>「当たった項目を消す」を用意しているのも同じ流れです。役割を割り当てる場面では、一度当たった人がまた当たると不満が出ます。項目を減らしながら回せば、全員に過不足なく行き渡ります。</p>
+
+  <div class="note-read">
+    <b>回す前に「引き直しはしません」と言っておいてください。</b>結果が出てからやり直すと、次から誰もその決め方を信じません。どうしてもやり直す可能性があるなら、条件を先に決めておく。「同じ人が2回続いたら引き直す」のように、機械的に判定できる形にしておくのが安全です。
+  </div>
+
+  <h2>ルーレットが向かない決めごと</h2>
+  <ul>
+    <li><b>誰もやりたがらない役割</b>：一発で決めると、当たった人の不満だけが残る。持ち回りにするか、複数人で分担するほうが収まります。</li>
+    <li><b>事情に差があるとき</b>：体調や都合を無視して割り当てることになります。先に事情を聞いて対象から外し、残った人で回してください。</li>
+    <li><b>希望がはっきりしているとき</b>：やりたい人がいるのに運で決めると、意欲を捨てることになります。</li>
+  </ul>
+
+  <h2>決め方そのものに迷ったら</h2>
+  <div class="rel-grid">
+    <a class="rel" href="article-kouhei-kimekata">📖 「公平に決める」とは何か <span>くじ・じゃんけん・話し合いの使い分け</span></a>
+    <a class="rel" href="article-kakuritsu-kanchigai">📖 くじの確率、よくある勘違い <span>先に引くと有利？</span></a>
+  </div>
+
+  <h2>よくある質問</h2>
     <div class="faq"><details open><summary>ルーレットの結果は公平ですか？</summary><p>はい。停止位置はブラウザの乱数で毎回ランダムに決まり、特定の項目が出やすいことはありません。すべて端末内で計算します。</p></details><details><summary>作ったルーレットを人に渡せますか？</summary><p>はい。「共有リンクをコピー」を押すと、同じ項目が入ったルーレットのURLが作れます。LINEやメールで送れば相手も同じ状態で使えます。</p></details><details><summary>順番決めや抽選に使えますか？</summary><p>はい。「当たった項目を消す」をオンにすると、回すたびに当選者が外れ、順番決めや重複しない抽選に使えます。</p></details><details><summary>アプリのインストールは必要ですか？</summary><p>不要です。ブラウザですぐ使え、ホーム画面に追加すればアプリのように起動できます。</p></details></div>
     <h2>コラム</h2><div class="rel-grid"><a class="rel" href="article-natsuyasumi-kuji">📖 夏休みイベントの順番決め・くじ引き活用ガイド<span>花火大会・夏祭り・自由研究のテーマ決めに</span></a></div>
     <h2>ほかの決めるツール</h2>
