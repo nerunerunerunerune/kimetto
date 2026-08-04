@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>くじ引きの確率でよくある勘違い ― 先に引くと有利？｜きめっと</title>
+<meta name="description" content="「先に引いたほうが有利」「外れが続いたから次は当たる」など、くじ引きでよくある思い込みを、順番と独立性という2つの観点から整理しました。">
+<link rel="canonical" href="https://kimetto.kawatare.studio/article-kakuritsu-kanchigai">
+<meta name="theme-color" content="#7c5cff">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="site.webmanifest"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="apple-mobile-web-app-title" content="きめっと">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="きめっと">
+<meta property="og:title" content="くじ引きの確率でよくある勘違い ― 先に引くと有利？">
+<meta property="og:description" content="「先に引いたほうが有利」「外れが続いたから次は当たる」など、くじ引きでよくある思い込みを、順番と独立性という2つの観点から整理しました。">
+<meta property="og:url" content="https://kimetto.kawatare.studio/article-kakuritsu-kanchigai">
+<meta property="og:image" content="https://kimetto.kawatare.studio/ogp.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="くじ引きの確率でよくある勘違い ― 先に引くと有利？">
+<meta name="twitter:description" content="「先に引いたほうが有利」「外れが続いたから次は当たる」など、くじ引きでよくある思い込みを、順番と独立性という2つの観点から整理しました。">
+<meta name="twitter:image" content="https://kimetto.kawatare.studio/ogp.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"くじ引きの確率でよくある勘違い ― 先に引くと有利？","author":{"@type":"Organization","name":"かわたれ studio"},"publisher":{"@type":"Organization","name":"かわたれ studio"},"datePublished":"2026-08-04","dateModified":"2026-08-04","description":"「先に引いたほうが有利」「外れが続いたから次は当たる」など、くじ引きでよくある思い込みを、順番と独立性という2つの観点から整理しました。"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"くじは先に引いたほうが当たりやすいですか？","acceptedAnswer":{"@type":"Answer","text":"いいえ、引く順番によって確率は変わりません。10本中1本の当たりなら、1番目も最後の人も当たる確率は10分の1です。先に引く人は選べる本数が多い一方、後の人は前の人が外れた分だけ確率が上がるため、両者が打ち消し合って同じになります。"}},{"@type":"Question","name":"外れが続いたら、次は当たりやすくなりますか？","acceptedAnswer":{"@type":"Answer","text":"引いたくじを戻す場合は変わりません。サイコロやコイントスがこれにあたり、過去の結果は次に影響しません。一方、引いたくじを戻さない場合は残りの本数が減るため、外れが続けば当たる確率は上がります。どちらの型かで答えが変わります。"}},{"@type":"Question","name":"同じ人が何度も当たるのはおかしいですか？","acceptedAnswer":{"@type":"Answer","text":"おかしくありません。回数が少ないうちは偏りが出るのが確率の性質です。ただし当番の割り当てなど運用上それが困る場面では、一度当たった人を次の一巡から外す「戻さない型」の運用にするか、記録を残して調整してください。"}},{"@type":"Question","name":"あみだくじは公平ですか？","acceptedAnswer":{"@type":"Answer","text":"線を引いたあとで引く場所を選ぶなら公平です。全員が同じ確率でどの結果にも到達します。ただし、線の状態を見てから選べる状況では、たどって結果を予測できてしまうため公平とは言えません。線を隠した状態で選ぶ手順にしてください。"}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"きめっと","item":"https://kimetto.kawatare.studio/"},{"@type":"ListItem","position":2,"name":"くじの確率、よくある勘違い","item":"https://kimetto.kawatare.studio/article-kakuritsu-kanchigai"}]}</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S70G7BHKD0"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S70G7BHKD0');</script>
+<style>
+  :root{--bg:#f4f4fb;--card:#ffffff;--ink:#1e1b2e;--ink-2:#615c7a;--muted:#9a95b0;--line:#e7e5f2;
+    --brand:#7c5cff;--brand-d:#6544e0;--accent:#ff6b6b;--good:#22b07d;--good-bg:#e3f6ee;
+    --shadow:0 1px 2px rgba(30,20,50,.05),0 8px 22px rgba(30,20,50,.07);}
+  @media (prefers-color-scheme:dark){:root{--bg:#12111a;--card:#1c1a29;--ink:#f0eefb;--ink-2:#b3aecb;--muted:#7b7597;
+    --line:#2b2840;--brand:#9d86ff;--brand-d:#c0b0ff;--accent:#ff8787;--good:#3fce97;--good-bg:#16311f;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 26px rgba(0,0,0,.45);}}
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);line-height:1.85;font-family:system-ui,-apple-system,"Segoe UI","Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;-webkit-font-smoothing:antialiased;}
+  a{color:var(--brand);}
+  .sitebar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 16px;background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10;}
+  .sb-brand{display:flex;align-items:center;gap:9px;font-weight:800;text-decoration:none;color:var(--ink);font-size:16px;}
+  .sb-logo{width:30px;height:30px;border-radius:10px;background:linear-gradient(135deg,var(--brand),var(--accent));display:grid;place-items:center;color:#fff;font-size:16px;}
+  .sb-links{display:flex;gap:13px;font-size:14px;font-weight:700;} .sb-links a{text-decoration:none;color:var(--ink-2);} .sb-links a:hover{color:var(--brand);}
+  .wrap{max-width:900px;margin:0 auto;padding:24px 18px 70px;}
+  .hero{text-align:center;padding:22px 10px 6px;}
+  .hero h1{font-size:30px;margin:6px 0 12px;line-height:1.32;}
+  .hero p{font-size:15.5px;color:var(--ink-2);max-width:640px;margin:0 auto;}
+  .chips{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:18px 0 6px;}
+  .chip{font-size:12.5px;font-weight:800;color:var(--brand);background:#efeaff;padding:6px 13px;border-radius:20px;}
+  @media (prefers-color-scheme:dark){.chip{background:#241f3a;}}
+  h2{font-size:21px;margin:40px 0 6px;} .lead2{color:var(--ink-2);font-size:14px;margin:0 0 14px;}
+  .tools{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;} @media(max-width:720px){.tools{grid-template-columns:1fr 1fr;}} @media(max-width:460px){.tools{grid-template-columns:1fr;}}
+  .tool{display:block;text-decoration:none;color:inherit;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:var(--shadow);transition:.15s;}
+  .tool:hover{transform:translateY(-2px);border-color:var(--brand);}
+  .tool .ic{width:50px;height:50px;border-radius:14px;display:grid;place-items:center;font-size:25px;background:var(--bg);}
+  .tool h3{margin:12px 0 4px;font-size:17px;} .tool p{margin:0;font-size:13px;color:var(--ink-2);}
+  .tool .go{margin-top:10px;font-size:13px;font-weight:800;color:var(--brand);}
+  .use{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:6px;} @media(max-width:720px){.use{grid-template-columns:1fr;}}
+  .use .u{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:16px;} .use .u b{display:block;margin-bottom:5px;} .use .u p{margin:0;font-size:13.5px;color:var(--ink-2);}
+  .faq{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:6px 18px;}
+  .faq details{border-bottom:1px solid var(--line);padding:13px 0;} .faq details:last-child{border-bottom:none;}
+  .faq summary{font-weight:800;cursor:pointer;font-size:15px;} .faq p{font-size:13.5px;color:var(--ink-2);margin:8px 0 0;}
+  .crumb{font-size:12.5px;color:var(--muted);margin:2px 0 14px;} .crumb a{color:var(--ink-2);text-decoration:none;}
+  .page-h1{font-size:26px;margin:4px 0 6px;} .lead{font-size:15px;color:var(--ink-2);margin:0 0 20px;}
+  .cardp{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 24px;box-shadow:var(--shadow);}
+  .prose h2{font-size:19px;margin:28px 0 10px;padding-bottom:6px;border-bottom:2px solid var(--line);} .prose h2:first-child{margin-top:4px;}
+  .prose p{margin:8px 0;font-size:14.5px;} .prose ul{margin:8px 0;padding-left:22px;} .prose li{margin:6px 0;font-size:14.5px;}
+  .prose dt{font-weight:800;font-size:14px;margin-top:12px;} .prose dd{margin:2px 0 0;font-size:14.5px;color:var(--ink-2);}
+  .cta{display:inline-block;text-decoration:none;font-weight:800;font-size:15px;padding:12px 22px;border-radius:13px;background:var(--brand);color:#fff;margin-top:8px;}
+  footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;color:var(--muted);text-align:center;line-height:2;}
+  footer a{color:var(--ink-2);text-decoration:none;margin:0 7px;}
+
+  .prose h3{font-size:16px;margin:20px 0 6px;}
+  .prose ol{margin:8px 0;padding-left:22px;} .prose ol li{margin:8px 0;font-size:14.5px;}
+  .prose table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13.5px;} .prose td,.prose th{border:1px solid var(--line);padding:7px 10px;text-align:left;}
+  .rel-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px;} @media(max-width:600px){.rel-grid{grid-template-columns:1fr;}}
+  .rel{display:block;text-decoration:none;color:inherit;background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:14px;font-weight:800;} .rel:hover{border-color:var(--brand);}
+  .rel span{display:block;font-size:12px;color:var(--ink-2);font-weight:500;margin-top:2px;}
+  .note{background:var(--good-bg);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin:18px 0;font-size:13.5px;color:var(--ink-2);}
+</style>
+</head>
+<body>
+<nav class="sitebar"><a class="sb-brand" href="/"><span class="sb-logo">🎯</span>きめっと</a><div class="sb-links"><a href="/">ツール一覧</a><a href="about">このサイトについて</a></div></nav>
+<div class="wrap">
+  <div class="crumb"><a href="/">ホーム</a> ／ くじの確率、よくある勘違い</div>
+  <h1 class="page-h1">くじ引きの確率でよくある勘違い ― 先に引くと有利？</h1>
+  <p class="lead">直感と確率がずれる場面を知っておくと、決め方の説明がしやすくなります。</p>
+  <div class="cardp prose">
+
+  <h2>結論</h2>
+  <p>くじ引きで<b>引く順番によって当たる確率は変わりません</b>。1番目に引いても最後に引いても、当たりを引く確率は同じです。これは直感に反しますが、計算しても実験しても同じ結果になります。</p>
+  <p>もうひとつ、<b>外れが続いたからといって次が当たりやすくなることもありません</b>。ただしこれには条件があり、引いたくじを戻すかどうかで話が変わります。この2点を押さえておくと、決め方をめぐる無用な言い争いを減らせます。</p>
+
+  <h2>なぜ引く順番で有利不利が出ないのか</h2>
+  <p>10本のうち当たりが1本のくじを、10人が順に引く場面で考えます。</p>
+  <p>1番目の人が当たる確率は、単純に10本のうち1本なので10分の1です。では2番目の人はどうでしょうか。2番目の人が当たるには「1番目が外れ、かつ自分が当たる」必要があります。1番目が外れる確率は10分の9、そのあと残り9本から当たりを引く確率は9分の1です。掛け合わせると、10分の9 × 9分の1 ＝ 10分の1。<b>1番目とまったく同じ</b>になります。</p>
+  <p>同じ計算を続けると、3番目も4番目も、最後の10番目もすべて10分の1です。「先に引いたほうが当たりが残っている」と感じますが、先に引く人は自分より前の人が当たりを引いてしまう心配がないだけで、そのぶん選べる本数も多い。有利と不利が打ち消し合って、結果として全員が同じ確率になります。</p>
+  <p>この性質は実務でも役に立ちます。引く順番を決めるためにさらにじゃんけんをする、といった手間は本来いらないということです。順番を気にする人がいる場合は、この説明をしておくと納得されやすくなります。</p>
+
+  <h2>「そろそろ当たる」は成り立たない</h2>
+  <p>コイントスで表が5回続いたあと、次に裏が出やすくなることはありません。コインには過去の結果を覚える仕組みがないためです。毎回、表と裏はそれぞれ2分の1です。</p>
+  <p>これは<b>独立</b>な試行と呼ばれる性質です。サイコロ、コイントス、毎回同じ候補から選ぶルーレット——これらはすべて独立で、過去の結果は次に影響しません。「そろそろ来る」という感覚は、人間が偏りにパターンを見出そうとする性質から来るもので、確率とは無関係です。</p>
+  <p>ただし、<b>引いたくじを戻さない場合は話が別</b>です。10本中1本の当たりで、9人が外れたなら、最後の1本は必ず当たりです。この場合は前の結果が次に影響します。「そろそろ当たる」が成り立つのはこちらのケースだけで、両者を区別せずに語ると混乱します。</p>
+
+  <h2>2つの型を区別する</h2>
+  <table><tr><th></th><th>戻さない（非復元）</th><th>戻す（復元）</th></tr>
+  <tr><td>例</td><td>紙のくじ、あみだくじ、席替え</td><td>サイコロ、コイン、毎回全候補から選ぶ抽選</td></tr>
+  <tr><td>前の結果の影響</td><td>受ける</td><td>受けない</td></tr>
+  <tr><td>全員が当たる回数</td><td>本数どおりに必ず収まる</td><td>偏ることがある</td></tr>
+  <tr><td>向く場面</td><td>役割の割り当て</td><td>その場の勝敗判定</td></tr>
+  </table>
+  <p>役割を割り当てる場面では、<b>戻さない型</b>を選んでください。戻す型で当番を決めると、同じ人が連続で当たることが起こり得ます。確率としては正しくても、運用としては不満が出ます。</p>
+
+  <h2>あみだくじが公平である条件</h2>
+  <p>あみだくじは、縦線と横線でできた図をたどって結果に至る仕組みです。数学的には、どの縦線から出発しても、必ず異なる結果に1対1で対応します。同じ結果に2人が到達することはありません。</p>
+  <p>公平性が保たれる条件はひとつだけで、<b>線の状態を見ずに出発点を選ぶこと</b>です。図が完成した状態で見えていると、目でたどって結果を予測できてしまいます。予測できる状態で選ばせるなら、それはもうくじではありません。</p>
+  <p>紙で行う場合は、横線の部分を折って隠すか、結果の欄を隠して選ばせます。画面で行う場合は、線を引く前に出発点を選ばせるか、結果を伏せた状態で選ぶ手順にします。<b>選ぶ順番は関係なく、隠れているかどうかだけが効きます。</b></p>
+  <p>なお「横線を増やせば公平になる」という話をときどき聞きますが、これは正確ではありません。横線が1本でも、隠れていれば公平です。逆に横線が何百本あっても、見えていれば予測できます。本数ではなく情報の隠蔽が本質です。</p>
+
+  <h2>少ない回数では偏るのが普通</h2>
+  <p>サイコロを6回振って、1から6が1回ずつ出ることはめったにありません。実際には同じ目が2回出て、出ない目が1つある、といった結果のほうが多くなります。これは不具合ではなく、<b>回数が少ないうちは偏るのが自然</b>だからです。</p>
+  <p>回数を増やしていくと、各目の割合はだんだん6分の1に近づいていきます。ただしこれは「割合が近づく」という意味で、「出た回数の差が縮まる」という意味ではありません。ここも誤解されやすい点です。</p>
+  <p>グループ分けや席替えで「また同じ人と一緒になった」と感じるのも、同じ理由です。数回の試行では重複が起きるのが普通で、仕組みを疑う理由にはなりません。どうしても避けたい場合は、前回の結果を記録して重複を条件に引き直す運用にします。</p>
+
+  <h2>説明するときの言い方</h2>
+  <p>確率の話は、正しく説明しても納得されないことがあります。「そういうものです」と言い切るより、次のような伝え方のほうが受け入れられやすくなります。</p>
+  <ul>
+    <li><b>順番を気にする人に</b>：「先に引くと選べる本数は多いけれど、後の人は外れが減った状態で引ける。だから同じになります」——両方の言い分を認める形にします。</li>
+    <li><b>「そろそろ当たる」と言う人に</b>：「サイコロは前に何が出たか覚えていないので、毎回まっさらです」——擬人化すると伝わりやすくなります。</li>
+    <li><b>偏りを疑う人に</b>：「回数が少ないうちは偏るのが普通で、増やすとならされていきます」——不具合ではないことを先に伝えます。</li>
+  </ul>
+  <p>そして最も効くのは、<b>引く前に説明しておく</b>ことです。結果が出てから確率の話をすると、言い訳に聞こえます。同じ説明でも、順序を変えるだけで受け取られ方が変わります。</p>
+
+  <h2>今すぐ使えるツール</h2>
+  <p>きめっとの<a href="tool-dice">サイコロ</a>や<a href="tool-coin">コイントス</a>は、戻す型の代表です。何度振っても条件は毎回同じになります。一方、<a href="tool-amidakuji">あみだくじ</a>や<a href="tool-order">順番決め</a>は戻さない型で、全員に過不足なく割り当てられます。</p>
+  <p>候補から1つ選ぶだけなら<a href="tool-roulette">ルーレット</a>や<a href="tool-gacha">ガチャ</a>、番号を引きたいなら<a href="tool-number-draw">数字抽選</a>が使えます。いずれも入力内容は端末の中だけで扱われます。</p>
+
+
+  <h2>よくある質問</h2>
+  <h3>くじは先に引いたほうが当たりやすいですか？</h3>
+  <p>いいえ、引く順番によって確率は変わりません。10本中1本の当たりなら、1番目も最後の人も当たる確率は10分の1です。先に引く人は選べる本数が多い一方、後の人は前の人が外れた分だけ確率が上がるため、両者が打ち消し合って同じになります。</p>
+  <h3>外れが続いたら、次は当たりやすくなりますか？</h3>
+  <p>引いたくじを戻す場合は変わりません。サイコロやコイントスがこれにあたり、過去の結果は次に影響しません。一方、引いたくじを戻さない場合は残りの本数が減るため、外れが続けば当たる確率は上がります。どちらの型かで答えが変わります。</p>
+  <h3>同じ人が何度も当たるのはおかしいですか？</h3>
+  <p>おかしくありません。回数が少ないうちは偏りが出るのが確率の性質です。ただし当番の割り当てなど運用上それが困る場面では、一度当たった人を次の一巡から外す「戻さない型」の運用にするか、記録を残して調整してください。</p>
+  <h3>あみだくじは公平ですか？</h3>
+  <p>線を引いたあとで引く場所を選ぶなら公平です。全員が同じ確率でどの結果にも到達します。ただし、線の状態を見てから選べる状況では、たどって結果を予測できてしまうため公平とは言えません。線を隠した状態で選ぶ手順にしてください。</p>
+
+  <h2>関連ツール</h2>
+  <div class="rel-grid">
+    <a class="rel" href="tool-dice">🎲 サイコロ <span>1〜複数個をその場で</span></a>
+    <a class="rel" href="tool-amidakuji">〰️ あみだくじ <span>担当や順番をその場で決定</span></a>
+  </div>
+
+  <div><a class="cta" href="/">ツール一覧を見る</a></div>
+  </div>
+  <footer><div><a href="/">ツール一覧</a>・<a href="about">このサイトについて</a>・<a href="privacy">プライバシー</a>・<a href="terms">利用規約</a>・<a href="https://kawatare.studio/">かわたれ studio</a></div><div>きめっと ・ 最終更新：2026-08-04</div></footer>
+</div>
+</body>
+</html>
