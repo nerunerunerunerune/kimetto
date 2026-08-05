@@ -74,6 +74,10 @@
   .rel{display:block;text-decoration:none;color:inherit;background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:14px;font-weight:800;} .rel:hover{border-color:var(--brand);}
   .rel span{display:block;font-size:12px;color:var(--ink-2);font-weight:500;margin-top:2px;}
   .note{background:var(--good-bg);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin:18px 0;font-size:13.5px;color:var(--ink-2);}
+  .aff{background:var(--good-bg);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin:18px 0;}
+  .aff-tag{display:inline-block;font-size:11px;font-weight:800;color:#fff;background:var(--ink-2);padding:2px 8px;border-radius:5px;}
+  .aff-text{margin:8px 0 6px;font-size:13.5px;color:var(--ink-2);line-height:1.8;}
+  .aff-links{margin:0;font-size:13.5px;line-height:1.9;} .aff-links a{font-weight:800;}
 </style>
 </head>
 <body>
@@ -154,6 +158,8 @@
   <h3>「もう一回引き直して」と言われたらどうしますか？</h3>
   <p>引く前に方針を決めておくのが唯一の対策です。「引き直しはしません」と先に宣言しておけば、その場で判断を迫られません。結果を見てから引き直すと、次回以降その決め方が信用されなくなります。</p>
 
+    <div class="aff" data-aff="kimetto/article-sekigae-kimekata"><span class="aff-tag">PR</span><p class="aff-text">席の配置や学級づくりの考え方をまとめた書籍の例です。</p><p class="aff-links"><a href="https://www.amazon.co.jp/s?k=%E5%AD%A6%E7%B4%9A%E7%B5%8C%E5%96%B6%20%E6%95%99%E5%AE%A4%E7%92%B0%E5%A2%83%20%E5%BA%A7%E5%B8%AD" target="_blank" rel="noopener sponsored nofollow" data-aff-click="amazon_search">学級経営・教室環境の本を見る（Amazon）</a></p></div>
+
   <h2>関連ツール</h2>
   <div class="rel-grid">
     <a class="rel" href="tool-seating">🪑 席替え <span>座席をランダムに割り当て</span></a>
@@ -164,5 +170,24 @@
   </div>
   <footer><div><a href="/">ツール一覧</a>・<a href="about">このサイトについて</a>・<a href="privacy">プライバシー</a>・<a href="terms">利用規約</a>・<a href="https://kawatare.studio/">かわたれ studio</a></div><div>きめっと ・ 最終更新：2026-08-04</div></footer>
 </div>
+<script>
+/* アフィリエイトのクリック計測。失敗してもリンク遷移は妨げない。 */
+(function(){
+  document.addEventListener('click', function(e){
+    try{
+      var a = e.target && e.target.closest && e.target.closest('a[data-aff-click]');
+      if(!a) return;
+      var slot = a.closest('.aff');
+      if(typeof gtag === 'function'){
+        gtag('event','affiliate_click',{
+          program: a.getAttribute('data-aff-click') || '',
+          slot: (slot && slot.getAttribute('data-aff')) || '',
+          link_url: a.href || ''
+        });
+      }
+    }catch(err){/* 計測の失敗は無視する */}
+  }, true);
+})();
+</script>
 </body>
 </html>
