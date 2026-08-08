@@ -1,6 +1,26 @@
 {
   "name": "kimetto",
   "compatibility_date": "2025-01-01",
+
+  // workers.dev を無効にする理由（2026-08-07）
+  //
+  // このWorkerには kimetto.kawatare-studio.workers.dev が自動で割り当てられ、
+  // 本番の kimetto.kawatare.studio と同じ内容が2つのURLで公開されていた。
+  // Search Console が /article-natsuyasumi-kuji と /privacy の2ページを
+  // 「代替ページ（適切な canonical タグあり）」として検出したのはこれが原因。
+  // canonical が本番を指しているのでGoogleの判断自体は正しいが、
+  // 重複そのものを消すほうが素直。
+  //
+  // 設定ファイルに書く理由：ダッシュボードで無効にしても、
+  // ここに書いていないと次に wrangler deploy したとき復活する（公式ドキュメント）。
+  //
+  // Wrangler 4.44 以降は Preview URL もこの設定に連動して無効になる。
+  // カスタムドメイン（kimetto.kawatare.studio）は別管理なので影響しない。
+  //
+  // ※ みちのくネット工房（michinoku-net-koubou）は workers.dev が正規の
+  //   公開URLなので、あちらでこの設定を真似しないこと。
+  "workers_dev": false,
+
   "assets": {
     "directory": "./",
     "html_handling": "auto-trailing-slash",
