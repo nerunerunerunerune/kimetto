@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>くじ引き ― 当たりの本数を決めて引ける無料くじ引きツール｜きめっと</title>
+<meta name="description" content="当たり・はずれの本数を入れるだけで作れる無料のくじ引き。引いたくじは戻さない本物のくじと同じ仕組み。残り本数の表示、まとめて引く、URLで共有、大画面表示に対応。登録不要。">
+<link rel="canonical" href="https://kimetto.kawatare.studio/tool-kuji">
+<meta name="theme-color" content="#14b8a6">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="site.webmanifest"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="apple-mobile-web-app-title" content="きめっと">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="きめっと">
+<meta property="og:title" content="くじ引き｜当たりの本数を決めて引ける無料くじ引き">
+<meta property="og:description" content="当たり・はずれの本数を入れるだけで作れる無料のくじ引き。引いたくじは戻さない本物のくじと同じ仕組み。残り本数の表示、まとめて引く、URLで共有、大画面表示に対応。登録不要。">
+<meta property="og:url" content="https://kimetto.kawatare.studio/tool-kuji">
+<meta property="og:image" content="https://kimetto.kawatare.studio/ogp.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="くじ引き｜当たりの本数を決めて引ける無料くじ引き">
+<meta name="twitter:description" content="当たり・はずれの本数を入れるだけで作れる無料のくじ引き。引いたくじは戻さない本物のくじと同じ仕組み。残り本数の表示、まとめて引く、URLで共有、大画面表示に対応。登録不要。">
+<meta name="twitter:image" content="https://kimetto.kawatare.studio/ogp.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S70G7BHKD0"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S70G7BHKD0');</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"くじ引き｜きめっと","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"},"description":"当たり・はずれの本数を入れるだけで作れる無料のくじ引き。引いたくじは戻さない本物のくじと同じ仕組み。残り本数の表示、まとめて引く、URLで共有、大画面表示に対応。登録不要。"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"引いたくじは箱に戻りますか？","acceptedAnswer":{"@type":"Answer","text":"戻りません。紙のくじと同じで、一度引いたくじは残りから消えます。毎回同じ確率で選びたいときは、ルーレットを使ってください。"}},{"@type":"Question","name":"途中で画面を閉じたらどうなりますか？","acceptedAnswer":{"@type":"Answer","text":"くじ箱の中身と引いた結果は、この端末のブラウザに残ります。もう一度開くと続きから表示されます。ほかの端末には引き継がれません。"}},{"@type":"Question","name":"同じくじを別のスマホで使えますか？","acceptedAnswer":{"@type":"Answer","text":"「共有用のURLをコピー」で、くじ箱の中身（賞の名前と本数）を渡せます。開いた側では、同じ中身の新しいくじ箱が作られます。どちらかで引いた結果は、もう一方には反映されません。"}},{"@type":"Question","name":"何本まで入れられますか？","acceptedAnswer":{"@type":"Answer","text":"合計500本までです。1行に入る名前は50文字までです。"}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"きめっと","item":"https://kimetto.kawatare.studio/"},{"@type":"ListItem","position":2,"name":"くじ引き","item":"https://kimetto.kawatare.studio/tool-kuji"}]}</script>
+<style>
+  :root{--bg:#f4f4fb;--card:#ffffff;--ink:#1e1b2e;--ink-2:#615c7a;--muted:#9a95b0;--line:#e7e5f2;
+    --brand:#14b8a6;--brand-d:#0e9488;--accent:#7c5cff;--good:#22b07d;--good-bg:#e3f6ee;
+    --shadow:0 1px 2px rgba(30,20,50,.05),0 8px 22px rgba(30,20,50,.07);}
+  @media (prefers-color-scheme:dark){:root{--bg:#12111a;--card:#1c1a29;--ink:#f0eefb;--ink-2:#b3aecb;--muted:#7b7597;
+    --line:#2b2840;--brand:#43d3c4;--brand-d:#7fe3d8;--accent:#9d86ff;--good:#3fce97;--good-bg:#16311f;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 26px rgba(0,0,0,.45);}}
+
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);line-height:1.8;
+    font-family:system-ui,-apple-system,"Segoe UI","Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;-webkit-font-smoothing:antialiased;}
+  .sitebar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 16px;background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20;}
+  .sb-brand{display:flex;align-items:center;gap:9px;font-weight:800;text-decoration:none;color:var(--ink);font-size:16px;}
+  .sb-logo{width:30px;height:30px;border-radius:10px;background:linear-gradient(135deg,var(--brand),var(--accent));display:grid;place-items:center;color:#fff;font-size:16px;}
+  .sb-links{display:flex;gap:12px;font-size:13.5px;font-weight:700;}
+  .sb-links a{text-decoration:none;color:var(--ink-2);} .sb-links a:hover{color:var(--brand);}
+  .wrap{max-width:840px;margin:0 auto;padding:18px 16px 64px;}
+  header.hd{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 0 12px;flex-wrap:wrap;}
+  .brand{display:flex;align-items:center;gap:12px;}
+  .logo{width:44px;height:44px;border-radius:13px;background:linear-gradient(135deg,var(--brand),var(--accent));display:grid;place-items:center;color:#fff;font-weight:800;font-size:20px;box-shadow:var(--shadow);}
+  .brand h1{font-size:20px;margin:0;line-height:1.3;} .brand .tag{font-size:12.5px;color:var(--ink-2);}
+  .free{font-size:12px;color:var(--good);background:var(--good-bg);padding:5px 11px;border-radius:20px;font-weight:800;white-space:nowrap;}
+  .answer{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--brand);border-radius:14px;padding:13px 17px;margin:6px 0 16px;font-size:14.5px;box-shadow:var(--shadow);}
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);padding:18px;margin-bottom:16px;}
+  .btn{border:none;border-radius:13px;padding:13px 20px;font-weight:800;font-size:15px;cursor:pointer;font-family:inherit;}
+  .btn.primary{background:var(--brand);color:#fff;} .btn.primary:hover{background:var(--brand-d);}
+  .btn.ghost{background:var(--bg);color:var(--ink);border:1px solid var(--line);}
+  .btn.big{font-size:18px;padding:15px 34px;}
+  .btn:disabled{opacity:.5;cursor:default;}
+  .btnrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;}
+  .olabel{display:block;font-size:12.5px;font-weight:800;color:var(--ink-2);margin:10px 0 8px;}
+  .opts{display:flex;gap:16px;flex-wrap:wrap;align-items:center;margin:12px 0;font-size:13.5px;color:var(--ink-2);}
+  .opts label{display:flex;align-items:center;gap:6px;cursor:pointer;} .opts input{accent-color:var(--brand);width:17px;height:17px;}
+  .status{font-size:13px;color:var(--good);min-height:16px;margin:6px 2px;font-weight:700;}
+  .ad{border:1px dashed var(--line);border-radius:14px;padding:14px;text-align:center;color:var(--muted);font-size:12px;background:var(--card);margin:16px 0;}
+  .seo h2{font-size:18px;margin:26px 0 10px;}
+  .seo p{font-size:14.5px;line-height:1.9;margin:8px 0;}
+  .seo ul{margin:8px 0;padding-left:22px;} .seo li{font-size:14.5px;line-height:1.9;margin:6px 0;}
+  .note-read{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:10px;padding:12px 16px;margin:14px 0;font-size:14px;line-height:1.9;}
+  .howto{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;} @media(max-width:600px){.howto{grid-template-columns:1fr;}}
+  .howto .st{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;}
+  .howto .st .n{width:26px;height:26px;border-radius:50%;background:var(--brand);color:#fff;font-weight:800;display:grid;place-items:center;font-size:14px;}
+  .howto .st b{display:block;margin:8px 0 2px;} .howto .st p{margin:0;font-size:13px;color:var(--ink-2);}
+  .faq details{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:11px 15px;margin-bottom:8px;}
+  .faq summary{font-weight:800;cursor:pointer;font-size:14.5px;} .faq p{font-size:13.5px;color:var(--ink-2);margin:8px 0 0;}
+  .rel-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;} @media(max-width:600px){.rel-grid{grid-template-columns:1fr;}}
+  .rel{display:block;text-decoration:none;color:inherit;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;font-weight:800;} .rel:hover{border-color:var(--brand);}
+  .rel span{display:block;font-size:12px;color:var(--ink-2);font-weight:500;margin-top:2px;}
+  .foot{font-size:12px;color:var(--muted);text-align:center;margin-top:24px;line-height:1.95;}
+  .foot a{color:var(--ink-2);}
+
+
+  textarea.kin{width:100%;min-height:120px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);font-family:inherit;font-size:15px;line-height:1.7;}
+  .presets{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0;}
+  .presets button{font-size:12.5px;padding:5px 10px;border-radius:9px;border:1px solid var(--line);background:var(--bg);color:var(--ink-2);cursor:pointer;font-family:inherit;}
+  .stage{text-align:center;padding:10px 0;}
+  .slip{display:inline-grid;place-items:center;min-width:220px;min-height:130px;padding:16px 26px;border-radius:14px;background:#fffdf3;color:#1e1b2e;border:2px solid #e9dfb8;box-shadow:var(--shadow);font-size:36px;font-weight:800;transform-origin:top center;}
+  .slip.closed{color:transparent;background:repeating-linear-gradient(45deg,#f5ecc9,#f5ecc9 10px,#efe3b5 10px,#efe3b5 20px);}
+  .slip.opening{animation:openSlip .8s ease-out;}
+  @keyframes openSlip{0%{transform:rotateX(80deg);opacity:.4}100%{transform:rotateX(0);opacity:1}}
+  .numinfo{text-align:center;font-size:13.5px;color:var(--ink-2);min-height:18px;margin-top:8px;}
+  .remain{width:100%;border-collapse:collapse;font-size:14px;margin-top:10px;}
+  .remain th,.remain td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left;} .remain td.n{text-align:right;font-variant-numeric:tabular-nums;font-weight:800;}
+  .hist{font-size:14px;margin:10px 0 0;padding-left:0;list-style:none;max-height:260px;overflow:auto;}
+  .hist li{padding:4px 2px;border-bottom:1px dashed var(--line);}
+  .notice{display:none;background:var(--good-bg);border-radius:12px;padding:10px 14px;margin-bottom:12px;font-size:14px;} .notice.show{display:block;}
+  .drawpanel:fullscreen{background:var(--card);padding:4vh 4vw;} .drawpanel:fullscreen .slip{font-size:12vh;min-width:60vw;min-height:30vh;} .drawpanel:fullscreen .no-fs{display:none;}
+  .hidden{display:none;}
+</style>
+</head>
+<body>
+<nav class="sitebar">
+  <a class="sb-brand" href="/"><span class="sb-logo">🎯</span>きめっと</a>
+  <div class="sb-links"><a href="/">ツール一覧</a><a href="about">このサイトについて</a></div>
+</nav>
+<div class="wrap">
+  <header class="hd">
+    <div class="brand"><div class="logo">🎫</div><div><h1>くじ引き</h1><div class="tag">当たりの本数を決めて引く</div></div></div>
+    <div class="free">🎈 登録不要・無料</div>
+  </header>
+
+  <div class="answer">賞の名前と本数を1行ずつ書いて「くじ箱を作る」。あとは「1枚引く」を押すたびに、箱から1枚ずつ出てきます。<b>引いたくじは箱に戻りません。</b></div>
+  <div class="notice" id="notice"></div>
+
+  <div class="panel" id="setup">
+    <label class="olabel" for="kin">くじ箱の中身（1行に「名前 本数」）</label>
+    <textarea class="kin" id="kin">1等 1
+2等 3
+はずれ 16</textarea>
+    <div class="presets"><span style="font-size:12.5px;color:var(--ink-2)">例：</span><button type="button" data-p="当たり 1&#10;はずれ 9">当たり1・はずれ9</button><button type="button" data-p="1等 1&#10;2等 2&#10;3等 5&#10;参加賞 12">1等〜3等＋参加賞</button><button type="button" data-p="赤 5&#10;白 5&#10;青 5&#10;黄 5">4チームの色分け</button></div>
+    <div class="btnrow"><button class="btn primary" id="buildBtn">くじ箱を作る</button></div>
+    <div class="status" id="status1"></div>
+  </div>
+
+  <div class="panel drawpanel hidden" id="drawPanel">
+    <div class="stage"><div class="slip closed" id="slip">？</div></div>
+    <div class="numinfo" id="info"></div>
+    <div class="btnrow" style="justify-content:center"><button class="btn primary big" id="drawBtn">1枚引く</button><button class="btn ghost" id="fsBtn" hidden>大画面で表示</button></div>
+    <div class="no-fs">
+      <div class="opts" style="justify-content:center"><label><input type="checkbox" id="optAnim" checked>紙が開く演出（約0.8秒）</label></div>
+      <div class="opts" style="justify-content:center">まとめて <input class="numin" id="bulkN" type="number" min="1" value="5" style="width:70px;padding:6px"> 人分 <button class="btn ghost" id="bulkBtn" style="padding:8px 14px">まとめて引く</button></div>
+      <table class="remain" id="remain"></table>
+      <ol class="hist" id="hist"></ol>
+      <div class="btnrow"><button class="btn ghost" id="copyBtn">結果をコピー</button><button class="btn ghost" id="shareBtn">共有用のURLをコピー</button><button class="btn ghost" id="resetBtn">同じ中身で作り直す</button><button class="btn ghost" id="editBtn">中身を書き直す</button></div>
+      <div class="status" id="status2"></div>
+    </div>
+  </div>
+
+  <section class="seo">
+    <h2>先に引く人は得なのか</h2>
+    <p>当たり3本、はずれ27本のくじを30人で順に引く。1人目が当たる確率は30本中3本で10%です。では最後の30人目は？　これも10%になります。</p>
+    <p>前の人が引くほど残りの本数は変わります。それでも、まだ誰も引いていない時点で比べると、何番目に引いても当たる確率は同じ。このページのくじは、紙のくじと同じく引いたものを箱に戻さない作りなので、この性質がそのまま成り立ちます。詳しい理由は<a href="article-kakuritsu-kanchigai">くじの確率でよくある勘違い</a>にまとめました。</p>
+
+    <h2>中身の書き方</h2>
+    <p>1行に1種類。名前のあとに本数を書きます。「1等 1」「1等 1本」「1等　１本」のどれでも読み取ります。本数を書かなかった行は1本として数えます。</p>
+    <p>名前は「当たり」「はずれ」に限りません。景品の名前でも、チームの色でも、係の名前でも入ります。</p>
+
+    <h2>作るときに決めたこと</h2>
+    <ul>
+      <li><b>引いたくじは戻さない。</b>景品の数が決まっている抽選で、同じ賞が本数より多く出てしまうと困る。だから、箱に入れた本数より多くは絶対に出ません。</li>
+      <li><b>残りの本数をいつも見せる。</b>「1等はもう出たか」を司会が毎回数えなくて済むように、賞ごとの残りを表にしました。</li>
+      <li><b>共有するのは中身だけ。</b>共有用のURLには、賞の名前と本数だけが入ります。引いた結果は入りません。URLを知っている人は誰でも同じ中身のくじ箱を開けるので、人に見られて困る名前は入れないでください。</li>
+      <li><b>合計は500本まで。</b>町内会や学校の行事の規模なら足ります。それより大きい抽選会なら、番号札を配って<a href="tool-number-draw">数字抽選</a>で番号を引くほうが、受け渡しの管理がしやすいはずです。</li>
+    </ul>
+
+    <h2>くじ引きより合う道具がある場面</h2>
+    <ul>
+      <li>毎回同じ確率で選びたい（何度当たってもよい）→ <a href="tool-roulette">ルーレット</a></li>
+      <li>全員の順番を一度に決めたい → <a href="tool-order">順番決め</a></li>
+      <li>人数をそろえて班に分けたい → <a href="tool-groups">グループ分け</a></li>
+      <li>ビンゴ大会の番号を出したい → <a href="tool-bingo">ビンゴ</a></li>
+    </ul>
+
+    <h2>よくある質問</h2>
+    <div class="faq"><details open><summary>引いたくじは箱に戻りますか？</summary><p>戻りません。紙のくじと同じで、一度引いたくじは残りから消えます。毎回同じ確率で選びたいときは、ルーレットを使ってください。</p></details><details><summary>途中で画面を閉じたらどうなりますか？</summary><p>くじ箱の中身と引いた結果は、この端末のブラウザに残ります。もう一度開くと続きから表示されます。ほかの端末には引き継がれません。</p></details><details><summary>同じくじを別のスマホで使えますか？</summary><p>「共有用のURLをコピー」で、くじ箱の中身（賞の名前と本数）を渡せます。開いた側では、同じ中身の新しいくじ箱が作られます。どちらかで引いた結果は、もう一方には反映されません。</p></details><details><summary>何本まで入れられますか？</summary><p>合計500本までです。1行に入る名前は50文字までです。</p></details></div>
+  </section>
+
+  <div class="foot"><a href="/">ツール一覧</a> ・ <a href="about">このサイトについて</a> ・ <a href="privacy">プライバシー</a> ・ <a href="terms">利用規約</a>・<a href="https://kawatare.studio/">かわたれ studio</a><br>姉妹サイト：<a href="https://kodetto.kawatare.studio/">こでっと（開発者ツール）</a>・<a href="https://mitooshi.kawatare.studio/">みとおし（発達支援）</a>・<a href="https://patto.kawatare.studio/">ぱっと計算</a><br>きめっと ・ 最終更新：2026-10-06 ・ すべての操作は端末内で完結します</div>
+</div>
+<script data-logic="KimettoKuji">
+window.KimettoKuji=(function(){
+  function z2h(s){return s.replace(/[０-９]/g,function(c){return String.fromCharCode(c.charCodeAt(0)-0xFEE0);});}
+  function parse(text){var out=[],total=0;String(text||'').split('\n').forEach(function(line){
+    var t=z2h(line).replace(/\u3000/g,' ').trim().slice(0,50);if(!t)return;
+    var m=t.match(/^(.*?)\s*([0-9]{1,3})\s*本?$/);var named=m&&m[1].trim();var name=named?m[1].trim():t;var count=named?parseInt(m[2],10):1;
+    if(count<1)return;if(total+count>500)count=500-total;if(count<=0)return;total+=count;out.push({name:name,count:count});});return out;}
+  function makeBox(prizes){var s=[];prizes.forEach(function(p){for(var i=0;i<p.count;i++)s.push(p.name);});
+    for(var j=s.length-1;j>0;j--){var k=Math.floor(Math.random()*(j+1));var t=s[j];s[j]=s[k];s[k]=t;}
+    var init={};prizes.forEach(function(p){init[p.name]=(init[p.name]||0)+p.count;});return {slips:s,drawn:[],init:init};}
+  function draw(box){if(!box.slips.length)return null;var n=box.slips.pop();box.drawn.push(n);return n;}
+  function remaining(box){var r={};Object.keys(box.init).forEach(function(k){r[k]=box.init[k];});box.drawn.forEach(function(n){r[n]--;});return r;}
+  function encode(prizes){return '#k='+encodeURIComponent(prizes.map(function(p){return p.name+' '+p.count;}).join('\n'));}
+  function decode(hash){var m=String(hash||'').match(/^#k=(.*)$/);if(!m)return [];try{return parse(decodeURIComponent(m[1]));}catch(e){return [];}}
+  return {parse:parse,makeBox:makeBox,draw:draw,remaining:remaining,encode:encode,decode:decode};
+})();
+</script>
+<script>(function(){
+  var K=window.KimettoKuji, KEY='kimetto_kuji_v1', box=null, prizes=[], busy=false;
+  var $=function(id){return document.getElementById(id);};
+  function say(id,m){$(id).textContent=m||'';}
+  function save(){try{localStorage.setItem(KEY,JSON.stringify({prizes:prizes,box:box}));}catch(e){}}
+  function total(){return Object.keys(box.init).reduce(function(a,k){return a+box.init[k];},0);}
+  function render(){
+    var r=K.remaining(box), left=box.slips.length;
+    $('info').textContent='引いた数 '+box.drawn.length+' ／ 残り '+left+'（全'+total()+'本）';
+    $('remain').innerHTML='<tr><th>賞</th><th style="text-align:right">残り</th></tr>'+Object.keys(r).map(function(k){return '<tr><td></td><td class="n">'+r[k]+' / '+box.init[k]+'</td></tr>';}).join('');
+    var tds=$('remain').querySelectorAll('tr td:first-child');Object.keys(r).forEach(function(k,i){tds[i].textContent=k;});
+    $('hist').innerHTML='';box.drawn.slice().reverse().forEach(function(n,i){var li=document.createElement('li');li.textContent=(box.drawn.length-i)+'人目：'+n;$('hist').appendChild(li);});
+    $('drawBtn').disabled=left===0; $('bulkN').max=left||1;
+  }
+  function show(name,anim){var s=$('slip');s.className='slip';s.textContent=name;if(anim){void s.offsetWidth;s.className='slip opening';}}
+  function start(p,fromLink){
+    prizes=p; if(!prizes.length){say('status1','中身を1行以上書いてください。');return;}
+    box=K.makeBox(prizes); save(); $('drawPanel').className='panel drawpanel'; $('setup').className='panel hidden';
+    var s=$('slip');s.className='slip closed';s.textContent='？'; render(); say('status2',''); say('status1','');
+  }
+  $('buildBtn').addEventListener('click',function(){start(K.parse($('kin').value));});
+  [].forEach.call(document.querySelectorAll('.presets button'),function(b){b.addEventListener('click',function(){$('kin').value=b.getAttribute('data-p');});});
+  $('drawBtn').addEventListener('click',function(){
+    if(busy||!box)return; var n=K.draw(box); if(n===null){say('status2','くじはもうありません。');return;} save();
+    if($('optAnim').checked){busy=true;var s=$('slip');s.className='slip closed';s.textContent='？';setTimeout(function(){busy=false;show(n,true);render();},250);}
+    else{show(n,false);render();}
+  });
+  $('bulkBtn').addEventListener('click',function(){var c=parseInt($('bulkN').value,10);if(isNaN(c)||c<1)return;var got=[];for(var i=0;i<c;i++){var n=K.draw(box);if(n===null)break;got.push(n);}save();if(got.length)show(got[got.length-1],false);render();say('status2',got.length+'人分を引きました'+(got.length<c?'（くじが足りなかったので'+got.length+'人分だけ）':'')+'。');});
+  $('copyBtn').addEventListener('click',function(){var t=box.drawn.map(function(n,i){return (i+1)+'人目：'+n;}).join('\n');if(!t){say('status2','まだ引いていません。');return;}navigator.clipboard.writeText(t).then(function(){say('status2','結果をコピーしました。');},function(){say('status2','コピーできませんでした。');});});
+  $('shareBtn').addEventListener('click',function(){var url=location.origin+location.pathname+K.encode(prizes);if(url.length>1800){say('status2','中身が長すぎて、URLにすると途中で切れるおそれがあります（'+url.length+'文字）。賞の名前を短くしてください。');return;}navigator.clipboard.writeText(url).then(function(){say('status2','共有用のURLをコピーしました。開いた人は同じ中身のくじ箱を新しく作れます。');},function(){say('status2','コピーできませんでした。');});});
+  $('resetBtn').addEventListener('click',function(){if(box.drawn.length&&!confirm('引いた結果を消して、同じ中身で作り直しますか？'))return;start(prizes);});
+  $('editBtn').addEventListener('click',function(){$('kin').value=prizes.map(function(p){return p.name+' '+p.count;}).join('\n');$('setup').className='panel';$('drawPanel').className='panel drawpanel hidden';});
+  var dp=$('drawPanel');
+  if(dp.requestFullscreen){$('fsBtn').hidden=false;$('fsBtn').addEventListener('click',function(){if(document.fullscreenElement)document.exitFullscreen();else dp.requestFullscreen().catch(function(){});});document.addEventListener('fullscreenchange',function(){$('fsBtn').textContent=document.fullscreenElement?'大画面を閉じる':'大画面で表示';});}
+  // 開いたときの状態
+  var fromHash=K.decode(location.hash);
+  if(fromHash.length){$('kin').value=fromHash.map(function(p){return p.name+' '+p.count;}).join('\n');var nt=$('notice');nt.textContent='共有されたリンクから開きました。くじ箱の中身だけが入っています（引いた結果は共有されません）。よければ「くじ箱を作る」を押してください。';nt.className='notice show';}
+  else{try{var sv=JSON.parse(localStorage.getItem(KEY)||'null');if(sv&&sv.box&&sv.prizes&&sv.prizes.length){prizes=sv.prizes;box=sv.box;$('drawPanel').className='panel drawpanel';$('setup').className='panel hidden';render();if(box.drawn.length)show(box.drawn[box.drawn.length-1],false);say('status2','前回の続きを表示しています。');}}catch(e){}}
+  window.__tool={build:function(t){start(K.parse(t));},draw:function(){var n=K.draw(box);save();render();return n;},remaining:function(){return K.remaining(box);}};
+})();</script>
+<!-- pwa:start -->
+<script>
+(function(){
+var TH="#7c5cff", KEY='kw_pwa_hint_v1';
+function off(){try{return localStorage.getItem(KEY)==='1';}catch(e){return true;}}
+function setoff(){try{localStorage.setItem(KEY,'1');}catch(e){}}
+function standalone(){try{return window.matchMedia('(display-mode: standalone)').matches||navigator.standalone===true;}catch(e){return false;}}
+if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js').catch(function(){});});}
+if(standalone()&&typeof gtag==='function'){gtag('event','pwa_launch');}
+var deferred=null,bar=null,timer=null;
+function drop(){if(bar){bar.remove();bar=null;}if(timer){clearTimeout(timer);timer=null;}}
+function build(msg,btnText,onClick){
+  if(bar||off()||standalone()||!document.body)return;
+  bar=document.createElement('div');
+  bar.setAttribute('role','region');bar.setAttribute('aria-label','ホーム画面に追加');
+  bar.style.cssText='position:fixed;left:12px;right:12px;bottom:12px;z-index:2147483000;display:flex;align-items:center;gap:10px;padding:11px 13px;border-radius:14px;background:#1f2430;color:#fff;box-shadow:0 8px 30px rgba(0,0,0,.28);font:500 13.5px/1.55 system-ui,-apple-system,"Hiragino Kaku Gothic ProN",sans-serif;max-width:560px;margin:0 auto;';
+  var ic=document.createElement('img');ic.src='/icon-192.png';ic.alt='';ic.width=34;ic.height=34;
+  ic.style.cssText='width:34px;height:34px;border-radius:9px;flex:0 0 auto;';
+  var tx=document.createElement('div');tx.textContent=msg;tx.style.cssText='flex:1 1 auto;';
+  bar.appendChild(ic);bar.appendChild(tx);
+  if(btnText){
+    var b=document.createElement('button');b.type='button';b.textContent=btnText;
+    b.style.cssText='flex:0 0 auto;border:0;border-radius:9px;padding:8px 14px;font:700 13px system-ui,sans-serif;background:'+TH+';color:#fff;cursor:pointer;';
+    b.addEventListener('click',onClick);bar.appendChild(b);
+  }
+  var c=document.createElement('button');c.type='button';c.setAttribute('aria-label','閉じる');c.textContent='×';
+  c.style.cssText='flex:0 0 auto;border:0;background:transparent;color:#b9bfcc;font-size:19px;line-height:1;cursor:pointer;padding:4px 2px;';
+  c.addEventListener('click',function(){setoff();drop();});
+  bar.appendChild(c);
+  document.body.appendChild(bar);
+  timer=setTimeout(function(){drop();},20000);
+}
+window.addEventListener('beforeinstallprompt',function(e){
+  e.preventDefault();deferred=e;
+  setTimeout(function(){
+    build('ホーム画面に追加すると、アプリのように使えます。','追加',function(){
+      if(!deferred)return;
+      deferred.prompt();
+      deferred.userChoice.then(function(r){
+        if(typeof gtag==='function')gtag('event','pwa_prompt',{outcome:r.outcome});
+        setoff();drop();
+      });
+    });
+  },8000);
+});
+window.addEventListener('appinstalled',function(){
+  setoff();
+  if(typeof gtag==='function')gtag('event','pwa_install');
+  drop();
+});
+var ua=navigator.userAgent||'';
+var isIOS=/iPad|iPhone|iPod/.test(ua)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+var isSafari=/Safari/.test(ua)&&!/CriOS|FxiOS|EdgiOS|OPiOS|Android/.test(ua);
+if(isIOS&&isSafari){setTimeout(function(){build('共有ボタン → 「ホーム画面に追加」で、アプリのように使えます。',null,null);},14000);}
+})();
+</script>
+<!-- pwa:end -->
+</body>
+</html>
