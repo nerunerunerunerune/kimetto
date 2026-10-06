@@ -97,7 +97,7 @@
 </nav>
 <div class="wrap">
   <header class="hd">
-    <div class="brand"><div class="logo">🎲</div><div><h1>サイコロ</h1><div class="tag">1〜6個をふって出目と合計</div></div></div>
+    <div class="brand"><div class="logo">🎲</div><div><h1>サイコロ</h1><div class="tag">1〜10個・4〜20面をふって出目と合計</div></div></div>
     <div class="free">🎈 登録不要・無料</div>
   </header>
 
@@ -182,7 +182,7 @@ window.KimettoDice=(function(){
   $('notaBtn').addEventListener('click',function(){var p=D.parse($('nota').value);if(!p){$('status').textContent='「2d6」「1d20+3」のように書いてください（10個まで・面数は2〜100）。';return;}$('status').textContent='';$('dn').value=p.n;var opt=[].some.call($('df').options,function(o){return +o.value===p.faces;});if(opt)$('df').value=p.faces;faces=p.faces;mod=p.mod;var n=p.n;if(rolling)return;rolling=true;var k=0;var iv=setInterval(function(){vals=D.roll(n,faces);render();if(++k>=8){clearInterval(iv);rolling=false;finish();}},70);});
   $('nota').addEventListener('keydown',function(e){if(e.key==='Enter')$('notaBtn').click();});
   $('histClear').addEventListener('click',function(){hist=[];renderHist();});
-  document.addEventListener('keydown',function(e){var t=(e.target&&e.target.tagName)||'';if(t==='INPUT'||t==='SELECT'||t==='TEXTAREA'||t==='BUTTON')return;if(e.code==='Space'){e.preventDefault();roll(settings());}});
+  document.addEventListener('keydown',function(e){if(e.target&&e.target.closest&&e.target.closest('a,button,input,textarea,select,summary,[contenteditable]'))return;if(e.code==='Space'){e.preventDefault();roll(settings());}});
   vals=[1,1];render();
   window.__tool={roll:function(){var n=settings();vals=D.roll(n,faces);render();finish();return vals.slice();},vals:function(){return vals.slice();},total:function(){return sum();},history:function(){return hist.slice();}};
 })();</script>

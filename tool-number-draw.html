@@ -168,7 +168,7 @@ window.KimettoNumber=(function(){
   var $=function(id){return document.getElementById(id);};
   var big=$('big'), hist=$('hist'), info=$('info'), status=$('status');
   function say(m){status.textContent=m||'';}
-  function reset(){var mn=parseInt($('mn').value,10),mx=parseInt($('mx').value,10);if(isNaN(mn)||isNaN(mx)||mx<mn){say('範囲を正しく入れてください。');return false;}if(mx-mn+1>N.MAXRANGE){say('範囲が広すぎます（'+N.MAXRANGE+'個以内）。');return false;}st=N.newPool(mn,mx);last=[];big.textContent='–';info.textContent='';hist.innerHTML='';say('');return true;}
+  function reset(){var mn=parseInt($('mn').value,10),mx=parseInt($('mx').value,10);if(isNaN(mn)||isNaN(mx)||mx<mn){st=null;big.textContent='–';say('範囲を正しく入れてください。');return false;}if(mx-mn+1>N.MAXRANGE){st=null;big.textContent='–';say('範囲が広すぎます（'+N.MAXRANGE+'個以内）。');return false;}st=N.newPool(mn,mx);last=[];big.textContent='–';info.textContent='';hist.innerHTML='';say('');return true;}
   function render(){hist.innerHTML='';var show=st.drawn.slice(-200);show.forEach(function(n,i){var s=document.createElement('span');if(i>=show.length-last.length)s.className='last';s.textContent=n;hist.appendChild(s);});
     info.textContent=($('dup').checked?'重複あり ／ ':'残り '+st.pool.length+' ／ ')+'出た数 '+st.drawn.length+(st.drawn.length>200?'（履歴は最新200個を表示）':'');}
   function draw(){if(!st&&!reset())return;var dup=$('dup').checked;if(!dup&&st.pool.length===0){say(st.drawn.length?'すべて出ました。リセットしてください。':'先に範囲を入れてください。');return;}

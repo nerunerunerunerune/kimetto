@@ -114,7 +114,7 @@
   <div id="bulk" style="display:none"><textarea class="bulkta" id="bulkText" rows="6" placeholder="1行に1人。「、」や「,」で区切っても入ります（40人まで）。"></textarea><div class="btnrow" style="margin-top:6px"><button class="btn primary" id="bulkApply">この名前で作る</button></div></div>
   <div class="opts"><label>当たりの数 <input class="anum" id="winN" type="number" min="0" max="40" value="1" style="width:64px;padding:6px"></label><button class="presetbtn" id="winBtn" type="button">結果欄に入れる</button><label><input type="checkbox" id="hideRes" checked> 結果を隠す（たどった分だけ開く）</label></div>
   <label class="olabel">上（名前・編集できます）</label><div class="aedit" id="tops"></div>
-  <label class="olabel">下（結果・編集できます）</label><div class="aedit" id="results"></div>
+  <div id="resWrap"><label class="olabel">下（結果・編集できます）</label><div class="aedit" id="results"></div></div><p id="resNote" style="display:none;font-size:13px;color:var(--ink-2);margin:6px 0">下の結果は隠しています。結果を書き換えるときは「結果を隠す」をオフにしてください。</p>
   <div class="amidawrap"><svg id="amida" viewBox="0 0 320 360" preserveAspectRatio="xMidYMid meet"></svg></div>
   <div class="aresult" id="result">下の名前ボタンをタップすると結果が出ます</div>
   <div class="atop" id="topbtns"></div>
@@ -208,7 +208,9 @@ window.KimettoAmida=(function(){
   $('n').addEventListener('change',rebuild);
   $('regen').addEventListener('click',function(){genRungs();draw(null);resultEl.textContent='引き直しました。名前をタップ！';});
   $('allBtn').addEventListener('click',function(){var lines=[];for(var i=0;i<N;i++){var t=A.trace(rungs,ROWS,i);shown[t.end]=true;lines.push((tops[i]||('人'+(i+1)))+'→'+(results[t.end]||''));}resultEl.textContent=lines.join('　/　');draw(null);});
-  $('hideRes').addEventListener('change',function(){shown={};draw(null);});
+  function applyLid(){$('resWrap').style.display=lid()?'none':'';$('resNote').style.display=lid()?'':'none';}
+  $('hideRes').addEventListener('change',function(){shown={};applyLid();draw(null);});
+  applyLid();
   $('winBtn').addEventListener('click',function(){var k=parseInt($('winN').value,10);if(isNaN(k)||k<0)k=1;results=A.resultsFor(N,Math.min(k,N));genInputs();draw(null);say('結果欄を「当たり」'+Math.min(k,N)+'つにしました。');});
   $('bulkBtn').addEventListener('click',function(){var b=$('bulk');if(b.style.display==='block'){b.style.display='none';return;}$('bulkText').value=tops.join('\n');b.style.display='block';$('bulkText').focus();});
   $('bulkApply').addEventListener('click',function(){var a=A.parseNames($('bulkText').value);if(a.length<2){say('名前を2人以上入れてください。');return;}var over=String($('bulkText').value).split(/[\n,，、]/).filter(function(x){return x.trim();}).length>A.MAXN;tops=a;N=a.length;$('n').value=N;results=results.slice(0,N);genInputs();genRungs();draw(null);makeBtns();$('bulk').style.display='none';say(N+'人を入れました。'+(over?'（'+A.MAXN+'人までなので、それより後は入れていません）':''));});

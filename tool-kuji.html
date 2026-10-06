@@ -138,7 +138,7 @@
     <p>前の人が引くほど残りの本数は変わります。それでも、まだ誰も引いていない時点で比べると、何番目に引いても当たる確率は同じ。このページのくじは、紙のくじと同じく引いたものを箱に戻さない作りなので、この性質がそのまま成り立ちます。詳しい理由は<a href="article-kakuritsu-kanchigai">くじの確率でよくある勘違い</a>にまとめました。</p>
 
     <h2>中身の書き方</h2>
-    <p>1行に1種類。名前のあとに本数を書きます。「1等 1」「1等 1本」「1等　１本」のどれでも読み取ります。本数を書かなかった行は1本として数えます。</p>
+    <p>1行に1種類。名前のあとに本数を書きます。「1等 1」「1等 1本」「1等　１本」のどれでも読み取ります。本数を書かなかった行は1本として数えます。「1等1本」のように続けて書くときは「本」を付けてください。「チーム1」「図書カード1000」のように数字で終わる名前は、そのまま名前として読みます。</p>
     <p>名前は「当たり」「はずれ」に限りません。景品の名前でも、チームの色でも、係の名前でも入ります。</p>
 
     <h2>作るときに決めたこと</h2>
@@ -168,7 +168,7 @@ window.KimettoKuji=(function(){
   function z2h(s){return s.replace(/[０-９]/g,function(c){return String.fromCharCode(c.charCodeAt(0)-0xFEE0);});}
   function parse(text){var out=[],total=0;String(text||'').split('\n').forEach(function(line){
     var t=z2h(line).replace(/\u3000/g,' ').trim().slice(0,50);if(!t)return;
-    var m=t.match(/^(.*?)\s*([0-9]{1,3})\s*本?$/);var named=m&&m[1].trim();var name=named?m[1].trim():t;var count=named?parseInt(m[2],10):1;
+    var m=t.match(/^(.+?)\s+([0-9]{1,3})\s*本?$/)||t.match(/^(.+?)([0-9]{1,3})本$/);var name=m?m[1].trim():t;var count=m?parseInt(m[2],10):1;
     if(count<1)return;if(total+count>500)count=500-total;if(count<=0)return;total+=count;out.push({name:name,count:count});});return out;}
   function makeBox(prizes){var s=[];prizes.forEach(function(p){for(var i=0;i<p.count;i++)s.push(p.name);});
     for(var j=s.length-1;j>0;j--){var k=Math.floor(Math.random()*(j+1));var t=s[j];s[j]=s[k];s[k]=t;}
@@ -216,8 +216,8 @@ window.KimettoKuji=(function(){
   if(dp.requestFullscreen){$('fsBtn').hidden=false;$('fsBtn').addEventListener('click',function(){if(document.fullscreenElement)document.exitFullscreen();else dp.requestFullscreen().catch(function(){});});document.addEventListener('fullscreenchange',function(){$('fsBtn').textContent=document.fullscreenElement?'大画面を閉じる':'大画面で表示';});}
   // 開いたときの状態
   var fromHash=K.decode(location.hash);
-  if(fromHash.length){$('kin').value=fromHash.map(function(p){return p.name+' '+p.count;}).join('\n');var nt=$('notice');nt.textContent='共有されたリンクから開きました。くじ箱の中身だけが入っています（引いた結果は共有されません）。よければ「くじ箱を作る」を押してください。';nt.className='notice show';}
-  else{try{var sv=JSON.parse(localStorage.getItem(KEY)||'null');if(sv&&sv.box&&sv.prizes&&sv.prizes.length){prizes=sv.prizes;box=sv.box;$('drawPanel').className='panel drawpanel';$('setup').className='panel hidden';render();if(box.drawn.length)show(box.drawn[box.drawn.length-1],false);say('status2','前回の続きを表示しています。');}}catch(e){}}
+  if(fromHash.length){$('kin').value=fromHash.map(function(p){return p.name+' '+p.count;}).join('\n');var nt=$('notice');nt.textContent='共有されたリンクから開きました。くじ箱の中身だけが入っています（引いた結果は共有されません）。よければ「くじ箱を作る」を押してください。';nt.className='notice show';try{history.replaceState(null,'',location.pathname+location.search);}catch(e){}}
+  else{try{var sv=JSON.parse(localStorage.getItem(KEY)||'null');if(sv&&sv.box&&Array.isArray(sv.box.slips)&&Array.isArray(sv.box.drawn)&&sv.box.init&&typeof sv.box.init==='object'&&Array.isArray(sv.prizes)&&sv.prizes.length){prizes=sv.prizes;box=sv.box;$('drawPanel').className='panel drawpanel';$('setup').className='panel hidden';render();if(box.drawn.length)show(box.drawn[box.drawn.length-1],false);say('status2','前回の続きを表示しています。');}}catch(e){}}
   window.__tool={build:function(t){start(K.parse(t));},draw:function(){var n=K.draw(box);save();render();return n;},remaining:function(){return K.remaining(box);}};
 })();</script>
 <!-- pwa:start -->

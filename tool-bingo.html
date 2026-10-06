@@ -228,6 +228,7 @@ window.KimettoBingo=(function(){
   function speak(n){if(!canSpeak||!$('optSpeak').checked)return;try{var u=new SpeechSynthesisUtterance(B.colOf(n)+'の'+n);u.lang='ja-JP';var vs=speechSynthesis.getVoices().filter(function(v){return /^ja/.test(v.lang);});var loc=vs.filter(function(v){return v.localService;});if(loc.length)u.voice=loc[0];else if(vs.length)u.voice=vs[0];speechSynthesis.cancel();speechSynthesis.speak(u);}catch(e){}}
   function next(){
     if(busy)return;
+    if($('resume').className.indexOf('show')>=0){say('先に「続きから」か「新しく始める」を選んでください。');return;}
     if(!game.pool.length){say('75個すべて出ました。リセットすると最初からです。');return;}
     var n=B.draw(game); save(); say('');
     if(!$('optAnim').checked){render();beep();speak(n);return;}
@@ -237,13 +238,13 @@ window.KimettoBingo=(function(){
   function reset(ask){if(ask&&game.drawn.length&&!confirm('出た番号を消して、最初からにしますか？'))return;game=B.newGame(75);clearSave();render();say(ask?'リセットしました。':'');}
   $('nextBtn').addEventListener('click',next);
   $('resetBtn').addEventListener('click',function(){reset(true);});
-  document.addEventListener('keydown',function(e){var t=(e.target&&e.target.tagName)||'';if(t==='INPUT'||t==='TEXTAREA'||t==='BUTTON'||t==='SELECT')return;if(e.code==='Space'||e.key===' '||e.key==='Enter'){e.preventDefault();next();}});
+  document.addEventListener('keydown',function(e){if(e.target&&e.target.closest&&e.target.closest('a,button,input,textarea,select,summary,[contenteditable]'))return;if(e.code==='Space'||e.key===' '||e.key==='Enter'){e.preventDefault();next();}});
   var m=$('machine');
   if(m.requestFullscreen){$('fsBtn').hidden=false;$('fsBtn').addEventListener('click',function(){if(document.fullscreenElement)document.exitFullscreen();else m.requestFullscreen().catch(function(){});});
     document.addEventListener('fullscreenchange',function(){$('fsBtn').textContent=document.fullscreenElement?'大画面を閉じる':'大画面で表示';});}
   // 途中から
   buildBoard(); render();
-  try{var sv=JSON.parse(localStorage.getItem(KEY)||'null');if(sv&&sv.drawn&&sv.drawn.length){$('resumeN').textContent=sv.drawn.length;$('resume').className='resume show';
+  try{var sv=JSON.parse(localStorage.getItem(KEY)||'null');if(sv&&Array.isArray(sv.drawn))sv.drawn=sv.drawn.filter(function(x){return typeof x==='number'&&x>=1&&x<=75;});if(sv&&Array.isArray(sv.drawn)&&sv.drawn.length){$('resumeN').textContent=sv.drawn.length;$('resume').className='resume show';
     $('resumeYes').addEventListener('click',function(){game=B.newGame(75);sv.drawn.forEach(function(n){var i=game.pool.indexOf(n);if(i>=0){game.pool.splice(i,1);game.drawn.push(n);}});render();$('resume').className='resume';});
     $('resumeNo').addEventListener('click',function(){reset(false);$('resume').className='resume';});}}catch(e){}
   // カード

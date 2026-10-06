@@ -23,7 +23,7 @@
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S70G7BHKD0');</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"席替え｜きめっと","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"},"description":"名前を入れて列数を決めるだけで、席替えをランダムに作成できる無料の席替えメーカー。前の席の希望、固定席、となりにしない組、前回となりを避ける、席の入れ替え、黒板付きの印刷に対応。登録不要。"}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":"席替えの使い方","step":[{"@type":"HowToStep","name":"名前を入れる","text":"1行に1人ずつ。出席番号でもOKです。"},{"@type":"HowToStep","name":"列数を決める","text":"横に並べる人数（列数）を指定します。"},{"@type":"HowToStep","name":"席替え・印刷","text":"ランダムに配置。印刷して掲示できます。"}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"前回となりだった人を、またとなりにしない方法は？","acceptedAnswer":{"@type":"Answer","text":"「条件を付ける」を開き、「前回となりだった人どうしを、となりにしない」にチェックを入れてから席替えしてください。前回の座席はこの端末のブラウザにだけ残っていて、どこにも送信していません。"}},{"@type":"Question","name":"席替えは公平ですか？","acceptedAnswer":{"@type":"Answer","text":"はい。条件を付けない場合は、名前をブラウザの乱数でシャッフルして配置します。条件を付けた場合も、条件を満たす並びの中からランダムに選びます。"}},{"@type":"Question","name":"印刷して使えますか？","acceptedAnswer":{"@type":"Answer","text":"はい。「印刷」から黒板（前）付きの座席表を印刷できます。教室やイベント会場に掲示できます。"}},{"@type":"Question","name":"何人まで対応していますか？","acceptedAnswer":{"@type":"Answer","text":"80人まで入れられます。列数（横の数）を変えて教室のレイアウトに合わせられます。"}},{"@type":"Question","name":"データは送信されますか？","acceptedAnswer":{"@type":"Answer","text":"いいえ。すべて端末内で処理し、名前などは送信されません。"}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"前回となりだった人を、またとなりにしない方法は？","acceptedAnswer":{"@type":"Answer","text":"前の席替えで「この席で決定」を押しておいてください。次の席替えのときに「条件を付ける」を開き、「前回となりだった人どうしを、となりにしない」にチェックを入れます。決定した座席はこの端末のブラウザにだけ残っていて、どこにも送信していません。"}},{"@type":"Question","name":"席替えは公平ですか？","acceptedAnswer":{"@type":"Answer","text":"はい。条件を付けない場合は、名前をブラウザの乱数でシャッフルして配置します。条件を付けた場合も、条件を満たす並びの中からランダムに選びます。"}},{"@type":"Question","name":"印刷して使えますか？","acceptedAnswer":{"@type":"Answer","text":"はい。「印刷」から黒板（前）付きの座席表を印刷できます。教室やイベント会場に掲示できます。"}},{"@type":"Question","name":"何人まで対応していますか？","acceptedAnswer":{"@type":"Answer","text":"80人まで入れられます。列数（横の数）を変えて教室のレイアウトに合わせられます。"}},{"@type":"Question","name":"データは送信されますか？","acceptedAnswer":{"@type":"Answer","text":"いいえ。すべて端末内で処理し、名前などは送信されません。"}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"きめっと","item":"https://kimetto.kawatare.studio/"},{"@type":"ListItem","position":2,"name":"席替え","item":"https://kimetto.kawatare.studio/tool-seating"}]}</script>
 <style>
   :root{--bg:#f4f4fb;--card:#ffffff;--ink:#1e1b2e;--ink-2:#615c7a;--muted:#9a95b0;--line:#e7e5f2;
@@ -115,7 +115,7 @@
     <textarea class="namearea" id="pairs" style="min-height:70px" placeholder="たろう・じろう"></textarea>
     <div class="opts"><label><input type="checkbox" id="avoidPrev"> 前回となりだった人どうしを、となりにしない</label></div>
   </div>
-  <div class="sctrl noprint"><label class="olabel" style="margin:0">列数</label><input class="scin" id="cols" type="number" min="1" max="10" value="5"><button class="btn primary" id="goBtn">席替え</button><button class="btn ghost" id="printBtn">印刷</button></div>
+  <div class="sctrl noprint"><label class="olabel" style="margin:0">列数</label><input class="scin" id="cols" type="number" min="1" max="10" value="5"><button class="btn primary" id="goBtn">席替え</button><button class="btn ghost" id="decideBtn" disabled>この席で決定</button><button class="btn ghost" id="printBtn">印刷</button></div>
   <div class="blackboard" id="bb">こくばん（前）</div>
   <div class="seatgrid" id="grid"></div>
   <div class="status noprint" id="status"></div>
@@ -137,7 +137,7 @@
   <h2>条件は「書き込み式」にした</h2>
   <p>条件を付ける画面は、ボタンを並べる形ではなく、名前の欄に記号を書き込む形にしました。名簿をそのまま貼り付けて、必要な人にだけ★を足せば済むからです。次の席替えでも、同じ名前の欄を開けば条件ごと残っています。</p>
   <p>「となりにしない組」は、左右と前後の4方向を見ます。斜めは見ていません。斜めまで離すと、30人の教室でも条件を満たす並びがすぐに無くなるためです。</p>
-  <p>「前回となりだった人どうしを、となりにしない」は、前回の座席をこの端末のブラウザに覚えておいて使います。列数を変えたときは前回と形が違うので、この条件は使いません。</p>
+  <p>「前回となりだった人どうしを、となりにしない」は、最後に「この席で決定」を押した座席をこの端末のブラウザに覚えておいて使います。何度か「席替え」を押して見比べても、決定するまでは前回の記録は変わりません。列数を変えたときは前回と形が違うので、この条件は使いません。</p>
   <p>条件を満たせなかったときは、黙って崩した配置を出さず、何か所守れなかったかを画面に出します。決めたあとで2人の席を入れ替えたいときは、席を2つ続けて押してください。</p>
   <p>ただ、条件は少ないほど、席替えらしい席替えになります。</p>
 
@@ -155,7 +155,7 @@
   </div>
 
   <h2>よくある質問</h2>
-    <div class="faq"><details><summary>前回となりだった人を、またとなりにしない方法は？</summary><p>「条件を付ける」を開き、「前回となりだった人どうしを、となりにしない」にチェックを入れてから席替えしてください。前回の座席はこの端末のブラウザにだけ残っていて、どこにも送信していません。</p></details><details open><summary>席替えは公平ですか？</summary><p>はい。条件を付けない場合は、名前をブラウザの乱数でシャッフルして配置します。条件を付けた場合も、条件を満たす並びの中からランダムに選びます。</p></details><details><summary>印刷して使えますか？</summary><p>はい。「印刷」から黒板（前）付きの座席表を印刷できます。教室やイベント会場に掲示できます。</p></details><details><summary>何人まで対応していますか？</summary><p>80人まで入れられます。列数（横の数）を変えて教室のレイアウトに合わせられます。</p></details><details><summary>データは送信されますか？</summary><p>いいえ。すべて端末内で処理し、名前などは送信されません。</p></details></div>
+    <div class="faq"><details><summary>前回となりだった人を、またとなりにしない方法は？</summary><p>前の席替えで「この席で決定」を押しておいてください。次の席替えのときに「条件を付ける」を開き、「前回となりだった人どうしを、となりにしない」にチェックを入れます。決定した座席はこの端末のブラウザにだけ残っていて、どこにも送信していません。</p></details><details open><summary>席替えは公平ですか？</summary><p>はい。条件を付けない場合は、名前をブラウザの乱数でシャッフルして配置します。条件を付けた場合も、条件を満たす並びの中からランダムに選びます。</p></details><details><summary>印刷して使えますか？</summary><p>はい。「印刷」から黒板（前）付きの座席表を印刷できます。教室やイベント会場に掲示できます。</p></details><details><summary>何人まで対応していますか？</summary><p>80人まで入れられます。列数（横の数）を変えて教室のレイアウトに合わせられます。</p></details><details><summary>データは送信されますか？</summary><p>いいえ。すべて端末内で処理し、名前などは送信されません。</p></details></div>
     <h2>コラム</h2><div class="rel-grid"><a class="rel" href="article-natsuyasumi-kuji">📖 夏休みイベントの順番決め・くじ引き活用ガイド<span>花火大会・夏祭り・自由研究のテーマ決めに</span></a></div>
     <h2>ほかの決めるツール</h2>
     <div class="rel-grid"><a class="rel" href="tool-roulette">🎯 ルーレット <span>回して決める・共有OK</span></a><a class="rel" href="tool-amidakuji">🪜 あみだくじ <span>人数と当たりで自動作成</span></a><a class="rel" href="tool-groups">👥 グループ分け <span>ランダムに班分け</span></a><a class="rel" href="tool-order">🔀 順番決め <span>シャッフルで順番</span></a><a class="rel" href="/">🎯 ツール一覧 <span>きめっとの決めるツール</span></a></div>
@@ -170,7 +170,8 @@ window.KimettoSeat=(function(){
     var t=z2h(line.replace(/　/g,' ')).trim();if(!t)return;var fixed=null,front=false;
     var m=t.match(/[@＠]\s*([0-9]{1,2})\s*[-−ー‐－]\s*([0-9]{1,2})/);if(m){fixed={r:parseInt(m[1],10)-1,c:parseInt(m[2],10)-1};t=t.replace(m[0],'');}
     if(/[★☆]|[*＊]\s*前/.test(t)){front=true;t=t.replace(/[★☆]/g,'').replace(/[*＊]\s*前/g,'');}
-    t=t.trim().slice(0,20);if(t)out.push({name:t,front:front,fixed:fixed});});return out.slice(0,80);}
+    t=t.trim().slice(0,20);if(t)out.push({name:t,front:front,fixed:fixed});});
+    out=out.slice(0,80);var seen={};out.forEach(function(p){if(seen[p.name]){var k=2;while(seen[p.name+'('+k+')'])k++;p.name=p.name+'('+k+')';}seen[p.name]=true;});return out;}
   function parsePairs(text){var out=[];String(text||'').split('\n').forEach(function(line){var a=line.split(/[・、,，\/／\s]+/).map(function(x){return x.trim();}).filter(Boolean);if(a.length>=2)out.push([a[0],a[1]]);});return out;}
   function key(a,b){return a<b?a+'|'+b:b+'|'+a;}
   function neighborSet(grid,cols){var set=new Set();for(var i=0;i<grid.length;i++){if(!grid[i])continue;var c=i%cols;if(c<cols-1&&grid[i+1])set.add(key(grid[i],grid[i+1]));if(grid[i+cols])set.add(key(grid[i],grid[i+cols]));}return set;}
@@ -208,15 +209,15 @@ window.KimettoSeat=(function(){
   function render(){
     grid.style.gridTemplateColumns='repeat('+curCols+',1fr)';grid.innerHTML='';
     cur.forEach(function(nm,i){var d=document.createElement('div');d.className='seat'+(nm?'':' empty')+(i===picked?' picked':'');d.textContent=nm||'－';
-      if(nm)d.addEventListener('click',function(){if(picked<0){picked=i;render();say('入れ替える相手の席を押してください。');return;}if(picked===i){picked=-1;render();say('');return;}var t=cur[picked];cur[picked]=cur[i];cur[i]=t;picked=-1;render();save({last:cur,lastCols:curCols});say('2人の席を入れ替えました。');});
+      if(nm)d.addEventListener('click',function(){if(picked<0){picked=i;render();say('入れ替える相手の席を押してください。');return;}if(picked===i){picked=-1;render();say('');return;}var t=cur[picked];cur[picked]=cur[i];cur[i]=t;picked=-1;render();say('2人の席を入れ替えました。');});
       grid.appendChild(d);});
   }
   function make(){
     var people=S.parseNames(ta.value);if(people.length<1){say('名前を入れてください。');grid.innerHTML='';return;}
     curCols=Math.max(1,Math.min(10,parseInt($('cols').value,10)||5));
     var opts={pairs:S.parsePairs($('pairs').value)};var d=load();
-    if($('avoidPrev').checked&&d.last&&d.lastCols===curCols)opts.avoid=Array.from(S.neighborSet(d.last,curCols));
-    var r=S.layout(people,curCols,opts);cur=r.grid;picked=-1;render();save({last:cur,lastCols:curCols});
+    if($('avoidPrev').checked&&Array.isArray(d.last)&&d.lastCols===curCols)opts.avoid=Array.from(S.neighborSet(d.last,curCols));
+    var r=S.layout(people,curCols,opts);cur=r.grid;picked=-1;render();$('decideBtn').disabled=false;
     var msg=people.length+'人の席を決めました。';
     if(r.fixedMiss)msg+=' 固定席のうち'+r.fixedMiss+'人は、席の番号が範囲の外か重なっていたため固定できませんでした。';
     if(r.violations-r.fixedMiss>0)msg+=' 条件をすべては満たせませんでした（'+(r.violations-r.fixedMiss)+'か所）。条件を減らすか、列数を変えてみてください。';
@@ -225,6 +226,7 @@ window.KimettoSeat=(function(){
   }
   $('goBtn').addEventListener('click',make);
   $('printBtn').addEventListener('click',function(){window.print();});
+  $('decideBtn').addEventListener('click',function(){if(!cur){say('先に「席替え」を押してください。');return;}save({last:cur,lastCols:curCols});say('この席で決定しました。次の席替えで「前回となりだった人どうし」を見るときは、この並びを使います。');});
   $('condBtn').addEventListener('click',function(){var c=$('cond');c.style.display=c.style.display==='block'?'none':'block';});
   ['names','pairs','cols'].forEach(function(id){$(id).addEventListener('change',function(){save();});});$('avoidPrev').addEventListener('change',function(){save();});
   var d=load();
