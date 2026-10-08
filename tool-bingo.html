@@ -91,10 +91,10 @@
   .board .c.last{outline:3px solid var(--accent);outline-offset:1px;}
   .resume{display:none;background:var(--good-bg);border-radius:12px;padding:10px 14px;margin-bottom:12px;font-size:14px;}
   .resume.show{display:block;}
-  .machine:fullscreen{background:var(--card);padding:3vh 3vw;overflow:auto;}
-  .machine:fullscreen .callnum{font-size:26vh;} .machine:fullscreen .callcol{font-size:12vh;}
-  .machine:fullscreen .no-fs{display:none;}
-  .machine:fullscreen .callrow{min-height:30vh;} .machine:fullscreen .board .c{font-size:2.2vh;}
+  .machine:fullscreen,.machine.app-fs{background:var(--card);padding:3vh 3vw;overflow:auto;}
+  .machine:fullscreen .callnum,.machine.app-fs .callnum{font-size:26vh;} .machine:fullscreen .callcol,.machine.app-fs .callcol{font-size:12vh;}
+  .machine:fullscreen .no-fs,.machine.app-fs .no-fs{display:none;}
+  .machine:fullscreen .callrow,.machine.app-fs .callrow{min-height:30vh;} .machine:fullscreen .board .c,.machine.app-fs .board .c{font-size:2.2vh;}
   .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-top:12px;}
   .bcard{border:2px solid var(--ink);border-radius:10px;padding:8px;background:#fff;color:#111;break-inside:avoid;}
   .bcard table{width:100%;border-collapse:collapse;table-layout:fixed;}
@@ -116,17 +116,21 @@
 </style>
 </head>
 <body>
+<!-- app:drop -->
 <nav class="sitebar">
   <a class="sb-brand" href="/"><span class="sb-logo">🎯</span>きめっと</a>
   <div class="sb-links"><a href="/">ツール一覧</a><a href="about">このサイトについて</a></div>
 </nav>
+<!-- /app:drop -->
 <div class="wrap">
+  <!-- app:drop -->
   <header class="hd">
     <div class="brand"><div class="logo">🅱️</div><div><h1>ビンゴ</h1><div class="tag">ビンゴマシンとカード作成</div></div></div>
     <div class="free">🎈 登録不要・無料</div>
   </header>
 
   <div class="answer">「次の番号」を押すと、1〜75から<b>まだ出ていない番号</b>を1つ選びます。下の盤で出た番号がひと目で分かります。参加者用のカードは、このページのいちばん下で作って印刷できます。</div>
+  <!-- /app:drop -->
 
   <div class="resume" id="resume">前回の続きが残っています（<b id="resumeN">0</b>個出ています）。 <button class="btn ghost" id="resumeYes" style="padding:6px 12px;font-size:13px">続きから</button> <button class="btn ghost" id="resumeNo" style="padding:6px 12px;font-size:13px">新しく始める</button></div>
 
@@ -144,13 +148,14 @@
     <h2 class="no-print" style="font-size:17px;margin:0 0 6px">ビンゴカードを作る</h2>
     <div class="cardctl">
       <div class="opts"><label>枚数 <input class="numin" id="cardN" type="number" min="1" max="60" value="4" style="width:72px;padding:6px"></label>
-      <button class="btn primary" id="makeBtn">カードを作る</button><button class="btn ghost" id="printBtn" disabled>印刷する</button></div>
-      <p style="font-size:13px;color:var(--ink-2);margin:4px 0">1枚目は、数字を押すと穴が開きます（自分のスマホでカードを使う場合）。印刷すると、A4用紙1枚に4枚ずつ並びます。</p>
+      <button class="btn primary" id="makeBtn">カードを作る</button><button class="btn ghost no-app" id="printBtn" disabled>印刷する</button></div>
+      <p class="no-app" style="font-size:13px;color:var(--ink-2);margin:4px 0">1枚目は、数字を押すと穴が開きます（自分のスマホでカードを使う場合）。印刷すると、A4用紙1枚に4枚ずつ並びます。</p>
     </div>
     <div class="bingo-flag no-print" id="bingoFlag">ビンゴ！</div>
     <div class="cards" id="cards"></div>
   </div>
 
+  <!-- app:drop -->
   <section class="seo">
     <h2>ビンゴマシンが無い会場のために</h2>
     <p>忘年会や学校のお楽しみ会で、ビンゴカードは配れても、番号を出すマシンが手元に無い。そういう場面で、スマホかパソコン1台を代わりにするために作った道具です。</p>
@@ -189,6 +194,7 @@
   </section>
 
   <div class="foot"><a href="/">ツール一覧</a> ・ <a href="about">このサイトについて</a> ・ <a href="privacy">プライバシー</a> ・ <a href="terms">利用規約</a>・<a href="https://kawatare.studio/">かわたれ studio</a><br>姉妹サイト：<a href="https://kodetto.kawatare.studio/">こでっと（開発者ツール）</a>・<a href="https://mitooshi.kawatare.studio/">みとおし（発達支援）</a>・<a href="https://patto.kawatare.studio/">ぱっと計算</a><br>きめっと ・ 最終更新：2026-10-06 ・ すべての操作は端末内で完結します</div>
+  <!-- /app:drop -->
 </div>
 <script data-logic="KimettoBingo">
 window.KimettoBingo=(function(){
@@ -209,6 +215,8 @@ window.KimettoBingo=(function(){
 </script>
 <script>(function(){
   var B=window.KimettoBingo, KEY='kimetto_bingo_v1', game=B.newGame(75), busy=false, actx=null;
+  var app=window.kimettoApp||null;
+  function signal(){try{document.dispatchEvent(new CustomEvent(game.drawn.length?'kimetto:busy':'kimetto:idle'));}catch(e){}}
   var $=function(id){return document.getElementById(id);};
   var callCol=$('callCol'), callNum=$('callNum'), info=$('info'), recent=$('recent'), board=$('board'), status=$('status');
   function say(m){status.textContent=m||'';}
@@ -221,16 +229,17 @@ window.KimettoBingo=(function(){
     callCol.textContent=last?B.colOf(last):''; callNum.textContent=last||'–'; callNum.className='callnum';
     info.textContent='出た数 '+game.drawn.length+' ／ 残り '+game.pool.length;
     recent.innerHTML='';game.drawn.slice(-6,-1).reverse().forEach(function(x){var s=document.createElement('span');s.textContent=B.colOf(x)+'-'+x;recent.appendChild(s);});
+    signal();
   }
   function beep(){if(!$('optSound').checked)return;try{actx=actx||new (window.AudioContext||window.webkitAudioContext)();var o=actx.createOscillator(),g=actx.createGain();o.type='sine';o.frequency.value=880;g.gain.setValueAtTime(.18,actx.currentTime);g.gain.exponentialRampToValueAtTime(.001,actx.currentTime+.35);o.connect(g);g.connect(actx.destination);o.start();o.stop(actx.currentTime+.36);}catch(e){}}
-  var canSpeak=!!(window.speechSynthesis&&window.SpeechSynthesisUtterance);
+  var canSpeak=!!app||!!(window.speechSynthesis&&window.SpeechSynthesisUtterance);
   if(canSpeak)$('optSpeakWrap').hidden=false;
-  function speak(n){if(!canSpeak||!$('optSpeak').checked)return;try{var u=new SpeechSynthesisUtterance(B.colOf(n)+'の'+n);u.lang='ja-JP';var vs=speechSynthesis.getVoices().filter(function(v){return /^ja/.test(v.lang);});var loc=vs.filter(function(v){return v.localService;});if(loc.length)u.voice=loc[0];else if(vs.length)u.voice=vs[0];speechSynthesis.cancel();speechSynthesis.speak(u);}catch(e){}}
+  function speak(n){if(!canSpeak||!$('optSpeak').checked)return;if(app){app.speak(B.colOf(n)+'の'+n);return;}try{var u=new SpeechSynthesisUtterance(B.colOf(n)+'の'+n);u.lang='ja-JP';var vs=speechSynthesis.getVoices().filter(function(v){return /^ja/.test(v.lang);});var loc=vs.filter(function(v){return v.localService;});if(loc.length)u.voice=loc[0];else if(vs.length)u.voice=vs[0];speechSynthesis.cancel();speechSynthesis.speak(u);}catch(e){}}
   function next(){
     if(busy)return;
     if($('resume').className.indexOf('show')>=0){say('先に「続きから」か「新しく始める」を選んでください。');return;}
     if(!game.pool.length){say('75個すべて出ました。リセットすると最初からです。');return;}
-    var n=B.draw(game); save(); say('');
+    var n=B.draw(game); save(); say(''); signal();
     if(!$('optAnim').checked){render();beep();speak(n);return;}
     busy=true; callNum.className='callnum spin'; callCol.textContent='';
     var t0=Date.now(), iv=setInterval(function(){callNum.textContent=1+Math.floor(Math.random()*75);if(Date.now()-t0>950){clearInterval(iv);busy=false;render();beep();speak(n);}},60);
@@ -240,7 +249,9 @@ window.KimettoBingo=(function(){
   $('resetBtn').addEventListener('click',function(){reset(true);});
   document.addEventListener('keydown',function(e){if(e.target&&e.target.closest&&e.target.closest('a,button,input,textarea,select,summary,[contenteditable]'))return;if(e.code==='Space'||e.key===' '||e.key==='Enter'){e.preventDefault();next();}});
   var m=$('machine');
-  if(m.requestFullscreen){$('fsBtn').hidden=false;$('fsBtn').addEventListener('click',function(){if(document.fullscreenElement)document.exitFullscreen();else m.requestFullscreen().catch(function(){});});
+  if(app){$('fsBtn').hidden=false;$('fsBtn').addEventListener('click',function(){app.toggleFullscreen(m);});
+    document.addEventListener('kimetto:fschange',function(e){$('fsBtn').textContent=e.detail?'大画面を閉じる':'大画面で表示';});}
+  else if(m.requestFullscreen){$('fsBtn').hidden=false;$('fsBtn').addEventListener('click',function(){if(document.fullscreenElement)document.exitFullscreen();else m.requestFullscreen().catch(function(){});});
     document.addEventListener('fullscreenchange',function(){$('fsBtn').textContent=document.fullscreenElement?'大画面を閉じる':'大画面で表示';});}
   // 途中から
   buildBoard(); render();
