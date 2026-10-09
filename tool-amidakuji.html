@@ -97,17 +97,21 @@
 </style>
 </head>
 <body>
+<!-- app:drop -->
 <nav class="sitebar">
   <a class="sb-brand" href="/"><span class="sb-logo">🎯</span>きめっと</a>
   <div class="sb-links"><a href="/">ツール一覧</a><a href="about">このサイトについて</a></div>
 </nav>
+<!-- /app:drop -->
 <div class="wrap">
+  <!-- app:drop -->
   <header class="hd">
     <div class="brand"><div class="logo">🪜</div><div><h1>あみだくじ</h1><div class="tag">人数と結果でその場で作成</div></div></div>
     <div class="free">🎈 登録不要・無料</div>
   </header>
 
   <div class="answer">人数と<b>結果（当たり・はずれ等）</b>を入れると、あみだくじを自動で作ります。名前をタップすると線をたどって結果が出ます。「引き直す」で作り直し、共有リンクで人にも渡せます。</div>
+  <!-- /app:drop -->
 
   <div class="panel">
   <div class="actrl"><label class="olabel" style="margin:0">人数</label><input class="anum" id="n" type="number" min="2" max="40" value="4"><button class="btn ghost" id="regen">引き直す</button><button class="btn ghost" id="bulkBtn">名前をまとめて入力</button></div>
@@ -123,6 +127,7 @@
 </div>
 
 
+  <!-- app:drop -->
   <section class="seo">
     <h2>使い方（3ステップ）</h2>
     <div class="howto"><div class="st"><div class="n">1</div><b>人数を決める</b><p>2〜40人を選び、上の名前と下の結果を編集します。</p></div><div class="st"><div class="n">2</div><b>名前をタップ</b><p>道すじがハイライトされ、結果が表示されます。</p></div><div class="st"><div class="n">3</div><b>引き直す・共有</b><p>「引き直す」で作り直し、共有リンクで配れます。</p></div></div>
@@ -158,6 +163,7 @@
   </section>
 
   <div class="foot"><a href="/">ツール一覧</a> ・ <a href="about">このサイトについて</a> ・ <a href="privacy">プライバシー</a> ・ <a href="terms">利用規約</a>・<a href="https://kawatare.studio/">かわたれ studio</a><br>姉妹サイト：<a href="https://kodetto.kawatare.studio/">こでっと（開発者ツール）</a>・<a href="https://mitooshi.kawatare.studio/">みとおし（発達支援）</a>・<a href="https://patto.kawatare.studio/">ぱっと計算</a><br>きめっと ・ 最終更新：2026-10-06 ・ すべての操作は端末内で完結します</div>
+  <!-- /app:drop -->
 </div>
 <script data-logic="KimettoAmida">
 window.KimettoAmida=(function(){
@@ -177,6 +183,9 @@ window.KimettoAmida=(function(){
   var $=function(id){return document.getElementById(id);};
   var svg=$('amida'), topsEl=$('tops'), resEl=$('results'), btns=$('topbtns'), resultEl=$('result'), status=$('status');
   var N=4, rungs=[], ROWS=10, gap=64, margin=34, topY=54, rowH=23, tops=[], results=[], shown={};
+  var app=window.kimettoApp||null;
+  function signal(b){try{document.dispatchEvent(new CustomEvent(b?'kimetto:busy':'kimetto:idle'));}catch(e){}}
+  function webBase(){return (window.KIMETTO_APP&&window.KIMETTO_APP.webUrl)||location.origin+location.pathname;}
   function botY(){return topY+(ROWS+1)*rowH;}
   function say(m){status.textContent=m||'';}
   function laneX(i){return margin+i*gap;}
@@ -203,20 +212,20 @@ window.KimettoAmida=(function(){
     }
     if(path){var pl=document.createElementNS(NS,'polyline');pl.setAttribute('points',path.map(function(p){return laneX(p.lane).toFixed(1)+','+(p.r<0?topY:rowY(p.r)).toFixed(1);}).join(' ')+' '+laneX(path[path.length-1].lane).toFixed(1)+','+botY().toFixed(1));pl.setAttribute('class','path');svg.appendChild(pl);}
   }
-  function makeBtns(){btns.innerHTML='';tops.forEach(function(nm,i){var b=document.createElement('button');b.textContent=nm||('人'+(i+1));b.addEventListener('click',function(){var t=A.trace(rungs,ROWS,i);shown[t.end]=true;draw(t.path);resultEl.textContent=(nm||('人'+(i+1)))+' → '+(results[t.end]||'');});btns.appendChild(b);});}
-  function rebuild(){N=Math.max(2,Math.min(A.MAXN,parseInt($('n').value,10)||4));$('n').value=N;genInputs();genRungs();draw(null);makeBtns();resultEl.textContent='下の名前ボタンをタップすると結果が出ます';}
+  function makeBtns(){btns.innerHTML='';tops.forEach(function(nm,i){var b=document.createElement('button');b.textContent=nm||('人'+(i+1));b.addEventListener('click',function(){var t=A.trace(rungs,ROWS,i);shown[t.end]=true;draw(t.path);resultEl.textContent=(nm||('人'+(i+1)))+' → '+(results[t.end]||'');signal(true);if(app)app.haptic('success');});btns.appendChild(b);});}
+  function rebuild(){N=Math.max(2,Math.min(A.MAXN,parseInt($('n').value,10)||4));$('n').value=N;genInputs();genRungs();draw(null);makeBtns();resultEl.textContent='下の名前ボタンをタップすると結果が出ます';signal(false);}
   $('n').addEventListener('change',rebuild);
-  $('regen').addEventListener('click',function(){genRungs();draw(null);resultEl.textContent='引き直しました。名前をタップ！';});
-  $('allBtn').addEventListener('click',function(){var lines=[];for(var i=0;i<N;i++){var t=A.trace(rungs,ROWS,i);shown[t.end]=true;lines.push((tops[i]||('人'+(i+1)))+'→'+(results[t.end]||''));}resultEl.textContent=lines.join('　/　');draw(null);});
+  $('regen').addEventListener('click',function(){genRungs();draw(null);resultEl.textContent='引き直しました。名前をタップ！';signal(false);});
+  $('allBtn').addEventListener('click',function(){var lines=[];for(var i=0;i<N;i++){var t=A.trace(rungs,ROWS,i);shown[t.end]=true;lines.push((tops[i]||('人'+(i+1)))+'→'+(results[t.end]||''));}resultEl.textContent=lines.join('　/　');draw(null);signal(true);if(app)app.haptic('success');});
   function applyLid(){$('resWrap').style.display=lid()?'none':'';$('resNote').style.display=lid()?'':'none';}
-  $('hideRes').addEventListener('change',function(){shown={};applyLid();draw(null);});
+  $('hideRes').addEventListener('change',function(){shown={};applyLid();draw(null);signal(false);});
   applyLid();
-  $('winBtn').addEventListener('click',function(){var k=parseInt($('winN').value,10);if(isNaN(k)||k<0)k=1;results=A.resultsFor(N,Math.min(k,N));genInputs();draw(null);say('結果欄を「当たり」'+Math.min(k,N)+'つにしました。');});
+  $('winBtn').addEventListener('click',function(){var k=parseInt($('winN').value,10);if(isNaN(k)||k<0)k=1;results=A.resultsFor(N,Math.min(k,N));genInputs();draw(null);say('結果欄を「当たり」'+Math.min(k,N)+'つにしました。');signal(false);});
   $('bulkBtn').addEventListener('click',function(){var b=$('bulk');if(b.style.display==='block'){b.style.display='none';return;}$('bulkText').value=tops.join('\n');b.style.display='block';$('bulkText').focus();});
-  $('bulkApply').addEventListener('click',function(){var a=A.parseNames($('bulkText').value);if(a.length<2){say('名前を2人以上入れてください。');return;}var over=String($('bulkText').value).split(/[\n,，、]/).filter(function(x){return x.trim();}).length>A.MAXN;tops=a;N=a.length;$('n').value=N;results=results.slice(0,N);genInputs();genRungs();draw(null);makeBtns();$('bulk').style.display='none';say(N+'人を入れました。'+(over?'（'+A.MAXN+'人までなので、それより後は入れていません）':''));});
-  $('shareBtn').addEventListener('click',function(){var fix=function(a){return a.map(function(x){return String(x).replace(/[,|]/g,'，');}).join(',');};var data=N+'|'+fix(tops)+'|'+fix(results);var url=location.origin+location.pathname+'#a='+encodeURIComponent(data);if(url.length>1800){say('人数が多く、URLが途中で切れるおそれがあります（'+url.length+'文字）。名前を短くしてください。');return;}try{navigator.clipboard.writeText(url).then(function(){say('共有リンクをコピーしました。開いた人のあみだは新しく線が引かれます。');},function(){say(url);});}catch(e){say(url);}});
+  $('bulkApply').addEventListener('click',function(){var a=A.parseNames($('bulkText').value);if(a.length<2){say('名前を2人以上入れてください。');return;}var over=String($('bulkText').value).split(/[\n,，、]/).filter(function(x){return x.trim();}).length>A.MAXN;tops=a;N=a.length;$('n').value=N;results=results.slice(0,N);genInputs();genRungs();draw(null);makeBtns();$('bulk').style.display='none';say(N+'人を入れました。'+(over?'（'+A.MAXN+'人までなので、それより後は入れていません）':''));signal(false);});
+  $('shareBtn').addEventListener('click',function(){var fix=function(a){return a.map(function(x){return String(x).replace(/[,|]/g,'，');}).join(',');};var data=N+'|'+fix(tops)+'|'+fix(results);var url=webBase()+'#a='+encodeURIComponent(data);if(url.length>1800){say('人数が多く、URLが途中で切れるおそれがあります（'+url.length+'文字）。名前を短くしてください。');return;}if(app){app.shareText('あみだくじ',url);say('共有の画面を開きました。');return;}try{navigator.clipboard.writeText(url).then(function(){say('共有リンクをコピーしました。開いた人のあみだは新しく線が引かれます。');},function(){say(url);});}catch(e){say(url);}});
   (function(){try{var m=location.hash.match(/[#&]a=([^&]*)/);if(m){var d=decodeURIComponent(m[1]).split('|');N=Math.max(2,Math.min(A.MAXN,parseInt(d[0],10)||4));$('n').value=N;tops=(d[1]||'').split(',');results=(d[2]||'').split(',');genInputs();genRungs();draw(null);makeBtns();say('リンクから開きました。');return;}}catch(e){}rebuild();})();
-  window.__tool={rebuild:rebuild,setN:function(n){$('n').value=n;rebuild();},end:function(i){return A.trace(rungs,ROWS,i).end;},allEnds:function(){var a=[];for(var i=0;i<N;i++)a.push(A.trace(rungs,ROWS,i).end);return a;},n:function(){return N;}};
+  window.__tool={names:function(){return {n:N,tops:tops.slice(),results:results.slice()};},setNames:function(d){N=Math.max(2,Math.min(A.MAXN,parseInt(d.n,10)||4));$('n').value=N;tops=(d.tops||[]).slice(0,N).map(String);results=(d.results||[]).slice(0,N).map(String);genInputs();genRungs();draw(null);makeBtns();resultEl.textContent='下の名前ボタンをタップすると結果が出ます';signal(false);},svg:function(){return svg;},resultText:function(){return resultEl.textContent;},rebuild:rebuild,setN:function(n){$('n').value=n;rebuild();},end:function(i){return A.trace(rungs,ROWS,i).end;},allEnds:function(){var a=[];for(var i=0;i<N;i++)a.push(A.trace(rungs,ROWS,i).end);return a;},n:function(){return N;}};
 })();</script>
 <!-- pwa:start -->
 <script>
