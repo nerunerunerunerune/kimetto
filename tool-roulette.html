@@ -104,17 +104,21 @@
 </style>
 </head>
 <body>
+<!-- app:drop -->
 <nav class="sitebar">
   <a class="sb-brand" href="/"><span class="sb-logo">🎯</span>きめっと</a>
   <div class="sb-links"><a href="/">ツール一覧</a><a href="about">このサイトについて</a></div>
 </nav>
+<!-- /app:drop -->
 <div class="wrap">
+  <!-- app:drop -->
   <header class="hd">
     <div class="brand"><div class="logo">🎯</div><div><h1>ルーレット</h1><div class="tag">回して決める・結果は共有できる</div></div></div>
     <div class="free">🎈 登録不要・無料</div>
   </header>
 
   <div class="answer">決めたい項目を入れて<b>スピン！</b>を押すと、ルーレットが回って1つを選びます。「当たった項目を消す」で順番決めや当選除外にも。<b>🔗共有リンク</b>で同じ項目のルーレットを人に渡せます。</div>
+  <!-- /app:drop -->
 
   <div class="panel tp-panel" id="tp">
   <div class="wheelwrap"><div class="pointer"></div><svg id="wheel" viewBox="0 0 200 200"><g id="spinner" class="spinner"></g><circle class="hub" cx="100" cy="100" r="13"></circle></svg></div>
@@ -139,6 +143,7 @@
 </div>
 
 
+  <!-- app:drop -->
   <section class="seo">
     <h2>使い方（3ステップ）</h2>
     <div class="howto"><div class="st"><div class="n">1</div><b>項目を入れる</b><p>候補を追加、または「かんたん入力」やシャッフルを使います。</p></div><div class="st"><div class="n">2</div><b>スピン</b><p>ボタンを押すと回転し、上の矢印の項目に決まります。</p></div><div class="st"><div class="n">3</div><b>共有・くり返し</b><p>共有リンクをコピーして渡せます。全画面表示も可能。</p></div></div>
@@ -180,6 +185,7 @@
   </section>
 
   <div class="foot"><a href="/">ツール一覧</a> ・ <a href="about">このサイトについて</a> ・ <a href="privacy">プライバシー</a> ・ <a href="terms">利用規約</a>・<a href="https://kawatare.studio/">かわたれ studio</a><br>姉妹サイト：<a href="https://kodetto.kawatare.studio/">こでっと（開発者ツール）</a>・<a href="https://mitooshi.kawatare.studio/">みとおし（発達支援）</a>・<a href="https://patto.kawatare.studio/">ぱっと計算</a><br>きめっと ・ 最終更新：2026-10-06 ・ すべての操作は端末内で完結します</div>
+  <!-- /app:drop -->
 </div>
 <script data-logic="KimettoRoulette">
 window.KimettoRoulette=(function(){
@@ -204,6 +210,9 @@ window.KimettoRoulette=(function(){
   var PALETTE=['#7c5cff','#ff6b6b','#ffb03a','#22b07d','#3aa0ff','#e05fbf','#ff8a5c','#4cc9b0','#a05cff','#ffd23f'];
   var PRESETS={yesno:['はい','いいえ'],lunch:['ラーメン','カレー','パスタ','定食','丼','うどん'],num6:['1','2','3','4','5','6'],clear:[]};
   var items=[], hist=[], rot=0, spinning=false;
+  var app=window.kimettoApp||null, idleTimer=null;
+  function signal(b){try{document.dispatchEvent(new CustomEvent(b?'kimetto:busy':'kimetto:idle'));}catch(e){}}
+  function webBase(){return (window.KIMETTO_APP&&window.KIMETTO_APP.webUrl)||location.origin+location.pathname;}
   var grp=document.getElementById('spinner');
   var listEl=document.getElementById('items'), resultEl=document.getElementById('result'), spinBtn=document.getElementById('spinBtn'), status=document.getElementById('status'), tp=document.getElementById('tp');
   var $=function(id){return document.getElementById(id);};
@@ -264,6 +273,7 @@ window.KimettoRoulette=(function(){
     if(pending)return;
     if(spinning||items.length<2){if(items.length<2)say('項目を2つ以上入れてください。');return;}
     spinning=true;resultEl.textContent='';spinBtn.disabled=true;say('');
+    clearTimeout(idleTimer);signal(true);
     rot+=360*5+Math.floor(Math.random()*360);
     grp.style.transition='transform 4.2s cubic-bezier(.15,.62,.13,1)';
     grp.style.transform='rotate('+rot+'deg)';
@@ -275,7 +285,7 @@ window.KimettoRoulette=(function(){
     clearTimeout(finTimer);
     if(!spinning)return;spinning=false;spinBtn.disabled=false;
     var w=winnerIndex();
-    if(w>=0){var name=items[w].name;resultEl.textContent='🎉 '+name;hist.push(name);renderHist();save();chime();try{if(navigator.vibrate)navigator.vibrate(120);}catch(e){}
+    if(w>=0){var name=items[w].name;resultEl.textContent='🎉 '+name;hist.push(name);renderHist();save();chime();if(app)app.haptic('success');else{try{if(navigator.vibrate)navigator.vibrate(120);}catch(e){}}clearTimeout(idleTimer);idleTimer=setTimeout(function(){if(!spinning)signal(false);},8000);
       if($('removeWin').checked){var obj=items[w];pending=true;spinBtn.disabled=true;setTimeout(function(){var k=items.indexOf(obj);if(k>=0)items.splice(k,1);rot=((rot%360)+360)%360;grp.style.transition='none';grp.style.transform='rotate('+rot+'deg)';pending=false;spinBtn.disabled=false;refresh();if(items.length<2)say('のこり1つになりました。');},900);}}
   }
   spinBtn.addEventListener('click',spin);
@@ -288,15 +298,18 @@ window.KimettoRoulette=(function(){
   $('bulkApply').addEventListener('click',function(){var a=R.parseText($('bulkText').value);if(a.length<1){say('1行に1項目ずつ入れてください。');return;}items=a;if(a.some(function(it){return it.w>1;}))$('useWeight').checked=true;$('bulk').style.display='none';refresh();say(a.length+'個の項目を入れました。');});
   $('histClear').addEventListener('click',function(){hist=[];renderHist();save();});
   $('removeWin').addEventListener('change',save);$('soundOn').addEventListener('change',save);
-  $('shareBtn').addEventListener('click',function(){var url=location.origin+location.pathname+R.encode(items);if(url.length>1800){say('項目が多すぎて、URLが途中で切れるおそれがあります（'+url.length+'文字）。項目を減らすか短くしてください。');return;}try{navigator.clipboard.writeText(url).then(function(){say('共有リンクをコピーしました。URLを知っている人は誰でも同じ項目を開けます。');},function(){say(url);});}catch(e){say(url);}});
+  $('shareBtn').addEventListener('click',function(){var url=webBase()+R.encode(items);if(url.length>1800){say('項目が多すぎて、URLが途中で切れるおそれがあります（'+url.length+'文字）。項目を減らすか短くしてください。');return;}if(app){app.shareText('ルーレットの項目',url);say('共有の画面を開きました。');return;}try{navigator.clipboard.writeText(url).then(function(){say('共有リンクをコピーしました。URLを知っている人は誰でも同じ項目を開けます。');},function(){say(url);});}catch(e){say(url);}});
+  if(app){$('fsBtn').addEventListener('click',function(){app.toggleFullscreen(tp);});document.addEventListener('kimetto:fschange',function(e){tp.classList.toggle('fs',!!e.detail);});}
+  else{
   $('fsBtn').addEventListener('click',function(){if(!document.fullscreenElement){tp.classList.add('fs');(tp.requestFullscreen||tp.webkitRequestFullscreen||function(){}).call(tp);}else{document.exitFullscreen&&document.exitFullscreen();}});
   document.addEventListener('fullscreenchange',function(){if(!document.fullscreenElement)tp.classList.remove('fs');});
+  }
   function loadHash(){var a=R.decode(location.hash);if(a.length){items=a;if(a.some(function(it){return it.w>1;}))$('useWeight').checked=true;try{var sv0=JSON.parse(localStorage.getItem(KEY)||'null');if(sv0&&Array.isArray(sv0.hist))hist=sv0.hist.filter(function(x){return typeof x==='string';});}catch(e){}try{history.replaceState(null,'',location.pathname+location.search);}catch(e){}say('リンクから開きました。');return true;}return false;}
   var restored=false;
   if(!loadHash()){try{var sv=JSON.parse(localStorage.getItem(KEY)||'null');if(sv&&wrap(sv.items).length){items=wrap(sv.items);hist=Array.isArray(sv.hist)?sv.hist.filter(function(x){return typeof x==='string';}):[];$('removeWin').checked=!!sv.removeWin;$('soundOn').checked=sv.sound!==false;$('useWeight').checked=!!sv.weights;restored=true;}}catch(e){}
     if(!restored)items=wrap(['ラーメン','カレー','パスタ','定食','丼']);}
   refresh();renderHist();if(restored)say('前回の項目を表示しています。');
-  window.__tool={set:function(a){items=wrap(a.slice());refresh();},items:function(){return items.map(function(it){return it.name;});},weights:function(){return items.map(function(it){return it.w;});},spin:spin,
+  window.__tool={raw:function(){return items.map(function(it){return {name:it.name,w:it.w};});},load:function(a){items=wrap(a.slice());if(items.some(function(it){return it.w>1;}))$('useWeight').checked=true;refresh();say('');},set:function(a){items=wrap(a.slice());refresh();},items:function(){return items.map(function(it){return it.name;});},weights:function(){return items.map(function(it){return it.w;});},spin:spin,
     setRot:function(d){rot=d;grp.style.transition='none';grp.style.transform='rotate('+d+'deg)';},
     winner:function(){return winnerIndex();},winnerName:function(){var w=winnerIndex();return w>=0?items[w].name:null;},
     result:function(){return resultEl.textContent;},shareUrl:function(){return location.origin+location.pathname+R.encode(items);},
