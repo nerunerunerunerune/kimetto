@@ -90,22 +90,26 @@
   .hist{font-size:14px;margin:10px 0 0;padding-left:0;list-style:none;max-height:260px;overflow:auto;}
   .hist li{padding:4px 2px;border-bottom:1px dashed var(--line);}
   .notice{display:none;background:var(--good-bg);border-radius:12px;padding:10px 14px;margin-bottom:12px;font-size:14px;} .notice.show{display:block;}
-  .drawpanel:fullscreen{background:var(--card);padding:4vh 4vw;} .drawpanel:fullscreen .slip{font-size:12vh;min-width:60vw;min-height:30vh;} .drawpanel:fullscreen .no-fs{display:none;}
+  .drawpanel:fullscreen,.drawpanel.app-fs{background:var(--card);padding:4vh 4vw;} .drawpanel:fullscreen .slip,.drawpanel.app-fs .slip{font-size:12vh;min-width:60vw;min-height:30vh;} .drawpanel:fullscreen .no-fs,.drawpanel.app-fs .no-fs{display:none;}
   .hidden{display:none;}
 </style>
 </head>
 <body>
+<!-- app:drop -->
 <nav class="sitebar">
   <a class="sb-brand" href="/"><span class="sb-logo">🎯</span>きめっと</a>
   <div class="sb-links"><a href="/">ツール一覧</a><a href="about">このサイトについて</a></div>
 </nav>
+<!-- /app:drop -->
 <div class="wrap">
+  <!-- app:drop -->
   <header class="hd">
     <div class="brand"><div class="logo">🎫</div><div><h1>くじ引き</h1><div class="tag">当たりの本数を決めて引く</div></div></div>
     <div class="free">🎈 登録不要・無料</div>
   </header>
 
   <div class="answer">賞の名前と本数を1行ずつ書いて「くじ箱を作る」。あとは「1枚引く」を押すたびに、箱から1枚ずつ出てきます。<b>引いたくじは箱に戻りません。</b></div>
+  <!-- /app:drop -->
   <div class="notice" id="notice"></div>
 
   <div class="panel" id="setup">
@@ -132,6 +136,7 @@
     </div>
   </div>
 
+  <!-- app:drop -->
   <section class="seo">
     <h2>先に引く人は得なのか</h2>
     <p>当たり3本、はずれ27本のくじを30人で順に引く。1人目が当たる確率は30本中3本で10%です。では最後の30人目は？　これも10%になります。</p>
@@ -162,6 +167,7 @@
   </section>
 
   <div class="foot"><a href="/">ツール一覧</a> ・ <a href="about">このサイトについて</a> ・ <a href="privacy">プライバシー</a> ・ <a href="terms">利用規約</a>・<a href="https://kawatare.studio/">かわたれ studio</a><br>姉妹サイト：<a href="https://kodetto.kawatare.studio/">こでっと（開発者ツール）</a>・<a href="https://mitooshi.kawatare.studio/">みとおし（発達支援）</a>・<a href="https://patto.kawatare.studio/">ぱっと計算</a><br>きめっと ・ 最終更新：2026-10-06 ・ すべての操作は端末内で完結します</div>
+  <!-- /app:drop -->
 </div>
 <script data-logic="KimettoKuji">
 window.KimettoKuji=(function(){
@@ -182,6 +188,10 @@ window.KimettoKuji=(function(){
 </script>
 <script>(function(){
   var K=window.KimettoKuji, KEY='kimetto_kuji_v1', box=null, prizes=[], busy=false;
+  var app=window.kimettoApp||null;
+  function signal(b){try{document.dispatchEvent(new CustomEvent(b?'kimetto:busy':'kimetto:idle'));}catch(e){}}
+  function webBase(){return (window.KIMETTO_APP&&window.KIMETTO_APP.webUrl)||location.origin+location.pathname;}
+  function isWin(n){return !/はずれ|ハズレ|外れ/.test(String(n));}
   var $=function(id){return document.getElementById(id);};
   function say(id,m){$(id).textContent=m||'';}
   function save(){try{localStorage.setItem(KEY,JSON.stringify({prizes:prizes,box:box}));}catch(e){}}
@@ -193,6 +203,7 @@ window.KimettoKuji=(function(){
     var tds=$('remain').querySelectorAll('tr td:first-child');Object.keys(r).forEach(function(k,i){tds[i].textContent=k;});
     $('hist').innerHTML='';box.drawn.slice().reverse().forEach(function(n,i){var li=document.createElement('li');li.textContent=(box.drawn.length-i)+'人目：'+n;$('hist').appendChild(li);});
     $('drawBtn').disabled=left===0; $('bulkN').max=left||1;
+    signal(box.drawn.length>0);
   }
   function show(name,anim){var s=$('slip');s.className='slip';s.textContent=name;if(anim){void s.offsetWidth;s.className='slip opening';}}
   function start(p,fromLink){
@@ -204,21 +215,22 @@ window.KimettoKuji=(function(){
   [].forEach.call(document.querySelectorAll('.presets button'),function(b){b.addEventListener('click',function(){$('kin').value=b.getAttribute('data-p');});});
   $('drawBtn').addEventListener('click',function(){
     if(busy||!box)return; var n=K.draw(box); if(n===null){say('status2','くじはもうありません。');return;} save();
-    if($('optAnim').checked){busy=true;var s=$('slip');s.className='slip closed';s.textContent='？';setTimeout(function(){busy=false;show(n,true);render();},250);}
-    else{show(n,false);render();}
+    if($('optAnim').checked){busy=true;var s=$('slip');s.className='slip closed';s.textContent='？';setTimeout(function(){busy=false;show(n,true);render();if(app&&isWin(n))app.haptic('success');},250);}
+    else{show(n,false);render();if(app&&isWin(n))app.haptic('success');}
   });
   $('bulkBtn').addEventListener('click',function(){var c=parseInt($('bulkN').value,10);if(isNaN(c)||c<1)return;var got=[];for(var i=0;i<c;i++){var n=K.draw(box);if(n===null)break;got.push(n);}save();if(got.length)show(got[got.length-1],false);render();say('status2',got.length+'人分を引きました'+(got.length<c?'（くじが足りなかったので'+got.length+'人分だけ）':'')+'。');});
-  $('copyBtn').addEventListener('click',function(){var t=box.drawn.map(function(n,i){return (i+1)+'人目：'+n;}).join('\n');if(!t){say('status2','まだ引いていません。');return;}navigator.clipboard.writeText(t).then(function(){say('status2','結果をコピーしました。');},function(){say('status2','コピーできませんでした。');});});
-  $('shareBtn').addEventListener('click',function(){var url=location.origin+location.pathname+K.encode(prizes);if(url.length>1800){say('status2','中身が長すぎて、URLにすると途中で切れるおそれがあります（'+url.length+'文字）。賞の名前を短くしてください。');return;}navigator.clipboard.writeText(url).then(function(){say('status2','共有用のURLをコピーしました。開いた人は同じ中身のくじ箱を新しく作れます。');},function(){say('status2','コピーできませんでした。');});});
+  $('copyBtn').addEventListener('click',function(){var t=box.drawn.map(function(n,i){return (i+1)+'人目：'+n;}).join('\n');if(!t){say('status2','まだ引いていません。');return;}if(app){app.shareText('くじ引きの結果',t);return;}navigator.clipboard.writeText(t).then(function(){say('status2','結果をコピーしました。');},function(){say('status2','コピーできませんでした。');});});
+  $('shareBtn').addEventListener('click',function(){var url=webBase()+K.encode(prizes);if(url.length>1800){say('status2','中身が長すぎて、URLにすると途中で切れるおそれがあります（'+url.length+'文字）。賞の名前を短くしてください。');return;}if(app){app.shareText('くじ引きの中身',url);return;}navigator.clipboard.writeText(url).then(function(){say('status2','共有用のURLをコピーしました。開いた人は同じ中身のくじ箱を新しく作れます。');},function(){say('status2','コピーできませんでした。');});});
   $('resetBtn').addEventListener('click',function(){if(box.drawn.length&&!confirm('引いた結果を消して、同じ中身で作り直しますか？'))return;start(prizes);});
-  $('editBtn').addEventListener('click',function(){$('kin').value=prizes.map(function(p){return p.name+' '+p.count;}).join('\n');$('setup').className='panel';$('drawPanel').className='panel drawpanel hidden';});
+  $('editBtn').addEventListener('click',function(){$('kin').value=prizes.map(function(p){return p.name+' '+p.count;}).join('\n');$('setup').className='panel';$('drawPanel').className='panel drawpanel hidden';signal(false);});
   var dp=$('drawPanel');
-  if(dp.requestFullscreen){$('fsBtn').hidden=false;$('fsBtn').addEventListener('click',function(){if(document.fullscreenElement)document.exitFullscreen();else dp.requestFullscreen().catch(function(){});});document.addEventListener('fullscreenchange',function(){$('fsBtn').textContent=document.fullscreenElement?'大画面を閉じる':'大画面で表示';});}
+  if(app){$('fsBtn').hidden=false;$('fsBtn').addEventListener('click',function(){app.toggleFullscreen(dp);});document.addEventListener('kimetto:fschange',function(e){$('fsBtn').textContent=e.detail?'大画面を閉じる':'大画面で表示';});}
+  else if(dp.requestFullscreen){$('fsBtn').hidden=false;$('fsBtn').addEventListener('click',function(){if(document.fullscreenElement)document.exitFullscreen();else dp.requestFullscreen().catch(function(){});});document.addEventListener('fullscreenchange',function(){$('fsBtn').textContent=document.fullscreenElement?'大画面を閉じる':'大画面で表示';});}
   // 開いたときの状態
   var fromHash=K.decode(location.hash);
   if(fromHash.length){$('kin').value=fromHash.map(function(p){return p.name+' '+p.count;}).join('\n');var nt=$('notice');nt.textContent='共有されたリンクから開きました。くじ箱の中身だけが入っています（引いた結果は共有されません）。よければ「くじ箱を作る」を押してください。';nt.className='notice show';try{history.replaceState(null,'',location.pathname+location.search);}catch(e){}}
   else{try{var sv=JSON.parse(localStorage.getItem(KEY)||'null');if(sv&&sv.box&&Array.isArray(sv.box.slips)&&Array.isArray(sv.box.drawn)&&sv.box.init&&typeof sv.box.init==='object'&&Array.isArray(sv.prizes)&&sv.prizes.length){prizes=sv.prizes;box=sv.box;$('drawPanel').className='panel drawpanel';$('setup').className='panel hidden';render();if(box.drawn.length)show(box.drawn[box.drawn.length-1],false);say('status2','前回の続きを表示しています。');}}catch(e){}}
-  window.__tool={build:function(t){start(K.parse(t));},draw:function(){var n=K.draw(box);save();render();return n;},remaining:function(){return K.remaining(box);}};
+  window.__tool={prizes:function(){return prizes.map(function(p){return {name:p.name,count:p.count};});},buildFrom:function(a){start(a.map(function(p){return {name:String(p.name),count:p.count};}));},lastDrawn:function(){return box&&box.drawn.length?box.drawn[box.drawn.length-1]:null;},build:function(t){start(K.parse(t));},draw:function(){var n=K.draw(box);save();render();return n;},remaining:function(){return K.remaining(box);}};
 })();</script>
 <!-- pwa:start -->
 <script>
