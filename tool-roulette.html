@@ -285,8 +285,9 @@ window.KimettoRoulette=(function(){
     clearTimeout(finTimer);
     if(!spinning)return;spinning=false;spinBtn.disabled=false;
     var w=winnerIndex();
-    if(w>=0){var name=items[w].name;resultEl.textContent='🎉 '+name;hist.push(name);renderHist();save();chime();if(app)app.haptic('success');else{try{if(navigator.vibrate)navigator.vibrate(120);}catch(e){}}clearTimeout(idleTimer);idleTimer=setTimeout(function(){if(!spinning)signal(false);},8000);
+    if(w>=0){var name=items[w].name;resultEl.textContent='🎉 '+name;hist.push(name);renderHist();save();chime();if(app){try{app.haptic('success');}catch(e){}}else{try{if(navigator.vibrate)navigator.vibrate(120);}catch(e){}}
       if($('removeWin').checked){var obj=items[w];pending=true;spinBtn.disabled=true;setTimeout(function(){var k=items.indexOf(obj);if(k>=0)items.splice(k,1);rot=((rot%360)+360)%360;grp.style.transition='none';grp.style.transform='rotate('+rot+'deg)';pending=false;spinBtn.disabled=false;refresh();if(items.length<2)say('のこり1つになりました。');},900);}}
+    clearTimeout(idleTimer);idleTimer=setTimeout(function(){if(!spinning)signal(false);},8000);
   }
   spinBtn.addEventListener('click',spin);
   $('addBtn').addEventListener('click',function(){var it=R.parseLine($('newItem').value);if(!it)return;if(it.w>1)$('useWeight').checked=true;if(items.length>=R.MAXN){say('項目は'+R.MAXN+'個までです。');return;}items.push(it);$('newItem').value='';refresh();});
