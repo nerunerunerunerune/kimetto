@@ -214,9 +214,16 @@ window.KimettoBingo=(function(){
 })();
 </script>
 <script>(function(){
-  var B=window.KimettoBingo, KEY='kimetto_bingo_v1', game=B.newGame(75), busy=false, actx=null;
+  var B=window.KimettoBingo, KEY='kimetto_bingo_v1', game=B.newGame(75), busy=false, actx=null, live=false, idleT=null;
   var app=window.kimettoApp||null;
-  function signal(){try{document.dispatchEvent(new CustomEvent(game.drawn.length?'kimetto:busy':'kimetto:idle'));}catch(e){}}
+  // アプリ版の広告用の合図。live＝この回で実際に番号を引いている最中（続きから・リセット・新しく始めるでは false）
+  function emit(b){try{document.dispatchEvent(new CustomEvent(b?'kimetto:busy':'kimetto:idle'));}catch(e){}}
+  function signal(){
+    if(idleT){clearTimeout(idleT);idleT=null;}
+    if(!live){emit(false);return;}
+    emit(true);
+    if(!game.pool.length)idleT=setTimeout(function(){idleT=null;if(live)emit(false);},8000);
+  }
   var $=function(id){return document.getElementById(id);};
   var callCol=$('callCol'), callNum=$('callNum'), info=$('info'), recent=$('recent'), board=$('board'), status=$('status');
   function say(m){status.textContent=m||'';}
@@ -239,12 +246,12 @@ window.KimettoBingo=(function(){
     if(busy)return;
     if($('resume').className.indexOf('show')>=0){say('先に「続きから」か「新しく始める」を選んでください。');return;}
     if(!game.pool.length){say('75個すべて出ました。リセットすると最初からです。');return;}
-    var n=B.draw(game); save(); say(''); signal();
+    var n=B.draw(game); live=true; save(); say(''); signal();
     if(!$('optAnim').checked){render();beep();speak(n);return;}
     busy=true; callNum.className='callnum spin'; callCol.textContent='';
     var t0=Date.now(), iv=setInterval(function(){callNum.textContent=1+Math.floor(Math.random()*75);if(Date.now()-t0>950){clearInterval(iv);busy=false;render();beep();speak(n);}},60);
   }
-  function reset(ask){if(ask&&game.drawn.length&&!confirm('出た番号を消して、最初からにしますか？'))return;game=B.newGame(75);clearSave();render();say(ask?'リセットしました。':'');}
+  function reset(ask){if(ask&&game.drawn.length&&!confirm('出た番号を消して、最初からにしますか？'))return;game=B.newGame(75);clearSave();live=false;render();say(ask?'リセットしました。':'');}
   $('nextBtn').addEventListener('click',next);
   $('resetBtn').addEventListener('click',function(){reset(true);});
   document.addEventListener('keydown',function(e){if(e.target&&e.target.closest&&e.target.closest('a,button,input,textarea,select,summary,[contenteditable]'))return;if(e.code==='Space'||e.key===' '||e.key==='Enter'){e.preventDefault();next();}});
@@ -256,7 +263,7 @@ window.KimettoBingo=(function(){
   // 途中から
   buildBoard(); render();
   try{var sv=JSON.parse(localStorage.getItem(KEY)||'null');if(sv&&Array.isArray(sv.drawn))sv.drawn=sv.drawn.filter(function(x){return typeof x==='number'&&x>=1&&x<=75;});if(sv&&Array.isArray(sv.drawn)&&sv.drawn.length){$('resumeN').textContent=sv.drawn.length;$('resume').className='resume show';
-    $('resumeYes').addEventListener('click',function(){game=B.newGame(75);sv.drawn.forEach(function(n){var i=game.pool.indexOf(n);if(i>=0){game.pool.splice(i,1);game.drawn.push(n);}});render();$('resume').className='resume';});
+    $('resumeYes').addEventListener('click',function(){game=B.newGame(75);sv.drawn.forEach(function(n){var i=game.pool.indexOf(n);if(i>=0){game.pool.splice(i,1);game.drawn.push(n);}});live=false;render();$('resume').className='resume';});
     $('resumeNo').addEventListener('click',function(){reset(false);$('resume').className='resume';});}}catch(e){}
   // カード
   var playHoles=new Set();
