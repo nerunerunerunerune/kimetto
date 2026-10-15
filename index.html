@@ -65,6 +65,23 @@
   .prose p{margin:8px 0;font-size:14.5px;} .prose ul{margin:8px 0;padding-left:22px;} .prose li{margin:6px 0;font-size:14.5px;}
   .prose dt{font-weight:800;font-size:14px;margin-top:12px;} .prose dd{margin:2px 0 0;font-size:14.5px;color:var(--ink-2);}
   .cta{display:inline-block;text-decoration:none;font-weight:800;font-size:15px;padding:12px 22px;border-radius:13px;background:var(--brand);color:#fff;margin-top:8px;}
+  .qr h2{margin:18px 0 10px;text-align:center;}
+  .qr-box{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px;align-items:start;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:var(--shadow);}
+  @media(max-width:640px){.qr-box{grid-template-columns:1fr;padding:14px;} .qr-wheel{max-width:230px;}
+    .wrap{padding-top:12px;} .hero{padding:8px 4px 0;} .hero h1{font-size:25px;margin:4px 0 8px;} .hero p{font-size:14.5px;line-height:1.75;} .hero .chips{display:none;}}
+  .qr-wheel{position:relative;width:100%;max-width:250px;margin:6px auto 0;aspect-ratio:1/1;}
+  .qr-pointer{position:absolute;top:-3px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:13px solid transparent;border-right:13px solid transparent;border-top:22px solid var(--accent);z-index:5;filter:drop-shadow(0 2px 2px rgba(0,0,0,.25));}
+  #qrWheel{width:100%;height:100%;display:block;}
+  #qrSpin{transform-box:fill-box;transform-origin:center;}
+  .qr-hub{fill:var(--card);stroke:var(--line);stroke-width:2;}
+  .qr-btn{display:block;margin:12px auto 0;border:none;border-radius:13px;padding:14px 46px;font-family:inherit;font-weight:800;font-size:18px;background:var(--brand);color:#fff;cursor:pointer;}
+  .qr-btn:hover{filter:brightness(1.08);} .qr-btn:disabled{opacity:.6;cursor:default;}
+  .qr-result{text-align:center;font-size:24px;font-weight:800;color:var(--brand);min-height:36px;margin:8px 0 0;overflow-wrap:anywhere;}
+  .qr-label{display:block;font-weight:800;font-size:14px;margin-bottom:6px;}
+  #qrItems{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);font-family:inherit;font-size:15px;line-height:1.6;resize:vertical;}
+  .qr-msg{font-size:13px;color:var(--accent);margin:6px 0 0;min-height:1em;}
+  .qr-note{font-size:13px;color:var(--ink-2);margin:8px 0 0;}
+  .qr-full{display:inline-block;margin-top:10px;font-weight:800;font-size:14.5px;text-decoration:none;}
   footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;color:var(--muted);text-align:center;line-height:2;}
   footer a{color:var(--ink-2);text-decoration:none;margin:0 7px;}
 </style>
@@ -76,6 +93,29 @@
     <h1>迷ったら、サッときまる。</h1>
     <p>ルーレット・あみだくじ・グループ分け…みんなで使える無料の「決めるツール」集。結果は<strong>URLで共有OK</strong>、アプリ不要で今すぐ使えます。飲み会・教室・イベント・おうち時間に。</p>
     <div class="chips"><span class="chip">🎈 登録不要・無料</span><span class="chip">📱 アプリ不要</span><span class="chip">🔗 結果を共有OK</span></div>
+  </section>
+
+  <section class="qr" aria-labelledby="qr-h">
+    <h2 id="qr-h">ルーレットは、ここですぐ回せます</h2>
+    <div class="qr-box">
+      <div>
+        <div class="qr-wheel"><div class="qr-pointer"></div><svg id="qrWheel" viewBox="0 0 200 200" role="img" aria-label="ルーレットの円盤"><g id="qrSpin"></g><circle class="qr-hub" cx="100" cy="100" r="13"></circle></svg></div>
+        <button type="button" class="qr-btn" id="qrBtn">回す</button>
+        <div class="qr-result" id="qrResult" aria-live="polite"></div>
+      </div>
+      <div>
+        <label class="qr-label" for="qrItems">項目（1行に1つ・30個まで）</label>
+        <textarea id="qrItems" rows="7">ラーメン
+カレー
+パスタ
+定食
+丼
+うどん</textarea>
+        <p class="qr-msg" id="qrMsg"></p>
+        <p class="qr-note">ここは「書き換えて回す」だけの簡易版です。当たりやすさの設定・当たった項目を外す・履歴・共有リンク・全画面は、全機能のルーレットで使えます。</p>
+        <a class="qr-full" id="qrFull" href="tool-roulette">この項目のまま全機能のルーレットを開く →</a>
+      </div>
+    </div>
   </section>
 
   <h2>ツール</h2>
@@ -127,6 +167,58 @@
   </div>
   <footer><div><a href="/">ツール一覧</a>・<a href="about">このサイトについて</a>・<a href="privacy">プライバシー</a>・<a href="terms">利用規約</a>・<a href="https://kawatare.studio/">かわたれ studio</a></div><div>姉妹サイト：<a href="https://kodetto.kawatare.studio/">こでっと（開発者ツール）</a>・<a href="https://mitooshi.kawatare.studio/">みとおし（発達支援）</a>・<a href="https://patto.kawatare.studio/">ぱっと計算</a></div><div>きめっと ・ すべての操作は端末内で完結します</div></footer>
 </div>
+<script>
+/* トップの簡易ルーレット。全機能版（tool-roulette）と同じ回し方・同じ当たりの判定。項目は #l= で全機能版へ引き継ぐ */
+(function(){
+  var NS='http://www.w3.org/2000/svg', MAX=30;
+  var PAL=['#7c5cff','#ff6b6b','#ffb03a','#22b07d','#3aa0ff','#e05fbf','#ff8a5c','#4cc9b0','#a05cff','#ffd23f'];
+  var ta=document.getElementById('qrItems'), g=document.getElementById('qrSpin'), btn=document.getElementById('qrBtn');
+  var res=document.getElementById('qrResult'), msg=document.getElementById('qrMsg'), full=document.getElementById('qrFull');
+  if(!ta||!g||!btn)return;
+  var items=[], rot=0, spinning=false, timer=null, reduce=false;
+  try{reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;}catch(e){}
+  function lines(){var out=[];String(ta.value||'').split('\n').forEach(function(l){var t=l.replace(/　/g,' ').trim();if(t)out.push(t.slice(0,30));});return out;}
+  function mk(n,a){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);return e;}
+  function label(i,mid){
+    var r=62,x=100+r*Math.cos(mid*Math.PI/180),y=100+r*Math.sin(mid*Math.PI/180),ang=mid;if(ang>90&&ang<270)ang+=180;
+    var t=mk('text',{x:x.toFixed(2),y:y.toFixed(2),transform:'rotate('+ang.toFixed(2)+' '+x.toFixed(2)+' '+y.toFixed(2)+')','text-anchor':'middle','dominant-baseline':'central',fill:'#fff','font-weight':'800','font-size':items.length>10?7:(items.length>6?9:11)});
+    var s=items[i]||'';if(s.length>8)s=s.slice(0,8)+'…';t.textContent=s;g.appendChild(t);
+  }
+  function draw(){
+    var all=lines();items=all.slice(0,MAX);
+    while(g.firstChild)g.removeChild(g.firstChild);
+    var n=items.length;
+    if(n<2){var c=mk('circle',{cx:100,cy:100,r:96});c.style.fill=n?PAL[0]:'var(--line)';g.appendChild(c);if(n)label(0,0);}
+    else{for(var i=0;i<n;i++){
+      var d0=i*360/n,d1=(i+1)*360/n,a0=(-90+d0)*Math.PI/180,a1=(-90+d1)*Math.PI/180;
+      var x0=100+96*Math.cos(a0),y0=100+96*Math.sin(a0),x1=100+96*Math.cos(a1),y1=100+96*Math.sin(a1);
+      g.appendChild(mk('path',{d:'M100,100 L'+x0.toFixed(2)+','+y0.toFixed(2)+' A96,96 0 '+((d1-d0)>180?1:0)+' 1 '+x1.toFixed(2)+','+y1.toFixed(2)+' Z',fill:PAL[i%PAL.length],stroke:'#fff','stroke-width':'1'}));
+      if(d1-d0>=7)label(i,-90+(d0+d1)/2);
+    }}
+    msg.textContent=all.length>MAX?'ここで回せるのは先頭の30個までです。それより多いときは全機能のルーレットへ（100個まで）。':'';
+    full.href='tool-roulette'+(all.length?'#l='+encodeURIComponent(all.slice(0,100).join('\n')):'');
+  }
+  function finish(){
+    clearTimeout(timer);if(!spinning)return;spinning=false;btn.disabled=false;ta.readOnly=false;
+    var u=(((-rot)%360)+360)%360,i=Math.min(items.length-1,Math.floor(u*items.length/360));
+    res.textContent='🎉 '+items[i];
+  }
+  function spin(){
+    if(spinning)return;draw();
+    if(items.length<2){msg.textContent='項目を2つ以上入れてください。';return;}
+    spinning=true;btn.disabled=true;ta.readOnly=true;res.textContent='';
+    rot+=360*5+Math.floor(Math.random()*360);
+    g.style.transition=reduce?'none':'transform 4.2s cubic-bezier(.15,.62,.13,1)';
+    g.style.transform='rotate('+rot+'deg)';
+    timer=setTimeout(finish,reduce?60:4600);
+    if(typeof gtag==='function')gtag('event','quick_roulette_spin',{items:items.length});
+  }
+  g.addEventListener('transitionend',finish);
+  btn.addEventListener('click',spin);
+  ta.addEventListener('input',function(){if(!spinning){res.textContent='';draw();}});
+  draw();
+})();
+</script>
 <!-- pwa:start -->
 <script>
 (function(){
