@@ -121,6 +121,12 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://kimetto.kawatare.studio/tool-present</loc>
+    <lastmod>2026-11-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://kimetto.kawatare.studio/tool-bingo</loc>
     <lastmod>2026-11-10</lastmod>
     <changefreq>monthly</changefreq>
